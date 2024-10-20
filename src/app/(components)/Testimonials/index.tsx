@@ -10,7 +10,7 @@ export function LandingPageTestimonials() {
 	return (
 		<section className="flex flex-col items-center gap-12 mt-24">
 			<h2 className="text-5xl text-gray700 font-bold font-inria-serif text-center">
-				Ouça de nossos clientes
+				What our clients are saying
 			</h2>
 
 			<Carousel className="w-full mx-auto">

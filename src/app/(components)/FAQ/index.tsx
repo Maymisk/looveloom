@@ -10,11 +10,11 @@ export function LandingPageFrequentlyAskedQuestions() {
 
 			<LandingPageAccordion />
 
-			<h4 className="text-3xl font-inria-serif mt-12">
+			<h4 className="text-3xl text-red-500 mt-12">
 				Still have questions?
 			</h4>
 
-			<span className="text-xl font-inria-serif font-light text-brown500">
+			<span className="text-xl font-light text-brown500">
 				Talk to us, cost free.
 			</span>
 

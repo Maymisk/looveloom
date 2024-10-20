@@ -5,16 +5,9 @@ import type { Metadata } from 'next';
 import { Poppins, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
-const playfair = Playfair_Display({
-	subsets: ['latin'],
-	weight: ['400', '600', '700'],
-	style: ['italic', 'normal'],
-	variable: '--playfair',
-});
-
 const poppins = Poppins({
 	subsets: ['latin'],
-	weight: ['100', '300', '400', '600', '700'],
+	weight: ['100', '300', '400', '500', '600', '700'],
 	style: ['italic', 'normal'],
 	variable: '--poppins',
 });
@@ -32,13 +25,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={cn(
-					'bg-gray-500 text-white',
-					playfair.variable,
-					poppins.variable
-				)}
-			>
+			<body className={cn('bg-gray-500 text-white', poppins.variable)}>
 				<header className="h-32 flex items-center bg-gray500 shadow-md shadow-gray-800">
 					<Navbar />
 				</header>

@@ -35,9 +35,14 @@ const config = {
 					'700': '#8E1C28',
 					'800': '#7A141F',
 				},
-				lavender: {
-					'500': '#E6C8FA',
+				green: {
+					500: '#289f0e',
 				},
+				yellow: {
+					300: '#b89606',
+					500: '#dfb307',
+				},
+
 				pink: {
 					'50': '#FFF5FF',
 					'100': '#FFE4FF',
@@ -60,9 +65,6 @@ const config = {
 					'700': '#3A4847',
 					'800': '#1F2423',
 				},
-			},
-			backgroundImage: {
-				'default-gradient': 'linear-gradient(135deg, #DC143C, #FFFFFF)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -92,6 +94,15 @@ const config = {
 						'background-position': '0% 0%',
 					},
 				},
+				'shiny-text': {
+					'0%': {
+						'background-position': '200% 0%',
+					},
+
+					'100%': {
+						'background-position': '-200% 0%',
+					},
+				},
 				gradient: {
 					to: {
 						backgroundPosition: 'var(--bg-size) 0',
@@ -102,6 +113,7 @@ const config = {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				shine: 'shine var(--duration) infinite linear',
+				'shiny-text': 'shiny-text 8s infinite',
 				gradient: 'gradient 8s linear infinite',
 			},
 		},

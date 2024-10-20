@@ -14,7 +14,7 @@ export function Stars({ className, iconClassName, ...rest }: IStarsProps) {
 					<Star
 						key={index}
 						className={cn(
-							'fill-pink-500 hover:fill-pink-300 hover:translate-y-[-2px] transition-all',
+							'text-yellow-500 fill-yellow-500 hover:fill-yellow-300 hover:translate-y-[-2px] transition-all',
 							iconClassName
 						)}
 						strokeWidth={0}
