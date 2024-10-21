@@ -26,7 +26,7 @@ export function LandingPageAccordion() {
 				value="item-3"
 				question="Does the personalized page have an expiration date?"
 				answer={
-					'If you choose the Basic plan, your page will last for one year. However, with the PRO plan, your personalized page will be available for life.'
+					'If you choose the Starter plan, your page will last for one year. However, with the Loveful plan, your personalized page will be available for life.'
 				}
 			/>
 

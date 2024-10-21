@@ -3,10 +3,10 @@ import Image from 'next/image';
 
 export function Navbar() {
 	return (
-		<nav className="w-full flex items-center justify-center px-8">
+		<nav className="w-full px-8">
 			<Link
 				href={'/'}
-				className="flex items-center gap-4 mx-auto object-cover"
+				className="w-full flex justify-center items-center gap-3 mx-auto object-cover"
 			>
 				<Image
 					src={'/logo.png'}
@@ -16,7 +16,7 @@ export function Navbar() {
 					className="h-[6.25rem] object-contain"
 				/>
 
-				<h1 className="text-4xl font-bold">Name</h1>
+				<h1 className="text-3xl font-bold mr-4">Name</h1>
 			</Link>
 		</nav>
 	);

@@ -9,7 +9,7 @@ import Link from 'next/link';
 export function LandingPageSocialMedia() {
 	return (
 		<section className="flex flex-col items-center gap-12 max-xl:gap-4 mt-16 mb-8">
-			<h2 className="text-5xl text-gray700 font-bold font-inria-serif">
+			<h2 className="text-5xl max-xl:text-3xl text-gray700 font-bold font-inria-serif">
 				Our network
 			</h2>
 

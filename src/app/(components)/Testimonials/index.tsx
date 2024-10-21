@@ -1,56 +1,83 @@
-import {
-	Carousel,
-	CarouselContent,
-	CarouselNext,
-	CarouselPrevious,
-} from '@/shared/components/carousel';
-import { LandingPageTestimonialsCard } from './Item';
+import { Marquee } from '@/shared/components/marquee';
+import { LandingPageTestimonialsMarqueeItem } from './marquee/item';
+
+const reviews = [
+	{
+		name: 'Jack',
+		username: '@jack',
+		text: "I've never seen anything like this before. It's amazing. I love it.",
+		image: 'https://avatar.vercel.sh/jack',
+	},
+	{
+		name: 'Jill',
+		username: '@jill',
+		text: "I don't know what to say. I'm speechless. This is amazing.",
+		image: 'https://avatar.vercel.sh/jill',
+	},
+	{
+		name: 'John',
+		username: '@john',
+		text: "I'm at a loss for words. This is amazing. I love it.",
+		image: 'https://avatar.vercel.sh/john',
+	},
+	{
+		name: 'Jane',
+		username: '@jane',
+		text: "I'm at a loss for words. This is amazing. I love it.",
+		image: 'https://avatar.vercel.sh/jane',
+	},
+	{
+		name: 'Jenny',
+		username: '@jenny',
+		text: "I'm at a loss for words. This is amazing. I love it.",
+		image: 'https://avatar.vercel.sh/jenny',
+	},
+	{
+		name: 'James',
+		username: '@james',
+		text: "I'm at a loss for words. This is amazing. I love it.",
+		image: 'https://avatar.vercel.sh/james',
+	},
+];
 
 export function LandingPageTestimonials() {
 	return (
-		<section className="flex flex-col items-center gap-12 mt-24">
-			<h2 className="text-5xl text-gray700 font-bold font-inria-serif text-center">
-				What our clients are saying
-			</h2>
+		<section className="relative flex flex-col items-center gap-12 mt-24">
+			<div className="flex flex-col items-center justify-center gap-4">
+				<h5 className="text-red-400 font-semibold uppercase">
+					Testimonials
+				</h5>
 
-			<Carousel className="w-full mx-auto">
-				<CarouselContent className="p-2 gap-8">
-					<LandingPageTestimonialsCard
-						name="Laura Cunha"
-						screenshot="/testimonials/cunha.jpg"
-						instagram="https://www.instagram.com/_lauragcunha/"
-						profile="/testimonials/laura_pfp.jpg"
-					/>
-					<LandingPageTestimonialsCard
-						name="Eloiza Ferrari"
-						instagram="https://www.instagram.com/eloiza_ferrari/"
-						screenshot="/testimonials/eloiza.jpg"
-						profile="/testimonials/eloiza_pfp.jpg"
-						screenshotClassname="object-[0px_-40px]"
-					/>
-					<LandingPageTestimonialsCard
-						name="Juliane Borella"
-						instagram="https://www.instagram.com/julianeborellaendo/"
-						screenshot="/testimonials/juliane.jpg"
-						profile="/testimonials/juliane_pfp.jpg"
-					/>
-					<LandingPageTestimonialsCard
-						name="Gabriela Rolim"
-						instagram="https://www.instagram.com/gabriela.rolim/"
-						screenshot="/testimonials/gabi.jpg"
-						profile="/testimonials/gabi_pfp.jpg"
-					/>
-					<LandingPageTestimonialsCard
-						name="Deisi Morawski"
-						instagram="https://www.instagram.com/deisimorawski/"
-						screenshot="/testimonials/deisi.jpg"
-						profile="/testimonials/deisi_pfp.jpg"
-					/>
-				</CarouselContent>
+				<h2 className="text-5xl max-xl:text-3xl text-gray700 font-bold font-inria-serif text-center">
+					What the couples are saying
+				</h2>
+			</div>
 
-				<CarouselPrevious className="left-1/3 bottom-[-4rem] top-auto" />
-				<CarouselNext className="right-1/3 bottom-[-4rem] top-auto" />
-			</Carousel>
+			<div className="w-full flex flex-col items-center justify-center gap-4 overflow-hidden">
+				<Marquee className="w-full" pauseOnHover>
+					{reviews.map(review => {
+						return (
+							<LandingPageTestimonialsMarqueeItem
+								key={review.username}
+								{...review}
+							/>
+						);
+					})}
+				</Marquee>
+				<Marquee className="w-full" pauseOnHover reverse>
+					{reviews.map(review => {
+						return (
+							<LandingPageTestimonialsMarqueeItem
+								key={review.username}
+								{...review}
+							/>
+						);
+					})}
+				</Marquee>
+			</div>
+
+			<div className="pointer-events-none absolute top-20 bottom-0 -left-2 w-1/3 bg-gradient-to-r from-gray-500 dark:from-background"></div>
+			<div className="pointer-events-none absolute top-20 bottom-0 -right-2 w-1/3 bg-gradient-to-l from-gray-500 dark:from-background"></div>
 		</section>
 	);
 }

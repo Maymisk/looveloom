@@ -1,10 +1,11 @@
 import { CarouselItem } from '@/shared/components/carousel';
 import { cn } from '@/lib/utils';
-import { InstagramIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
-interface ILandingPageTestimonialCard {
+interface ILandingPageTestimonialsCarouselItemProps {
 	name: string;
 	instagram: string;
 	profile: string;
@@ -12,13 +13,13 @@ interface ILandingPageTestimonialCard {
 	screenshotClassname?: string;
 }
 
-export function LandingPageTestimonialsCard({
+export function LandingPageTestimonialsCarouselItem({
 	name,
 	instagram,
 	profile,
 	screenshot,
 	screenshotClassname,
-}: ILandingPageTestimonialCard) {
+}: ILandingPageTestimonialsCarouselItemProps) {
 	return (
 		<CarouselItem className="basis-1/2 max-xl:basis-full max-w-96 w-full flex flex-col items-center justify-center gap-6 px-6 py-3 shadow-md shadow-white300">
 			<Image
@@ -51,7 +52,7 @@ export function LandingPageTestimonialsCard({
 						target="_blank"
 						className="flex items-center gap-3 font-inria-serif font-light hover:text-brown500 transition-all"
 					>
-						<InstagramIcon width={20} height={20} /> Instagram
+						<FontAwesomeIcon icon={faInstagram} /> Instagram
 					</Link>
 				</div>
 			</div>

@@ -10,7 +10,7 @@ export function LandingPageBanner() {
 			<div className="flex flex-col gap-8">
 				<BlurFade delay={0.3}>
 					<h2 className="w-full text-7xl max-xl:text-5xl leading-5 text-center drop-shadow-md">
-						<span className="font-bold text-red-300">
+						<span className="block font-bold text-red-300 mb-1">
 							Eternalize
 						</span>{' '}
 						your love with{' '}
@@ -25,11 +25,9 @@ export function LandingPageBanner() {
 					delay={0.5}
 				>
 					<p className="w-full text-gray700 text-center font-light italic text-lg max-xl:text-base">
-						Lorem ipsum, dolor sit amet consectetur adipisicing
-						elit. Molestias aliquam facere quam in quae aperiam
-						voluptatum, ipsam iste cupiditate! Voluptatem,
-						cupiditate! Ullam aliquid dolore quas tempore obcaecati
-						eveniet dolores laborum.
+						Create a timeless digital memory to capture your
+						relationship and surprise your love with your own custom
+						page and QR Code!
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">

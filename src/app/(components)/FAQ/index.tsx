@@ -1,29 +1,27 @@
 import { MailIcon, MessageCircleIcon } from 'lucide-react';
 import { LandingPageLink } from '../Link';
 import { LandingPageAccordion } from './Accordion';
+import Link from 'next/link';
 export function LandingPageFrequentlyAskedQuestions() {
 	return (
 		<section className="flex flex-col items-center gap-12 max-xl:gap-4 mt-24 max-xl:px-2">
+			<h5 className="text-red-400 font-semibold uppercase">FAQ</h5>
+
 			<h2 className="text-5xl max-xl:text-3xl text-gray700 font-bold font-inria-serif text-center">
 				Frequently asked questions
 			</h2>
 
 			<LandingPageAccordion />
 
-			<h4 className="text-3xl text-red-500 mt-12">
-				Still have questions?
-			</h4>
-
-			<span className="text-xl font-light text-brown500">
-				Talk to us, cost free.
+			<span className="text-sm font-light mt-2">
+				Still have questions? Contact us via{' '}
+				<Link
+					className="inline underline"
+					href="mailto:corporateemail@gmail.com"
+				>
+					our email
+				</Link>
 			</span>
-
-			<LandingPageLink
-				href="mailto:khalilbohner@gmail.com"
-				className="w-40 flex justify-center"
-			>
-				<MailIcon />
-			</LandingPageLink>
 		</section>
 	);
 }

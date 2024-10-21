@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--poppins), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
 }
 
 ::-webkit-scrollbar {

@@ -1,32 +1,51 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { LandingPageLink } from '../Link';
+import { HeartIcon } from 'lucide-react';
+import { BlurFade } from '@/shared/components/blur-fade';
 
 export function LandingPageSecondCallToAction() {
 	return (
-		<section className="w-full max-w-5xl flex max-xl:flex-col items-center justify-between gap-4 mx-auto rounded-md bg-red-500 p-8 mt-16">
-			<div className="h-full flex flex-col max-xl:items-center gap-4">
-				<h2 className="text-2xl font-bold">
-					Create a unique surprise for your partner in under 5 minutes
+		<section className="mx-auto p-8 mt-24 ">
+			<BlurFade
+				className="relative w-full max-w-5xl flex max-xl:flex-col items-center justify-between gap-9"
+				delay={0.4}
+				inView
+			>
+				<Image
+					src="/love_arrow.png"
+					alt="Love arrow image"
+					className="absolute -top-14 -left-10 -rotate-[20deg]"
+					width={100}
+					height={100}
+				/>
+
+				<Image
+					src="/love_potion.png"
+					alt="Love potion image"
+					className="absolute -top-[3.75rem] -right-6 rotate-[-45deg]"
+					width={70}
+					height={70}
+				/>
+
+				<h2 className="text-2xl font-bold text-center">
+					Tell your story, get your QR code, share
 				</h2>
 
-				<p className="font-light">It’s really that quick!</p>
+				<p className="text-center font-light">
+					Create a timeless surprise for your partner in under 5
+					minutes - it’s really that quick!
+				</p>
 
 				<LandingPageLink
-					className="w-full border-white mt-auto"
+					variant="filled"
+					className="w-full flex items-center justify-center gap-4 capitalize py-3"
 					href="/subscribe"
 				>
-					Get my website
+					<HeartIcon className="fill-white" />
+					Get my nome
 				</LandingPageLink>
-			</div>
-
-			<Image
-				src="https://github.com/maymisk.png"
-				alt="Alternative image"
-				width={300}
-				height={300}
-				className="max-xl:hidden shadow-lg shadow-red-800 rounded-md"
-			/>
+			</BlurFade>
 		</section>
 	);
 }

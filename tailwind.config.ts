@@ -29,7 +29,7 @@ const config = {
 					'100': '#F3B3B9',
 					'200': '#E8959D',
 					'300': '#DC143C',
-					'400': '#C65A65',
+					'400': '#ff6464',
 					'500': '#B53D49',
 					'600': '#A22431',
 					'700': '#8E1C28',
@@ -108,6 +108,14 @@ const config = {
 						backgroundPosition: 'var(--bg-size) 0',
 					},
 				},
+				marquee: {
+					from: { transform: 'translateX(0)' },
+					to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+				},
+				'marquee-vertical': {
+					from: { transform: 'translateY(0)' },
+					to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -115,6 +123,9 @@ const config = {
 				shine: 'shine var(--duration) infinite linear',
 				'shiny-text': 'shiny-text 8s infinite',
 				gradient: 'gradient 8s linear infinite',
+				marquee: 'marquee var(--duration) linear infinite',
+				'marquee-vertical':
+					'marquee-vertical var(--duration) linear infinite',
 			},
 		},
 		fontFamily: {
