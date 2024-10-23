@@ -1,8 +1,7 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
-import { ChangeEvent, InputHTMLAttributes, useState } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
@@ -10,7 +9,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputVariants = cva(
-	'w-full h-10 px-3 py-2 font-light bg-gray-800 rounded-md border border-transparent outline-none focus:border-red-300 placeholder:font-light placeholder:opacity-40',
+	'w-full h-10 px-3 py-2 font-light bg-gray-800 rounded-md border border-transparent outline-none focus:border-red-500 placeholder:font-light placeholder:opacity-40',
 	{
 		variants: {
 			style: {
