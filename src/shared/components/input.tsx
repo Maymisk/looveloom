@@ -31,7 +31,7 @@ export function Input({
 	...rest
 }: IInputProps) {
 	return (
-		<div className="flex flex-col gap-1">
+		<div className="w-full flex flex-col gap-1">
 			{label && (
 				<label className="font-light" htmlFor={name}>
 					{label}

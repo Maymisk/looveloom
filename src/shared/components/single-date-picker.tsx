@@ -27,7 +27,7 @@ export function SingleDatePicker({
 }: IDatePickerProps) {
 	return (
 		<Popover>
-			<div className="flex flex-col gap-1">
+			<div className="w-full flex flex-col gap-1">
 				{label && (
 					<label className="font-light text-white">{label}</label>
 				)}
@@ -36,11 +36,15 @@ export function SingleDatePicker({
 					<Button
 						variant={'outline'}
 						className={cn(
-							'w-[280px] flex justify-start gap-4 text-left font-normal border border-transparent bg-gray-800 focus:border-red-500 focus:outline-none focus:ring-0',
+							'w-full flex justify-start gap-4 text-left font-normal border border-transparent bg-gray-800 focus:border-red-500 focus:outline-none focus:ring-0',
 							!value && 'text-muted-foreground'
 						)}
 					>
-						<CalendarIcon className="text-red-500" />
+						<CalendarIcon
+							width={20}
+							height={20}
+							className="text-red-500"
+						/>
 						{value ? (
 							format(value, 'PPP')
 						) : (

@@ -2,7 +2,7 @@ import { Navbar } from '@/shared/components/navbar';
 
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
-import { Poppins, Playfair_Display } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 
 const poppins = Poppins({
