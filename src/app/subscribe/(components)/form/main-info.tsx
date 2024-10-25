@@ -1,3 +1,5 @@
+'use client';
+
 import { MultipleFileInput } from '@/shared/components/multiple-file-input';
 import { SingleDatePicker } from '@/shared/components/single-date-picker';
 import { Textarea } from '@/shared/components/textarea';
@@ -8,21 +10,29 @@ import { Input } from '@/shared/components/input';
 export function SubscribeFormMainInfo() {
 	return (
 		<>
-			<Switch>
+			<Switch name="plan">
 				I wanna show
 				<span className="inline-block mx-1 text-red-300">all</span>
 				my love
 			</Switch>
 
 			<div className="w-full flex gap-1">
-				<Input label="label do input" />
+				<Input
+					label="Name of the couple"
+					name="coupleName"
+					placeholder="Romeo and Juliet"
+				/>
 
 				<SingleDatePicker label="Start of the relationship" />
 			</div>
 
-			<Textarea />
+			<Textarea
+				label="Tell us your story"
+				name="story"
+				placeholder="When we first met in 2013, I never thought.."
+			/>
 
-			<MultipleFileInput label="file input aqui">
+			<MultipleFileInput name="pictures">
 				<CameraIcon
 					className="text-red-300"
 					width={18}

@@ -37,10 +37,7 @@ interface ISwitchProps extends SwitchComponentProps {
 
 function Switch({ children, name, ...rest }: ISwitchProps) {
 	return (
-		<label
-			htmlFor={name}
-			className="bg-gray-800 w-full min-h-10 flex items-center justify-between pl-4 pr-2 rounded-md"
-		>
+		<label className="bg-gray-800 w-full min-h-10 flex items-center justify-between pl-4 pr-2 rounded-md">
 			<div className="flex items-center justify-center font-semibold text-xs">
 				{children}
 			</div>

@@ -28,12 +28,16 @@ export function MultipleFileInput({
 	...rest
 }: IFileInputProps) {
 	const [files, setFiles] = useState<FileList | null>(defaultFiles || null);
-
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
 		setFiles(event?.target.files);
 		if (onChange) onChange(event);
+	}
+
+	function handleClick(event: MouseEvent<HTMLButtonElement>) {
+		event.preventDefault();
+		inputRef.current?.click();
 	}
 
 	function handleResetInput(event: MouseEvent<SVGSVGElement>) {
@@ -49,6 +53,7 @@ export function MultipleFileInput({
 
 		fileNames.push(item.name);
 	}
+	const fileNameString = fileNames?.length ? fileNames.join(', ') : '';
 
 	return (
 		<div className="flex flex-col gap-1">
@@ -58,10 +63,17 @@ export function MultipleFileInput({
 
 			<Button
 				type="button"
-				className="relative flex gap-2 bg-gray-800 border border-transparent font-light outline-none focus:border-red-500"
-				onClick={() => inputRef.current?.click()}
+				className="relative bg-gray-800 border border-transparent font-light outline-none focus:border-red-500"
+				onClick={handleClick}
 			>
-				{fileNames?.length ? fileNames.join(', ') : children}
+				<span
+					title={fileNameString}
+					className={cn('max-w-[80%] truncate', {
+						'flex gap-2': !fileNameString,
+					})}
+				>
+					{fileNameString ? fileNameString : children}
+				</span>
 
 				{files && (
 					<TrashIcon
@@ -77,7 +89,10 @@ export function MultipleFileInput({
 				ref={inputRef}
 				type="file"
 				multiple
-				className={cn('sr-only w-full', className)}
+				className={cn(
+					'sr-only top-[9999px] right-[9999px] w-full',
+					className
+				)}
 				onChange={handleOnChange}
 				{...rest}
 			/>

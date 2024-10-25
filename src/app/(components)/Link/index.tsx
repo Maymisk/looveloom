@@ -15,7 +15,7 @@ const LandingPageLinkVariants = cva(
 		variants: {
 			style: {
 				empty: 'text-red-500 border-2 border-red-500 hover:text-red-400 hover:border-red-400',
-				filled: 'text-white bg-red-500 shadow-md shadow-gray-800 hover:bg-red-400',
+				filled: 'text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400',
 			},
 		},
 		defaultVariants: {

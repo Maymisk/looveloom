@@ -44,7 +44,7 @@ export function PricingCard({
 
 			<Link
 				href="/subscribe"
-				className="w-full px-8 py-4 bg-red-500 uppercase font-bold text-center shadow-md shadow-gray-800 rounded-md mt-auto transition-all hover:opacity-70"
+				className="w-full px-8 py-4 bg-red-200 uppercase font-bold text-center shadow-md shadow-gray-800 rounded-md mt-auto transition-all hover:opacity-70"
 			>
 				Buy
 			</Link>

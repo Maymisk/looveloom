@@ -1,3 +1,5 @@
+'use client';
+
 import { Textarea } from '@/shared/components/textarea';
 import {
 	Select,
@@ -49,7 +51,7 @@ export function SubscribeFormMilestones() {
 						</SelectContent>
 					</Select>
 
-					<Textarea />
+					<Textarea placeholder="The day we married was the happiest day of my life.." />
 				</fieldset>
 			</div>
 		</div>

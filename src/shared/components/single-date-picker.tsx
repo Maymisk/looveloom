@@ -25,8 +25,15 @@ export function SingleDatePicker({
 	value,
 	onDateChange,
 }: IDatePickerProps) {
+	const [isOpen, setIsOpen] = React.useState(false);
+
+	function handleSelect(...props: Parameters<SelectSingleEventHandler>) {
+		setIsOpen(false);
+		if (onDateChange) onDateChange(...props);
+	}
+
 	return (
-		<Popover>
+		<Popover open={isOpen} onOpenChange={setIsOpen}>
 			<div className="w-full flex flex-col gap-1">
 				{label && (
 					<label className="font-semibold text-white">{label}</label>
@@ -36,7 +43,7 @@ export function SingleDatePicker({
 					<Button
 						variant={'outline'}
 						className={cn(
-							'w-full flex justify-start gap-4 text-left font-normal border border-transparent bg-gray-800 focus:border-red-500 focus:outline-none focus:ring-0',
+							'w-full flex justify-start gap-4 text-left font-normal border border-transparent bg-gray-800 focus:border-red-300 focus:outline-none focus:ring-0',
 							!value && 'text-muted-foreground'
 						)}
 					>
@@ -56,11 +63,11 @@ export function SingleDatePicker({
 				</PopoverTrigger>
 			</div>
 
-			<PopoverContent className="w-auto p-0 bg-gray-800 border-red-500">
+			<PopoverContent className="w-auto p-0 bg-gray-800 border-red-300">
 				<Calendar
 					mode="single"
 					selected={value}
-					onSelect={onDateChange}
+					onSelect={handleSelect}
 					initialFocus
 				/>
 			</PopoverContent>

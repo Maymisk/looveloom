@@ -1,24 +1,14 @@
-'use client';
-
-import { MultipleFileInput } from '@/shared/components/multiple-file-input';
-import { SingleDatePicker } from '@/shared/components/single-date-picker';
-import { Textarea } from '@/shared/components/textarea';
-import {
-	Select,
-	SelectTrigger,
-	SelectValue,
-	SelectContent,
-	SelectItem,
-} from '@/shared/components/select';
-import { CameraIcon } from 'lucide-react';
-import { Input } from '@/shared/components/input';
-import { Switch } from '@/shared/components/switch';
 import { SubscribeFormMilestones } from './milestones';
 import { SubscribeFormMainInfo } from './main-info';
+import { Button } from '@/shared/components/button';
 
 export function SubscribeForm() {
 	return (
-		<form className="w-full flex flex-col gap-2">
+		<form
+			action="/api/subscribe"
+			method="POST"
+			className="w-full flex flex-col gap-10 pb-4"
+		>
 			<SubscribeFormMainInfo />
 
 			<h3 className="w-full text-xl text-center font-bold my-6">
@@ -32,6 +22,13 @@ export function SubscribeForm() {
 			</h3>
 
 			<SubscribeFormMilestones />
+
+			<Button
+				type="submit"
+				className="mt-4 border-none bg-red-300 hover:bg-red-400 transition-all"
+			>
+				Create my name
+			</Button>
 		</form>
 	);
 }
