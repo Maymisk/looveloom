@@ -29,7 +29,7 @@ export function SingleDatePicker({
 		<Popover>
 			<div className="w-full flex flex-col gap-1">
 				{label && (
-					<label className="font-light text-white">{label}</label>
+					<label className="font-semibold text-white">{label}</label>
 				)}
 
 				<PopoverTrigger asChild>
@@ -43,7 +43,7 @@ export function SingleDatePicker({
 						<CalendarIcon
 							width={20}
 							height={20}
-							className="text-red-500"
+							className="text-red-300"
 						/>
 						{value ? (
 							format(value, 'PPP')

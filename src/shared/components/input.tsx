@@ -33,7 +33,7 @@ export function Input({
 	return (
 		<div className="w-full flex flex-col gap-1">
 			{label && (
-				<label className="font-light" htmlFor={name}>
+				<label className="font-semibold" htmlFor={name}>
 					{label}
 				</label>
 			)}

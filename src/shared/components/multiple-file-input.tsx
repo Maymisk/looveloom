@@ -52,9 +52,12 @@ export function MultipleFileInput({
 
 	return (
 		<div className="flex flex-col gap-1">
-			{label && <label className="font-light text-white">{label}</label>}
+			{label && (
+				<label className="font-semibold text-white">{label}</label>
+			)}
 
 			<Button
+				type="button"
 				className="relative flex gap-2 bg-gray-800 border border-transparent font-light outline-none focus:border-red-500"
 				onClick={() => inputRef.current?.click()}
 			>
