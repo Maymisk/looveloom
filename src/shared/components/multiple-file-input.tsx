@@ -63,7 +63,7 @@ export function MultipleFileInput({
 
 			<Button
 				type="button"
-				className="relative bg-gray-800 border border-transparent font-light outline-none focus:border-red-500"
+				className="relative bg-gray-800 border border-transparent font-light outline-none focus:border-red-300"
 				onClick={handleClick}
 			>
 				<span

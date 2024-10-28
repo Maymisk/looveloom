@@ -34,6 +34,7 @@ export function LandingPagePricing() {
 					title="Starter"
 					price={7}
 					oldPrice={14}
+					plan="standard"
 					className="shadow-xl shadow-gray-800"
 				>
 					<ul className="flex flex-col gap-3">
@@ -78,7 +79,12 @@ export function LandingPagePricing() {
 						</ShinyBorder>
 					</ShinyText>
 
-					<PricingCard title="Loveful" oldPrice={20} price={10}>
+					<PricingCard
+						title="Loveful"
+						oldPrice={20}
+						price={10}
+						plan="loveful"
+					>
 						<ul className="flex flex-col gap-3">
 							<li className="flex gap-2 items-center">
 								<Check className="text-green-700 w-5 h-5 mb-1" />
