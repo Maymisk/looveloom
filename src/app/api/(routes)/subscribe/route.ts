@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
 			payment_method_types: ['card'],
 			success_url: `${req.headers.get('origin')}/thank-you`,
 			cancel_url: `${req.headers.get('origin')}/`,
+			metadata: { plan },
 		});
 
 		return NextResponse.json({ sessionId: session.id });

@@ -20,7 +20,7 @@ export function LandingPageSocialMedia() {
 					className="flex items-center gap-4 max-xl:gap-2 text-xl max-xl:text-base uppercase"
 				>
 					<FontAwesomeIcon
-						className="w-6 h-6 text-red-500"
+						className="w-6 h-6 text-red-200"
 						icon={faInstagram}
 					/>
 					Instagram
@@ -32,7 +32,7 @@ export function LandingPageSocialMedia() {
 					className="flex items-center gap-4 max-xl:gap-2 text-xl max-xl:text-base uppercase"
 				>
 					<FontAwesomeIcon
-						className="w-6 h-6 text-red-500"
+						className="w-6 h-6 text-red-200"
 						icon={faYoutube}
 					/>
 					Youtube
@@ -44,7 +44,7 @@ export function LandingPageSocialMedia() {
 					className="flex items-center gap-4 max-xl:gap-2 text-xl max-xl:text-base uppercase"
 				>
 					<FontAwesomeIcon
-						className="w-6 h-6 text-red-500"
+						className="w-6 h-6 text-red-200"
 						icon={faTiktok}
 					/>
 					TikTok

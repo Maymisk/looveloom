@@ -2,6 +2,8 @@ import stripe from '@/lib/stripe';
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 
+import jwt from 'jsonwebtoken';
+
 const secret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(req: Request) {
@@ -21,9 +23,29 @@ export async function POST(req: Request) {
 			case 'checkout.session.completed':
 				if (event.data.object.payment_status === 'paid') {
 					// card payment was successful
+
+					const { plan = 'loveful' } =
+						event.data.object.metadata || {};
+
+					const expiresIn = plan === 'standard' ? '1y' : undefined;
+					const subscriptionJWT = jwt.sign(
+						{ plan },
+						process.env.JWT_SECRET as string,
+						{ expiresIn }
+					);
+
 					// generate valid jwt to allow user to create their page
+					// insert the token in the database
+
 					// create them a link and send them an email with the link and their bonus (some random ass shit);
-					console.log('nigga in the webhook here');
+					const url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/subscribe?token=${subscriptionJWT}`;
+
+					// todo: write the email
+					// send the email using SES
+					console.log(
+						'nigga in the webhook here',
+						event.data.object.metadata
+					);
 				}
 
 				// if (
