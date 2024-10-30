@@ -3,10 +3,14 @@ import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 import jwt from 'jsonwebtoken';
+import dbConnect from '@/app/api/mongo';
+import { Token } from '@/app/api/(schemas)/token';
 
 const secret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(req: Request) {
+	await dbConnect();
+
 	try {
 		const body = await req.text();
 		const signature = headers().get('stripe-signature');
@@ -27,6 +31,9 @@ export async function POST(req: Request) {
 					const { plan = 'loveful' } =
 						event.data.object.metadata || {};
 
+					// generate valid jwt to allow user to create their page
+					// insert the token in the database
+
 					const expiresIn = plan === 'standard' ? '1y' : undefined;
 					const subscriptionJWT = jwt.sign(
 						{ plan },
@@ -34,18 +41,14 @@ export async function POST(req: Request) {
 						{ expiresIn }
 					);
 
-					// generate valid jwt to allow user to create their page
-					// insert the token in the database
+					await Token.create({ value: subscriptionJWT });
 
 					// create them a link and send them an email with the link and their bonus (some random ass shit);
 					const url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/subscribe?token=${subscriptionJWT}`;
 
 					// todo: write the email
 					// send the email using SES
-					console.log(
-						'nigga in the webhook here',
-						event.data.object.metadata
-					);
+					console.log(event.data.object.metadata);
 				}
 
 				// if (

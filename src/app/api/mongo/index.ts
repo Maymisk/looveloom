@@ -1,7 +1,21 @@
 import mongoose from 'mongoose';
 
-if (!process.env.MONGO_URI) throw new Error('Mongo URI is not set');
+let cached: mongoose.Mongoose | null = null;
 
-const client = mongoose.connect(process.env.MONGO_URI);
+async function dbConnect() {
+	if (cached) return cached;
 
-export { client };
+	const MONGO_URI = process.env.MONGO_URI;
+
+	if (!MONGO_URI) {
+		throw new Error(
+			'Please define the MONGO_URI environment variable inside .env.local'
+		);
+	}
+
+	cached = await mongoose.connect(MONGO_URI);
+
+	return cached;
+}
+
+export default dbConnect;

@@ -3,24 +3,26 @@
 import { MultipleFileInput } from '@/shared/components/multiple-file-input';
 import { SingleDatePicker } from '@/shared/components/single-date-picker';
 import { Textarea } from '@/shared/components/textarea';
-import { Switch } from '@/shared/components/switch';
 import { CameraIcon } from 'lucide-react';
 import { Input } from '@/shared/components/input';
+import { useFormContext } from 'react-hook-form';
 
-export function SubscribeFormMainInfo() {
+interface ISubscribeFormMainInfoProps {
+	plan: 'standard' | 'loveful';
+}
+
+export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
+	const { register } = useFormContext();
+
+	const planIsLoveful = plan === 'loveful';
+
 	return (
 		<>
-			<Switch name="plan">
-				I wanna show
-				<span className="inline-block mx-1 text-red-300">all</span>
-				my love
-			</Switch>
-
 			<div className="w-full flex gap-1">
 				<Input
 					label="Name of the couple"
-					name="coupleName"
 					placeholder="Romeo and Juliet"
+					{...register('name')}
 				/>
 
 				<SingleDatePicker label="Start of the relationship" />
@@ -41,6 +43,12 @@ export function SubscribeFormMainInfo() {
 				/>
 				Select your favorite pictures
 			</MultipleFileInput>
+
+			<Input
+				label="The link to your favorite song"
+				name="song"
+				placeholder="https://youtube.com/watch?v="
+			/>
 		</>
 	);
 }

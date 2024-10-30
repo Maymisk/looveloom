@@ -1,34 +1,68 @@
-import { SubscribeFormMilestones } from './milestones';
-import { SubscribeFormMainInfo } from './main-info';
+'use client';
+
 import { Button } from '@/shared/components/button';
+import { SubscribeFormMainInfo } from './main-info';
+import { SubscribeFormMilestones } from './milestones';
 
-export function SubscribeForm() {
+import { Milestone } from '@/shared/@types/milestone';
+import { FormProvider, useForm } from 'react-hook-form';
+
+interface ISubscribeFormData {
+	name: string;
+	story: string;
+	pictures: FileList;
+	startDate: string;
+	song?: string;
+	milestones?: Milestone[];
+}
+
+interface ISubscribeFormProps {
+	plan: 'standard' | 'loveful';
+}
+
+export function SubscribeForm({ plan }: ISubscribeFormProps) {
+	const useFormReturn = useForm<ISubscribeFormData>({
+		defaultValues: {
+			name: '',
+			story: '',
+			song: '',
+			startDate: '',
+			milestones: [{ name: 'first-sight', description: '', date: '' }],
+		},
+	});
+	const { handleSubmit } = useFormReturn;
+
+	function handleOnSubmit(data: ISubscribeFormData) {}
+
 	return (
-		<form
-			action="/api/subscribe"
-			method="POST"
-			className="w-full flex flex-col gap-10 pb-4"
-		>
-			<SubscribeFormMainInfo />
-
-			<h3 className="w-full text-xl text-center font-bold my-6">
-				Pick your{' '}
-				<span className="inline-block mx-[2px] text-red-300">most</span>{' '}
-				memorable{' '}
-				<span className="inline-block mx-[2px] text-red-300">
-					milestones
-				</span>
-				!
-			</h3>
-
-			<SubscribeFormMilestones />
-
-			<Button
-				type="submit"
-				className="mt-4 border-none bg-red-300 hover:bg-red-400 transition-all"
+		<FormProvider {...useFormReturn}>
+			<form
+				className="w-full flex flex-col gap-10 pb-4"
+				onSubmit={handleSubmit(handleOnSubmit)}
 			>
-				Create my name
-			</Button>
-		</form>
+				<SubscribeFormMainInfo plan={plan} />
+
+				<h3 className="w-full text-xl text-center font-bold my-6">
+					Pick your{' '}
+					<span className="inline-block mx-[2px] text-red-300">
+						most
+					</span>{' '}
+					memorable{' '}
+					<span className="inline-block mx-[2px] text-red-300">
+						milestones
+					</span>
+					!
+				</h3>
+
+				<SubscribeFormMilestones />
+
+				<Button
+					type="submit"
+					className="mt-4 border-none bg-red-300 hover:bg-red-400 transition-all"
+				>
+					Create my name
+				</Button>
+			</form>
+		</FormProvider>
 	);
 }
