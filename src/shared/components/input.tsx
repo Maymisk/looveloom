@@ -9,7 +9,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const InputVariants = cva(
-	'w-full h-10 px-3 py-2 font-light bg-gray-800 rounded-md border border-transparent outline-none focus:border-red-300 placeholder:font-light placeholder:opacity-40',
+	'w-full h-10 px-3 py-2 text-sm font-light bg-gray-800 rounded-md border border-transparent outline-none focus:border-red-300 placeholder:text-sm placeholder:font-light placeholder:opacity-40',
 	{
 		variants: {
 			style: {
@@ -33,14 +33,13 @@ export function Input({
 	return (
 		<div className="w-full flex flex-col gap-1">
 			{label && (
-				<label className="font-semibold" htmlFor={name}>
+				<label className="ml-2 text-sm font-semibold" htmlFor={name}>
 					{label}
 				</label>
 			)}
 
 			<input
 				{...rest}
-				placeholder="teste"
 				className={InputVariants({ style: variant, className })}
 			/>
 		</div>

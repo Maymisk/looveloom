@@ -32,7 +32,9 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 	});
 	const { handleSubmit } = useFormReturn;
 
-	function handleOnSubmit(data: ISubscribeFormData) {}
+	function handleOnSubmit(data: ISubscribeFormData) {
+		console.log(data, 'data aqui na submissao dessa xereca');
+	}
 
 	return (
 		<FormProvider {...useFormReturn}>

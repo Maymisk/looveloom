@@ -26,9 +26,12 @@ export function SingleDatePicker({
 	onDateChange,
 }: IDatePickerProps) {
 	const [isOpen, setIsOpen] = React.useState(false);
+	const [date, setDate] = React.useState<Date | undefined>();
 
 	function handleSelect(...props: Parameters<SelectSingleEventHandler>) {
 		setIsOpen(false);
+		setDate(props[0]);
+
 		if (onDateChange) onDateChange(...props);
 	}
 
@@ -36,7 +39,9 @@ export function SingleDatePicker({
 		<Popover open={isOpen} onOpenChange={setIsOpen}>
 			<div className="w-full flex flex-col gap-1">
 				{label && (
-					<label className="font-semibold text-white">{label}</label>
+					<label className="ml-2 text-sm font-semibold text-white">
+						{label}
+					</label>
 				)}
 
 				<PopoverTrigger asChild>
@@ -52,8 +57,8 @@ export function SingleDatePicker({
 							height={20}
 							className="text-red-300"
 						/>
-						{value ? (
-							format(value, 'PPP')
+						{date ? (
+							format(date, 'PPP')
 						) : (
 							<span className="font-light opacity-40">
 								Pick a date
@@ -63,7 +68,7 @@ export function SingleDatePicker({
 				</PopoverTrigger>
 			</div>
 
-			<PopoverContent className="w-auto p-0 bg-gray-800 border-red-300">
+			<PopoverContent className="w-auto p-0 bg-gray-800 border-none">
 				<Calendar
 					mode="single"
 					selected={value}

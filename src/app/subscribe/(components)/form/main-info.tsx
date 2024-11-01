@@ -1,10 +1,10 @@
 'use client';
 
+import { Input } from '@/shared/components/input';
 import { MultipleFileInput } from '@/shared/components/multiple-file-input';
 import { SingleDatePicker } from '@/shared/components/single-date-picker';
 import { Textarea } from '@/shared/components/textarea';
 import { CameraIcon } from 'lucide-react';
-import { Input } from '@/shared/components/input';
 import { useFormContext } from 'react-hook-form';
 
 interface ISubscribeFormMainInfoProps {
