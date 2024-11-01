@@ -1,7 +1,7 @@
 'use client';
 
 import { cva } from 'class-variance-authority';
-import { InputHTMLAttributes } from 'react';
+import { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
@@ -23,13 +23,10 @@ const InputVariants = cva(
 	}
 );
 
-export function Input({
-	label,
-	name,
-	className,
-	variant = 'default',
-	...rest
-}: IInputProps) {
+function InputComponent(
+	{ label, name, className, variant = 'default', ...rest }: IInputProps,
+	ref: ForwardedRef<HTMLInputElement>
+) {
 	return (
 		<div className="w-full flex flex-col gap-1">
 			{label && (
@@ -40,8 +37,12 @@ export function Input({
 
 			<input
 				{...rest}
+				ref={ref}
+				name={name}
 				className={InputVariants({ style: variant, className })}
 			/>
 		</div>
 	);
 }
+
+export const Input = forwardRef(InputComponent);

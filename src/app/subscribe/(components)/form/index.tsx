@@ -28,6 +28,7 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 			song: '',
 			startDate: '',
 			milestones: [{ name: 'first-sight', description: '', date: '' }],
+			pictures: undefined,
 		},
 	});
 	const { handleSubmit } = useFormReturn;

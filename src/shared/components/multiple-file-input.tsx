@@ -3,9 +3,12 @@
 import { cn } from '@/lib/utils';
 import {
 	ChangeEvent,
+	ForwardedRef,
+	forwardRef,
 	InputHTMLAttributes,
 	MouseEvent,
 	ReactNode,
+	useImperativeHandle,
 	useRef,
 	useState,
 } from 'react';
@@ -19,16 +22,21 @@ interface IFileInputProps
 	defaultFiles?: FileList;
 }
 
-export function MultipleFileInput({
-	children,
-	label,
-	className,
-	onChange,
-	defaultFiles,
-	...rest
-}: IFileInputProps) {
+function MultipleFileInputComponent(
+	{
+		children,
+		label,
+		className,
+		onChange,
+		defaultFiles,
+		...rest
+	}: IFileInputProps,
+	ref: ForwardedRef<HTMLInputElement>
+) {
 	const [files, setFiles] = useState<FileList | null>(defaultFiles || null);
 	const inputRef = useRef<HTMLInputElement>(null);
+
+	useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
 	function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
 		setFiles(event?.target.files);
@@ -40,7 +48,7 @@ export function MultipleFileInput({
 		inputRef.current?.click();
 	}
 
-	function handleResetInput(event: MouseEvent<SVGSVGElement>) {
+	function handleRemoveFiles(event: MouseEvent<SVGSVGElement>) {
 		event?.stopPropagation();
 		setFiles(null);
 	}
@@ -80,7 +88,7 @@ export function MultipleFileInput({
 						width={16}
 						height={16}
 						className="absolute right-3 text-red-500 hover:text-red-400 transition-all"
-						onClick={handleResetInput}
+						onClick={handleRemoveFiles}
 					/>
 				)}
 			</Button>
@@ -99,3 +107,5 @@ export function MultipleFileInput({
 		</div>
 	);
 }
+
+export const MultipleFileInput = forwardRef(MultipleFileInputComponent);
