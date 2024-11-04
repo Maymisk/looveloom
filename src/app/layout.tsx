@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
+import { Toaster } from '@/shared/components/sonner';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -31,6 +32,8 @@ export default function RootLayout({
 				</header>
 
 				{children}
+
+				<Toaster />
 			</body>
 		</html>
 	);

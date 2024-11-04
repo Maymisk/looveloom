@@ -4,7 +4,9 @@ import { NextResponse } from 'next/server';
 
 import jwt from 'jsonwebtoken';
 import dbConnect from '@/app/api/mongo';
-import { Token } from '@/app/api/(schemas)/token';
+import { Token } from '@/app/api/schemas/token';
+import { SESMailProvider } from '@/app/api/shared/providers/mail/SES';
+import { resolve } from 'path';
 
 const secret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -15,40 +17,75 @@ export async function POST(req: Request) {
 		const body = await req.text();
 		const signature = headers().get('stripe-signature');
 
-		console.log(body, signature, secret, 'to aqui dentro do webhook');
-
 		if (!secret || !signature) {
 			throw new Error('Missing secret or signature');
 		}
 
 		const event = stripe.webhooks.constructEvent(body, signature, secret);
 
+		console.log(event.type, 'tipo do evento aqui dentro');
+
 		switch (event.type) {
 			case 'checkout.session.completed':
 				if (event.data.object.payment_status === 'paid') {
 					// card payment was successful
 
-					const { plan = 'loveful' } =
-						event.data.object.metadata || {};
+					// todo remover aquele modal porco de email pq nao precisa dele
+					// consertar o problema do handlebars nessa merda de next js
+					// verificar meu email na aws
+					const { plan, email } = event.data.object.metadata || {};
 
-					// generate valid jwt to allow user to create their page
-					// insert the token in the database
+					if (!plan || !email) {
+						throw new Error('Missing plan or email');
+					}
 
-					const expiresIn = plan === 'standard' ? '1y' : undefined;
+					const options =
+						plan === 'standard' ? { expiresIn: '1y' } : {};
 					const subscriptionJWT = jwt.sign(
-						{ plan },
+						{ plan, email },
 						process.env.JWT_SECRET as string,
-						{ expiresIn }
+						options
 					);
 
 					await Token.create({ value: subscriptionJWT });
 
-					// create them a link and send them an email with the link and their bonus (some random ass shit);
 					const url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/subscribe?token=${subscriptionJWT}`;
+					const user = email.split('@')[0];
+					const emailPath = resolve(
+						process.cwd(),
+						'src',
+						'app',
+						'api',
+						'(routes)',
+						'webhook',
+						'stripe',
+						'emails',
+						'subscription-completed.hbs'
+					);
 
-					// todo: write the email
-					// send the email using SES
-					console.log(event.data.object.metadata);
+					const mailProvider = new SESMailProvider();
+
+					console.log(
+						url,
+						user,
+						emailPath,
+						'vars no envio do email aqui'
+					);
+
+					// todo - send them some additional bonus upon purchase
+					const message = await mailProvider.sendMail({
+						path: emailPath,
+						subject: 'Your Loveloom purchase has been processed!',
+						to: email,
+						variables: {
+							user,
+							url,
+						},
+					});
+
+					console.log(message, 'message de resposta do email aqui');
+
+					return NextResponse.json({}, { status: 200 });
 				}
 
 				// if (
@@ -70,6 +107,7 @@ export async function POST(req: Request) {
 				//     console.log("gerou o boleto e o link é", hostedVoucherUrl);
 				//   }
 				// }
+
 				break;
 
 			case 'checkout.session.expired':
@@ -90,7 +128,7 @@ export async function POST(req: Request) {
 
 			// case "checkout.session.async_payment_failed":
 			//   if (event.data.object.payment_status === "unpaid") {
-			//     // O cliente não pagou o boleto e ele venceu :(
+			//     // O cliente não pagou o boleto e ele venceu
 			//     const testeId = event.data.object.metadata?.testeId;
 			//     console.log("pagamento boleto falhou", testeId);
 			//   }
@@ -102,7 +140,7 @@ export async function POST(req: Request) {
 		console.error(error);
 		return NextResponse.json(
 			{
-				message: `Webhook error: ${error}`,
+				message: error,
 				ok: false,
 			},
 			{ status: 500 }

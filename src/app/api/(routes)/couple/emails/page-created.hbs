@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f9f9f9;
+				margin: 0;
+				padding: 20px;
+			}
+			.container {
+				background-color: #ffffff;
+				border-radius: 8px;
+				padding: 20px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+			h1 {
+				color: #e63946;
+			}
+			p {
+				color: #333;
+				line-height: 1.5;
+			}
+			.qr-code {
+				margin: 20px 0;
+			}
+			.button {
+				display: inline-block;
+				padding: 10px 20px;
+				background-color: #dc143c;
+				color: white;
+				text-decoration: none;
+				border-radius: 5px;
+				transition: background-color 0.3s;
+			}
+			.button:hover {
+				background-color: #d62839;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<img
+				width="200px"
+				height="200px"
+				src="../../../../../../../public/logo.png"
+				alt="Love loom logo"
+			/>
+
+			<h1>Your Looveloom was created!</h1>
+
+			<p>Dear {{user}},</p>
+
+			<p>
+				We’re thrilled to help you celebrate your love story. Your page
+				has been successfully created - now share it with the world!
+			</p>
+
+			<h2>Access Your Love Story:</h2>
+			<p>
+				To view your personalized page, you can scan the QR code below
+				or click the link below:
+			</p>
+
+			<div class="qr-code">
+				<img src="{{qrcode}}" alt="Your QR Code" />
+			</div>
+
+			<strong>or</strong>
+
+			<p>
+				<a href="{{url}}" class="button">View Your Page</a>
+			</p>
+
+			<p>
+				If you have any questions or need assistance, feel free to reach
+				out to our support team at support@looveloom.com. We’re here to
+				help!
+			</p>
+
+			<p>
+				Thank you for choosing LooveLoom. We hope you cherish every
+				moment!
+			</p>
+
+			<p>
+				Warm regards,
+				<strong>The LooveLoom Team</strong>
+			</p>
+		</div>
+	</body>
+</html>

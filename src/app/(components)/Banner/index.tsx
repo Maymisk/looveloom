@@ -1,8 +1,8 @@
-import { Stars } from '@/shared/components/stars';
-import { LandingPageLink } from '../Link';
 import { BlurFade } from '@/shared/components/blur-fade';
-import { GiftIcon } from 'lucide-react';
 import NumberTicker from '@/shared/components/number-ticker';
+import { Stars } from '@/shared/components/stars';
+import { GiftIcon } from 'lucide-react';
+import { EmailDialog } from '../EmailDialog';
 
 export function LandingPageBanner() {
 	return (
@@ -31,13 +31,12 @@ export function LandingPageBanner() {
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">
-						<LandingPageLink
-							className="w-full max-w-[65%]"
-							href="/subscribe"
-							variant="filled"
+						<EmailDialog
+							plan="loveful"
+							className="w-full max-w-[65%] text-center rounded-md font-bold px-4 py-2 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400"
 						>
 							Get Nome
-						</LandingPageLink>
+						</EmailDialog>
 
 						<div className="flex items-center gap-3 text-sm font-poppins font-light">
 							<GiftIcon className="animate-pulse text-green-500 " />

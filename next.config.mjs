@@ -5,6 +5,7 @@ const nextConfig = {
 			{ hostname: 'github.com' },
 			{ hostname: 'youtube.com' },
 			{ hostname: 'avatar.vercel.sh' },
+			{ hostname: '*.s3.us-east-2.amazonaws.com' },
 		],
 	},
 };

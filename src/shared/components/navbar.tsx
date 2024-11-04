@@ -6,17 +6,19 @@ export function Navbar() {
 		<nav className="w-full px-8">
 			<Link
 				href={'/'}
-				className="w-full flex justify-center items-center gap-3 mx-auto object-cover"
+				className="w-1/2 flex justify-center items-center gap-10 mx-auto object-cover"
 			>
 				<Image
 					src={'/logo.png'}
 					alt="Name Logo"
 					width={120}
 					height={120}
-					className="h-[6.25rem] object-contain"
+					className="h-[6.25rem] object-contain max-xl:hidden"
 				/>
 
-				<h1 className="text-3xl font-bold mr-4">Name</h1>
+				<h1 className="text-5xl font-bold">
+					<span className="text-red-300">Loove</span>loom
+				</h1>
 			</Link>
 		</nav>
 	);

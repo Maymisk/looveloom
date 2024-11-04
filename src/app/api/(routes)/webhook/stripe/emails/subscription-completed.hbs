@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f9f9f9;
+				margin: 0;
+				padding: 20px;
+			}
+			.container {
+				background-color: #ffffff;
+				border-radius: 8px;
+				padding: 20px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+			h1 {
+				color: #e63946;
+			}
+			p {
+				color: #333;
+				line-height: 1.5;
+			}
+			.qr-code {
+				margin: 20px 0;
+			}
+			.button {
+				display: inline-block;
+				padding: 10px 20px;
+				background-color: #dc143c;
+				color: white;
+				text-decoration: none;
+				border-radius: 5px;
+				transition: background-color 0.3s;
+			}
+			.button:hover {
+				background-color: #d62839;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<img
+				width="200px"
+				height="200px"
+				src="../../../../../../../public/logo.png"
+				alt="Love loom logo"
+			/>
+
+			<h1>Thank You for Your Purchase!</h1>
+
+			<p>Dear {{user}},</p>
+
+			<p>
+				Thank you for your recent purchase from
+				<strong>LooveLoom</strong>! We’re thrilled to help you celebrate
+				your love story. Your order has been successfully processed, and
+				we can’t wait for you to enjoy your personalized page.
+			</p>
+
+			<h2>Set up your Love Story:</h2>
+			<p>
+				Use this special link to configure your page just the way you
+				want to. Make sure you don't lose it!
+			</p>
+
+			<p>
+				<a href="{{url}}" class="button">Configure Your Page</a>
+			</p>
+
+			<p>
+				If you have any questions or need assistance, feel free to reach
+				out to our support team at support@looveloom.com. We’re here to
+				help!
+			</p>
+
+			<p>
+				Thank you for choosing LooveLoom. We hope you cherish every
+				moment!
+			</p>
+
+			<p>
+				Warm regards,
+				<strong>The LooveLoom Team</strong>
+			</p>
+		</div>
+	</body>
+</html>

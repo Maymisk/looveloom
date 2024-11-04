@@ -33,8 +33,32 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 	});
 	const { handleSubmit } = useFormReturn;
 
-	function handleOnSubmit(data: ISubscribeFormData) {
+	async function handleOnSubmit(data: ISubscribeFormData) {
 		console.log(data, 'data aqui na submissao dessa xereca');
+		const formData = new FormData();
+
+		formData.append('name', data.name);
+		formData.append('story', data.story);
+		formData.append('startDate', data.startDate);
+
+		if (data.song) formData.append('song', data.song);
+
+		if (data.pictures) {
+			for (let i = 0; i < data.pictures.length; i++) {
+				formData.append(`pictures`, data.pictures[i]);
+			}
+		}
+
+		if (data.milestones) {
+			data.milestones.forEach((milestone, index) => {
+				formData.append(`milestones`, JSON.stringify(milestone));
+			});
+		}
+
+		await fetch('/api/couple', {
+			method: 'POST',
+			body: formData,
+		});
 	}
 
 	return (
