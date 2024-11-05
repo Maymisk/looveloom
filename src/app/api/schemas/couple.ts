@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 
 const coupleSchema = new mongoose.Schema(
 	{
-		email: {
+		name: {
 			type: String,
 			required: true,
 			trim: true,
 		},
-		name: {
+		email: {
 			type: String,
 			required: true,
 			trim: true,
@@ -30,7 +30,7 @@ const coupleSchema = new mongoose.Schema(
 						'first-sight',
 						'first-date',
 						'first-kiss',
-						'dating',
+						'relationship',
 						'engagement',
 						'marriage',
 					],

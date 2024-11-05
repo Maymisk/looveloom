@@ -2,9 +2,9 @@ type MilestoneNameType =
 	| 'first-sight'
 	| 'first-kiss'
 	| 'first-date'
-	| 'dating'
+	| 'relationship'
 	| 'engagement'
-	| 'married';
+	| 'marriage';
 
 type Milestone = {
 	name: MilestoneNameType;
@@ -12,4 +12,4 @@ type Milestone = {
 	date: string | Date;
 };
 
-export type { Milestone };
+export type { Milestone, MilestoneNameType };

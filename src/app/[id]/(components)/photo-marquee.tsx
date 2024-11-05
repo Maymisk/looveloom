@@ -3,67 +3,23 @@
 import { Marquee } from '@/shared/components/marquee';
 import Image from 'next/image';
 
-const photos = [
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-	{
-		src: 'https://github.com/maymisk.png',
-		alt: 'message',
-		width: 300,
-		height: 300,
-	},
-];
+interface ICouplePictureMarqueeProps {
+	pictures: string[];
+}
 
-export function SubscriptionPhotoMarquee() {
+export function CouplePictureMarquee({ pictures }: ICouplePictureMarqueeProps) {
 	return (
 		<div className="relative overflow-hidden mt-10">
 			<Marquee duration={100} pauseOnHover>
-				{photos.map((photo, i) => {
+				{pictures.map((picture, i) => {
 					return (
 						<Image
 							key={i}
-							className="object-fit rounded-md shadow-md shadow-gray-800"
-							{...photo}
+							className="object-cover rounded-md shadow-md shadow-gray-800"
+							src={picture}
+							alt={`Couple picture number ${i}`}
+							width={300}
+							height={300}
 						/>
 					);
 				})}

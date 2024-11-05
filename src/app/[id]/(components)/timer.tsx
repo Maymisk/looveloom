@@ -4,11 +4,11 @@ import { Loading } from '@/shared/components/loading';
 import moment from 'moment';
 import { useEffect, useMemo, useState } from 'react';
 
-interface ISubscriptionTimerProps {
+interface ICoupleTimerProps {
 	startDate: string | Date;
 }
 
-export function SubscriptionTimer({ startDate }: ISubscriptionTimerProps) {
+export function CoupleTimer({ startDate }: ICoupleTimerProps) {
 	const [difference, setDifference] = useState<number>(0);
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ export function SubscriptionTimer({ startDate }: ISubscriptionTimerProps) {
 
 	const seconds = offset;
 
-	// if (!difference) return <Loading className="mt-16" /	>;
+	if (!difference) return <Loading className="mt-16" />;
 
 	return (
 		<div className="flex flex-col items-center gap-2">

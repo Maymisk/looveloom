@@ -33,7 +33,10 @@ export async function POST(req: Request) {
 					// todo remover aquele modal porco de email pq nao precisa dele
 					// consertar o problema do handlebars nessa merda de next js
 					// verificar meu email na aws
-					const { plan, email } = event.data.object.metadata || {};
+					const { plan } = event.data.object.metadata || {};
+					const email = event.data.object.customer_email;
+
+					console.log(plan, email, 'DADOS AQUI');
 
 					if (!plan || !email) {
 						throw new Error('Missing plan or email');
@@ -85,7 +88,7 @@ export async function POST(req: Request) {
 
 					console.log(message, 'message de resposta do email aqui');
 
-					return NextResponse.json({}, { status: 200 });
+					return NextResponse.json({ message }, { status: 200 });
 				}
 
 				// if (

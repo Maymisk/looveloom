@@ -13,7 +13,7 @@ interface ITimelineItemProps {
 	children: ReactNode;
 	tooltipContent: string;
 	className?: string;
-	Icon?: ComponentType<{ className?: string }>;
+	Icon?: ReactNode;
 }
 
 export function TimelineItem({
@@ -36,7 +36,7 @@ export function TimelineItem({
 					onClick={handleClick}
 				>
 					<div className="w-10 h-10 flex items-center justify-center bg-gray-800 shadow-md shadow-gray-800 rounded-full">
-						{Icon && <Icon className="w-5 h-5 text-red-300" />}
+						{Icon}
 					</div>
 
 					<div className={cn('absolute left-14 w-full', className)}>

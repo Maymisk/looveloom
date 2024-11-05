@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import { currencyFormatter } from '@/utils/currencyFormatter';
 import { ReactNode } from 'react';
 import { EmailDialog } from '../EmailDialog';
+import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
 
 interface IPricingCardProps {
 	children: ReactNode;
@@ -43,12 +44,12 @@ export function PricingCard({
 
 			{children}
 
-			<EmailDialog
+			<LandingPageCreateCheckoutButton
 				plan={plan}
-				className="w-full px-8 py-4 bg-red-200 uppercase font-bold text-center shadow-md shadow-gray-800 rounded-md mt-auto transition-all hover:opacity-70"
+				className="w-full h-fit max-w-none px-8 py-4 bg-red-300 uppercase mt-auto transition-all hover:opacity-70"
 			>
 				Buy
-			</EmailDialog>
+			</LandingPageCreateCheckoutButton>
 		</div>
 	);
 }

@@ -2,6 +2,7 @@ import { BlurFade } from '@/shared/components/blur-fade';
 import { HeartIcon } from 'lucide-react';
 import Image from 'next/image';
 import { EmailDialog } from '../EmailDialog';
+import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
 
 export function LandingPageSecondCallToAction() {
 	return (
@@ -36,13 +37,10 @@ export function LandingPageSecondCallToAction() {
 					minutes - it’s really that quick!
 				</p>
 
-				<EmailDialog
-					plan="loveful"
-					className="w-full flex items-center justify-center gap-4 capitalize text-center rounded-md font-bold px-4 py-3 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400"
-				>
+				<LandingPageCreateCheckoutButton plan="loveful">
 					<HeartIcon className="fill-white" />
 					Get my nome
-				</EmailDialog>
+				</LandingPageCreateCheckoutButton>
 			</BlurFade>
 		</section>
 	);
