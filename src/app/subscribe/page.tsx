@@ -7,21 +7,23 @@ interface ISubscribeProps {
 }
 
 export default async function Subscribe({ searchParams }: ISubscribeProps) {
-	const { token } = await searchParams;
+	// const { token } = await searchParams;
 
-	if (!token) return redirect('/');
+	// if (!token) return redirect('/');
 
-	let plan: 'standard' | 'loveful';
+	// let plan: 'standard' | 'loveful';
 
-	try {
-		const payload = jwt.verify(
-			token,
-			process.env.JWT_SECRET as string
-		) as any;
-		plan = payload.plan;
-	} catch {
-		redirect('/');
-	}
+	// try {
+	// 	const payload = jwt.verify(
+	// 		token,
+	// 		process.env.JWT_SECRET as string
+	// 	) as any;
+	// 	plan = payload.plan;
+	// } catch {
+	// 	redirect('/');
+	// }
+
+	const plan = 'loveful';
 
 	return (
 		<main className="w-full flex flex-col items-center gap-36 max-xl:gap-12 pt-24 max-xl:pt-12 px-8 max-xl:px-2">

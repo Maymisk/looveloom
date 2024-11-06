@@ -6,6 +6,8 @@ import { SubscribeFormMilestones } from './milestones';
 
 import { Milestone } from '@/shared/@types/milestone';
 import { FormProvider, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { redirect } from 'next/navigation';
 
 interface ISubscribeFormData {
 	name: string;
@@ -55,10 +57,26 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 			});
 		}
 
-		await fetch('/api/couple', {
+		const response = await fetch('/api/couple', {
 			method: 'POST',
 			body: formData,
 		});
+
+		const responseData = await response.json();
+
+		if (responseData.error) {
+			toast.error(responseData.error.message);
+			return;
+		}
+
+		toast.success('Success!', {
+			description: 'Your Loveloom has been created! Check your email 😊',
+			duration: 10000,
+		});
+
+		setTimeout(() => {
+			redirect('/');
+		}, 10000);
 	}
 
 	return (

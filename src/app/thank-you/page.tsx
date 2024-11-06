@@ -25,6 +25,7 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 			session.customer as string
 		)) as Stripe.Customer;
 
+		console.log(customer, 'customer aqui dentro na thank you page');
 		if (!customer?.name) redirect('/');
 	} catch {
 		redirect('/');

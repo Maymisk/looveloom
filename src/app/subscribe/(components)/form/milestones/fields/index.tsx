@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '@/shared/components/button';
 import { SingleDatePicker } from '@/shared/components/single-date-picker';
 import { Textarea } from '@/shared/components/textarea';

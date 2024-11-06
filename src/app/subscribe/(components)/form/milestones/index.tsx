@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '@/shared/components/button';
 import { useFieldArray } from 'react-hook-form';
 import { SubscribeFormMilestoneFields } from './fields';

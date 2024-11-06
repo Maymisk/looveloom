@@ -8,8 +8,6 @@ import { Token } from '@/app/api/schemas/token';
 import { SESMailProvider } from '@/app/api/shared/providers/mail/SES';
 import SubscriptionCompletedGetter from '@/app/api/(routes)/webhook/stripe/emails/subscription-completed.hbs';
 
-const secret = process.env.STRIPE_WEBHOOK_SECRET;
-
 export async function POST(req: Request) {
 	await dbConnect();
 
@@ -17,11 +15,15 @@ export async function POST(req: Request) {
 		const body = await req.text();
 		const signature = headers().get('stripe-signature');
 
-		if (!secret || !signature) {
+		if (!process.env.STRIPE_WEBHOOK_SECRET || !signature) {
 			throw new Error('Missing secret or signature');
 		}
 
-		const event = stripe.webhooks.constructEvent(body, signature, secret);
+		const event = stripe.webhooks.constructEvent(
+			body,
+			signature,
+			process.env.STRIPE_WEBHOOK_SECRET
+		);
 
 		console.log(event.type, 'tipo do evento aqui dentro');
 
@@ -30,9 +32,9 @@ export async function POST(req: Request) {
 				if (event.data.object.payment_status === 'paid') {
 					// card payment was successful
 
-					// verificar meu email na aws
 					const { plan } = event.data.object.metadata || {};
 					const email = event.data.object.customer_email;
+					const user = event.data.object.customer_details?.name;
 
 					console.log(plan, email, 'DADOS AQUI');
 
@@ -43,7 +45,7 @@ export async function POST(req: Request) {
 					const options =
 						plan === 'standard' ? { expiresIn: '1y' } : {};
 					const subscriptionJWT = jwt.sign(
-						{ plan, email },
+						{ plan, user, email },
 						process.env.JWT_SECRET as string,
 						options
 					);
@@ -51,7 +53,6 @@ export async function POST(req: Request) {
 					await Token.create({ value: subscriptionJWT });
 
 					const url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/subscribe?token=${subscriptionJWT}`;
-					const user = email.split('@')[0];
 
 					const mailProvider = new SESMailProvider();
 
