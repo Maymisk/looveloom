@@ -2,24 +2,40 @@ import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 import { ThankYouConfetti } from './components/confetti';
+import stripe from '@/lib/stripe';
+import { redirect } from 'next/navigation';
+import Stripe from 'stripe';
 
 interface IThankYouProps {
-	searchParams: Promise<{ [key: string]: string }>;
+	searchParams: Promise<{ sessionId: string | undefined }>;
 }
 
 export default async function ThankYou({ searchParams }: IThankYouProps) {
-	const { user } = await searchParams;
+	const { sessionId } = await searchParams;
 
-	if (!user) redirect('/');
+	if (!sessionId) redirect('/');
+
+	let customer;
+
+	try {
+		const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+		customer = (await stripe.customers.retrieve(
+			session.customer as string
+		)) as Stripe.Customer;
+
+		if (!customer?.name) redirect('/');
+	} catch {
+		redirect('/');
+	}
 
 	return (
 		<>
 			<main className="w-full flex flex-col items-center justify-center gap-10 pt-8 px-2">
 				<h1 className="font-bold text-3xl text-center">
 					<span className="text-red-300">Thank you</span> for your
-					purchase, {user}!
+					purchase, {customer.name}!
 				</h1>
 
 				<div className="text-center font-light">

@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import dbConnect from '@/app/api/mongo';
 import { Token } from '@/app/api/schemas/token';
 import { SESMailProvider } from '@/app/api/shared/providers/mail/SES';
-import { resolve } from 'path';
+import SubscriptionCompletedGetter from '@/app/api/(routes)/webhook/stripe/emails/subscription-completed.hbs';
 
 const secret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -30,8 +30,6 @@ export async function POST(req: Request) {
 				if (event.data.object.payment_status === 'paid') {
 					// card payment was successful
 
-					// todo remover aquele modal porco de email pq nao precisa dele
-					// consertar o problema do handlebars nessa merda de next js
 					// verificar meu email na aws
 					const { plan } = event.data.object.metadata || {};
 					const email = event.data.object.customer_email;
@@ -54,30 +52,14 @@ export async function POST(req: Request) {
 
 					const url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/subscribe?token=${subscriptionJWT}`;
 					const user = email.split('@')[0];
-					const emailPath = resolve(
-						process.cwd(),
-						'src',
-						'app',
-						'api',
-						'(routes)',
-						'webhook',
-						'stripe',
-						'emails',
-						'subscription-completed.hbs'
-					);
 
 					const mailProvider = new SESMailProvider();
 
-					console.log(
-						url,
-						user,
-						emailPath,
-						'vars no envio do email aqui'
-					);
+					console.log(url, user, 'vars no envio do email aqui');
 
 					// todo - send them some additional bonus upon purchase
 					const message = await mailProvider.sendMail({
-						path: emailPath,
+						templateGetter: SubscriptionCompletedGetter,
 						subject: 'Your Loveloom purchase has been processed!',
 						to: email,
 						variables: {
@@ -117,7 +99,6 @@ export async function POST(req: Request) {
 				if (event.data.object.payment_status === 'unpaid') {
 					// customer left checkout
 					// create some page to try to convince the customer to continue their purchase
-					console.log('this nigga didnt wanna pay for my shit');
 				}
 				break;
 

@@ -1,7 +1,5 @@
 import { SES } from 'aws-sdk';
 import nodemailer from 'nodemailer';
-import fs from 'fs';
-import Handlebars from 'handlebars';
 
 import { IMailProvider, SendMailProps } from './@types';
 
@@ -24,14 +22,10 @@ class SESMailProvider implements IMailProvider {
 	async sendMail({
 		to,
 		subject,
+		templateGetter,
 		variables,
-		path,
 	}: SendMailProps): Promise<void> {
-		const templateFileContent = fs.readFileSync(path).toString('utf-8');
-
-		const templateParse = Handlebars.compile(templateFileContent);
-
-		const templateHTML = templateParse(variables);
+		const templateHTML = templateGetter(variables);
 
 		const message = await this.client.sendMail({
 			to,

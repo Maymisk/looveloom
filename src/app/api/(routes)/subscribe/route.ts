@@ -3,22 +3,12 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
 	const body = await req.json();
-	const { plan, email, emailConfirmation } = body;
-
-	if (email !== emailConfirmation) {
-		return NextResponse.json(
-			{ error: 'Emails dont match' },
-			{ status: 400 }
-		);
-	}
+	const { plan } = body;
 
 	const price =
 		plan === 'standard'
 			? process.env.STRIPE_TEST_STANDARD_PRICE_ID
 			: process.env.STRIPE_TEST_LOVEFUL_PRICE_ID;
-
-	console.log(body, price, 'body e price aqui');
-	const user = email.split('@')[0];
 
 	try {
 		const session = await stripe.checkout.sessions.create({
@@ -30,9 +20,11 @@ export async function POST(req: NextRequest) {
 			],
 			mode: 'payment',
 			payment_method_types: ['card'],
-			success_url: `${req.headers.get('origin')}/thank-you?user=${user}`,
+			success_url: `${req.headers.get(
+				'origin'
+			)}/thank-you?sessionId={CHECKOUT_SESSION_ID}`,
 			cancel_url: `${req.headers.get('origin')}/`,
-			metadata: { plan, email },
+			metadata: { plan },
 		});
 
 		return NextResponse.json({ sessionId: session.id });

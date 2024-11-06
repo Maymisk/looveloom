@@ -1,12 +1,17 @@
 type SendMailProps = {
 	to: string;
 	subject: string;
+	templateGetter(variables: { [key: string]: any }): string;
 	variables: any;
-	path: string;
 };
 
 interface IMailProvider {
-	sendMail({ to, subject, variables, path }: SendMailProps): Promise<void>;
+	sendMail({
+		to,
+		subject,
+		templateGetter,
+		variables,
+	}: SendMailProps): Promise<void>;
 }
 
 export type { IMailProvider, SendMailProps };
