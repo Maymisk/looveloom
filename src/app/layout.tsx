@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/shared/components/sonner';
+import dbConnect from './api/mongo';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -14,16 +15,18 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: 'Love you',
-	description: 'Love you',
-	icons: ['/favicon.webp'],
+	title: 'Loveloom',
+	description: 'Loveloom',
+	icons: ['/logo.png'],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	await dbConnect();
+
 	return (
 		<html lang="en">
 			<body className={cn('bg-gray-500 text-white', poppins.variable)}>
@@ -33,7 +36,15 @@ export default function RootLayout({
 
 				{children}
 
-				<Toaster />
+				<Toaster
+					toastOptions={{
+						classNames: {
+							toast: 'text-white font-bold',
+							error: 'bg-red-200',
+							success: 'bg-green-500',
+						},
+					}}
+				/>
 			</body>
 		</html>
 	);

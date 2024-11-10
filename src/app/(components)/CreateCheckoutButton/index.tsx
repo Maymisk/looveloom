@@ -7,7 +7,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { cn } from '@/lib/utils';
 
 interface ILandingPageCreateCheckoutButtonProps {
-	plan: 'standard' | 'loveful';
+	plan?: 'standard' | 'loveful';
 	className?: string;
 	children: ReactNode;
 }
@@ -19,7 +19,7 @@ export function LandingPageCreateCheckoutButton({
 }: ILandingPageCreateCheckoutButtonProps) {
 	const [isCreatingCheckout, setIsCreatingCheckout] = useState(false);
 
-	async function onSubmit() {
+	async function handleOnClick() {
 		try {
 			setIsCreatingCheckout(true);
 
@@ -44,8 +44,6 @@ export function LandingPageCreateCheckoutButton({
 
 			if (!stripeClient) throw new Error('Stripe failed to initialize.');
 
-			console.log(sessionId, 'session id');
-
 			await stripeClient.redirectToCheckout({ sessionId });
 		} catch (error) {
 			console.error(error);
@@ -60,6 +58,7 @@ export function LandingPageCreateCheckoutButton({
 				'w-full max-w-[65%] text-center rounded-md font-bold border-none px-4 py-2 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400',
 				className
 			)}
+			onClick={handleOnClick}
 			disabled={isCreatingCheckout}
 		>
 			{children}

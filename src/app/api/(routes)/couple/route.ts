@@ -26,23 +26,6 @@ export async function POST(req: NextRequest) {
 		const body = await req.formData();
 		const data = Object.fromEntries(body) as unknown as IPayload;
 
-		const milestones = body
-			.getAll('milestones')
-			.map(milestone => JSON.parse(milestone.toString()));
-		const pictures = body.getAll('pictures') as File[];
-
-		const { success, error } = validationSchema.safeParse({
-			...data,
-			milestones,
-			pictures,
-		});
-
-		if (!success)
-			return NextResponse.json(
-				{ error: error.errors[0].message },
-				{ status: 400 }
-			);
-
 		const { plan, user, email } = verify(
 			data.token,
 			process.env.JWT_SECRET as string
@@ -56,10 +39,30 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
+		const milestones = body
+			.getAll('milestones')
+			.map(milestone => JSON.parse(milestone.toString()));
+		const pictures = body.getAll('pictures') as File[];
+
+		const { success, error } = validationSchema.safeParse({
+			...data,
+			email,
+			milestones,
+			pictures,
+		});
+
+		if (!success)
+			return NextResponse.json(
+				{ error: error.errors[0].message },
+				{ status: 400 }
+			);
+
 		const planIsLoveful = plan === 'loveful';
 		if (planIsLoveful && !data.song)
 			return NextResponse.json(
-				{ error: 'Song is required' },
+				{
+					error: 'Please tell us the youtube link to your song of choice!',
+				},
 				{ status: 400 }
 			);
 
@@ -82,7 +85,7 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
-		if (!planIsLoveful && milestones.length)
+		if (!planIsLoveful && milestones?.length)
 			return NextResponse.json(
 				{
 					error: 'You cannot specify milestones with your current plan!',
@@ -99,21 +102,38 @@ export async function POST(req: NextRequest) {
 			);
 
 		const storageProvider = new S3StorageProvider();
-		const fileUrls = [];
+		const filePromises = [];
 
 		for (const picture of pictures) {
-			const pictureUrl = await storageProvider.save(
-				picture,
-				`couples/${crypto.randomBytes(16).toString('hex')}`
+			const pictureArrayBuffer = await picture.arrayBuffer();
+			const content = Buffer.from(pictureArrayBuffer);
+
+			filePromises.push(
+				storageProvider.save({
+					file: {
+						type: picture.type,
+						name: picture.name,
+						content,
+					},
+					folder: `couples/${crypto.randomBytes(16).toString('hex')}`,
+				})
 			);
-
-			if (typeof pictureUrl !== 'string' && pictureUrl.error) {
-				console.log('There was an error uploading ', picture);
-				continue;
-			}
-
-			fileUrls.push(pictureUrl);
 		}
+
+		const submissionToStorageResponse = await Promise.allSettled(
+			filePromises
+		);
+
+		const fileUrls: string[] = [];
+		submissionToStorageResponse.forEach(response => {
+			if (
+				response.status === 'rejected' ||
+				typeof response.value !== 'string'
+			)
+				return;
+
+			fileUrls.push(response.value);
+		});
 
 		milestones.forEach(milestone => {
 			milestone.date = new Date(milestone.date);
@@ -136,29 +156,36 @@ export async function POST(req: NextRequest) {
 
 		await Token.deleteOne({ value: data.token });
 
-		const coupleUrl = `https://${process.env.VERCEL_URL}/${String(
-			couple._id
-		)}`;
+		const coupleUrl = `https://${
+			process.env.NEXT_PUBLIC_VERCEL_URL
+		}/couple/${String(couple._id)}`;
 
-		const qrcode = QRCode.toDataURL(coupleUrl);
+		const qrCodeBuffer = await QRCode.toBuffer(coupleUrl);
+
+		const qrcode = await storageProvider.save({
+			file: {
+				name: crypto.randomBytes(16).toString('hex'),
+				type: 'image/png',
+				content: qrCodeBuffer,
+			},
+			folder: 'qr-codes',
+		});
 
 		const mailProvider = new SESMailProvider();
 
-		const message = await mailProvider.sendMail({
+		await mailProvider.sendMail({
 			templateGetter: PageCreatedEmailGetter,
 			subject: 'Your Loveloom was successfully created!',
 			to: email,
 			variables: {
-				qrcode,
+				qrcode: typeof qrcode === 'string' ? qrcode : '',
 				user,
 				url: coupleUrl,
 			},
 		});
 
-		console.log(message, 'resposta do email aqui dentro');
-
-		return NextResponse.redirect(coupleUrl, { status: 200 });
-	} catch (error) {
-		return NextResponse.json({ error }, { status: 500 });
+		return NextResponse.json({ url: coupleUrl }, { status: 200 });
+	} catch (error: any) {
+		return NextResponse.json({ error: error?.message }, { status: 400 });
 	}
 }

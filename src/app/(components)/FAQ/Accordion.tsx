@@ -10,23 +10,23 @@ export function LandingPageAccordion() {
 		>
 			<LandingPageFAQItem
 				value="item-1"
-				question="What is Nome?"
+				question="What is Loveloom?"
 				answer={
-					'Nome is a platform where couples can create personalized relationship pages. You can include photos, a heartfelt message, and a timer that tracks how long you’ve been together, making it a unique way to celebrate your love.'
+					'Loveloom is your own custom relationship page. You can include photos, a heartfelt message, and a timer that tracks how long you’ve been together, making it a unique way to celebrate your love.'
 				}
 			/>
 			<LandingPageFAQItem
 				value="item-2"
-				question="How do i receive my personalized page after payment?"
+				question="How do i receive my Loveloom after payment?"
 				answer={
-					"After completing the payment, you'll receive an email containing both the QR code and a link to access your personalized page, making it easy to share with your partner."
+					"After completing the payment, you'll receive an email with a link to create your Loveloom. After configuring it as you want, you'll receive both a QR code and a link to access your Loveloom, making it easy to share with the world."
 				}
 			/>
 			<LandingPageFAQItem
 				value="item-3"
-				question="Does the personalized page have an expiration date?"
+				question="Does my Loveloom have an expiration date?"
 				answer={
-					'If you choose the Starter plan, your page will last for one year. However, with the Loveful plan, your personalized page will be available for life.'
+					'If you choose the Starter plan, your Loveloom will last for one year. However, with the Loveful plan, your Loveloom will be available for life!'
 				}
 			/>
 
@@ -42,13 +42,15 @@ export function LandingPageAccordion() {
 				value="item-5"
 				question="How long does it take to receive the QR code via email?"
 				answer={
-					'Credit card payments are processed instantly, so you will receive the QR code right away.'
+					'After creating your Loveloom, you will receive the QR code in at most a few minutes!'
 				}
 			/>
 			<LandingPageFAQItem
 				value="item-6"
 				question="How can I contact customer support?"
-				answer={'You can contact our customer support via email at x'}
+				answer={
+					'You can contact our customer support via email at support@looveloom.com'
+				}
 			/>
 		</Accordion>
 	);

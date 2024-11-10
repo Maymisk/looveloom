@@ -8,6 +8,7 @@ import { Milestone } from '@/shared/@types/milestone';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { redirect } from 'next/navigation';
+import { Loading } from '@/shared/components/loading';
 
 interface ISubscribeFormData {
 	name: string;
@@ -20,9 +21,10 @@ interface ISubscribeFormData {
 
 interface ISubscribeFormProps {
 	plan: 'standard' | 'loveful';
+	token: string;
 }
 
-export function SubscribeForm({ plan }: ISubscribeFormProps) {
+export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 	const useFormReturn = useForm<ISubscribeFormData>({
 		defaultValues: {
 			name: '',
@@ -33,17 +35,21 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 			pictures: undefined,
 		},
 	});
-	const { handleSubmit } = useFormReturn;
+	const {
+		handleSubmit,
+		formState: { isSubmitting },
+	} = useFormReturn;
+	const planIsLoveful = plan === 'loveful';
 
 	async function handleOnSubmit(data: ISubscribeFormData) {
-		console.log(data, 'data aqui na submissao dessa xereca');
 		const formData = new FormData();
 
 		formData.append('name', data.name);
 		formData.append('story', data.story);
 		formData.append('startDate', data.startDate);
+		formData.append('token', token);
 
-		if (data.song) formData.append('song', data.song);
+		if (planIsLoveful && data.song) formData.append('song', data.song);
 
 		if (data.pictures) {
 			for (let i = 0; i < data.pictures.length; i++) {
@@ -51,7 +57,7 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 			}
 		}
 
-		if (data.milestones) {
+		if (planIsLoveful && data.milestones) {
 			data.milestones.forEach((milestone, index) => {
 				formData.append(`milestones`, JSON.stringify(milestone));
 			});
@@ -62,21 +68,20 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 			body: formData,
 		});
 
-		const responseData = await response.json();
+		const { url, error } = await response.json();
 
-		if (responseData.error) {
-			toast.error(responseData.error.message);
+		if (error) {
+			toast.error(error);
 			return;
 		}
 
-		toast.success('Success!', {
-			description: 'Your Loveloom has been created! Check your email 😊',
-			duration: 10000,
+		toast.success('Your Loveloom has been created! Check your email 😊', {
+			duration: 5000,
 		});
 
 		setTimeout(() => {
-			redirect('/');
-		}, 10000);
+			redirect(url);
+		}, 5000);
 	}
 
 	return (
@@ -99,13 +104,21 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 					!
 				</h3>
 
-				<SubscribeFormMilestones />
+				{planIsLoveful && <SubscribeFormMilestones />}
 
 				<Button
 					type="submit"
 					className="mt-4 border-none bg-red-300 hover:bg-red-400 transition-all"
+					disabled={isSubmitting}
 				>
-					Create my name
+					{isSubmitting ? (
+						<span className="flex items-center gap-4">
+							<Loading />
+							Creating your Loveloom...
+						</span>
+					) : (
+						'Create your Loveloom'
+					)}
 				</Button>
 			</form>
 		</FormProvider>

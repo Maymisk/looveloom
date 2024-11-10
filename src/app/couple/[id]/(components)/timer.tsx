@@ -1,8 +1,7 @@
 'use client';
 
-import { Loading } from '@/shared/components/loading';
 import moment from 'moment';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ICoupleTimerProps {
 	startDate: string | Date;
@@ -38,7 +37,7 @@ export function CoupleTimer({ startDate }: ICoupleTimerProps) {
 
 	const seconds = offset;
 
-	if (!difference) return <Loading className="mt-16" />;
+	if (!difference) return <div className="h-[4.75rem] max-xl:h-[10.75rem]" />;
 
 	return (
 		<div className="flex flex-col items-center gap-2">

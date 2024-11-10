@@ -5,7 +5,7 @@ import { MultipleFileInput } from '@/shared/components/multiple-file-input';
 import { SingleDatePicker } from '@/shared/components/single-date-picker';
 import { Textarea } from '@/shared/components/textarea';
 import { CameraIcon } from 'lucide-react';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 interface ISubscribeFormMainInfoProps {
 	plan: 'standard' | 'loveful';
@@ -25,7 +25,17 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 					placeholder="Romeo and Juliet"
 				/>
 
-				<SingleDatePicker label="Start of the relationship" />
+				<Controller
+					name="startDate"
+					render={({ field }) => {
+						return (
+							<SingleDatePicker
+								onDateChange={field.onChange}
+								label="Start of the relationship"
+							/>
+						);
+					}}
+				/>
 			</div>
 
 			<Textarea
@@ -34,7 +44,7 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 				placeholder="When we first met in 2013, I never thought.."
 			/>
 
-			<MultipleFileInput {...register('pictures')}>
+			<MultipleFileInput {...register('pictures')} accept="image/*">
 				<CameraIcon
 					className="text-red-300"
 					width={18}
@@ -44,11 +54,13 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 				Select your favorite pictures
 			</MultipleFileInput>
 
-			<Input
-				{...register('song')}
-				label="The link to your favorite song"
-				placeholder="https://youtube.com/watch?v="
-			/>
+			{planIsLoveful && (
+				<Input
+					{...register('song')}
+					label="The link to your favorite song"
+					placeholder="https://www.youtube.com/watch?v=kPa7bsKwL-c"
+				/>
+			)}
 		</>
 	);
 }

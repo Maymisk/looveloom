@@ -10,7 +10,7 @@ interface ICouplePictureMarqueeProps {
 export function CouplePictureMarquee({ pictures }: ICouplePictureMarqueeProps) {
 	return (
 		<div className="relative overflow-hidden mt-10">
-			<Marquee duration={100} pauseOnHover>
+			<Marquee duration={100} pauseOnHover repeat={10}>
 				{pictures.map((picture, i) => {
 					return (
 						<Image

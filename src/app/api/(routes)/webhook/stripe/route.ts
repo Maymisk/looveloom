@@ -25,18 +25,14 @@ export async function POST(req: Request) {
 			process.env.STRIPE_WEBHOOK_SECRET
 		);
 
-		console.log(event.type, 'tipo do evento aqui dentro');
-
 		switch (event.type) {
 			case 'checkout.session.completed':
 				if (event.data.object.payment_status === 'paid') {
 					// card payment was successful
 
 					const { plan } = event.data.object.metadata || {};
-					const email = event.data.object.customer_email;
+					const email = event.data.object.customer_details?.email;
 					const user = event.data.object.customer_details?.name;
-
-					console.log(plan, email, 'DADOS AQUI');
 
 					if (!plan || !email) {
 						throw new Error('Missing plan or email');
@@ -56,10 +52,8 @@ export async function POST(req: Request) {
 
 					const mailProvider = new SESMailProvider();
 
-					console.log(url, user, 'vars no envio do email aqui');
-
 					// todo - send them some additional bonus upon purchase
-					const message = await mailProvider.sendMail({
+					await mailProvider.sendMail({
 						templateGetter: SubscriptionCompletedGetter,
 						subject: 'Your Loveloom purchase has been processed!',
 						to: email,
@@ -69,9 +63,7 @@ export async function POST(req: Request) {
 						},
 					});
 
-					console.log(message, 'message de resposta do email aqui');
-
-					return NextResponse.json({ message }, { status: 200 });
+					return NextResponse.json({}, { status: 200 });
 				}
 
 				// if (

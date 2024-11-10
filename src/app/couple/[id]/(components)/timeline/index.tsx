@@ -11,7 +11,12 @@ export function CoupleTimeline({ milestones }: ICoupleTimelineProps) {
 		<Timeline>
 			{milestones.map((milestone, i) => {
 				return (
-					<CoupleTimelineItem key={milestone.name} {...milestone} />
+					<CoupleTimelineItem
+						key={milestone.name}
+						name={milestone.name}
+						description={milestone.description}
+						date={milestone.date}
+					/>
 				);
 			})}
 		</Timeline>

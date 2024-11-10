@@ -12,11 +12,7 @@ import {
 import moment from 'moment';
 import { ComponentPropsWithoutRef, ComponentType } from 'react';
 
-type ICoupleTimelineItemProps = Omit<
-	ComponentPropsWithoutRef<typeof TimelineItem>,
-	'className' | 'children' | 'tooltipContent'
-> &
-	Milestone;
+type ICoupleTimelineItemProps = Milestone;
 
 const milestoneToIcon: Record<MilestoneNameType, ComponentType<LucideProps>> = {
 	'first-sight': Eye,
@@ -31,7 +27,6 @@ export function CoupleTimelineItem({
 	name,
 	description,
 	date,
-	...rest
 }: ICoupleTimelineItemProps) {
 	const formattedMilestoneName = name.split('-').join(' ');
 	const formattedMilestoneDate = moment(date).format('YYYY/MM/DD');
@@ -40,7 +35,6 @@ export function CoupleTimelineItem({
 
 	return (
 		<TimelineItem
-			{...rest}
 			className="flex flex-col gap-2 top-1"
 			tooltipContent={tooltipContent}
 			Icon={<Icon className="w-5 h-5 text-red-300" />}

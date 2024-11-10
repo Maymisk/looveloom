@@ -32,8 +32,8 @@ export function LandingPageBanner() {
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">
-						<LandingPageCreateCheckoutButton plan="loveful">
-							Get Nome
+						<LandingPageCreateCheckoutButton>
+							Get Loveloom
 						</LandingPageCreateCheckoutButton>
 
 						<div className="flex items-center gap-3 text-sm font-poppins font-light">

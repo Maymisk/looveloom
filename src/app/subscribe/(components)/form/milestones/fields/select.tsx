@@ -21,6 +21,7 @@ export function SubscribeFormMilestoneSelect({
 				return (
 					<Select
 						name={field.name}
+						value={field.value}
 						onValueChange={field.onChange}
 						disabled={field.disabled}
 					>
@@ -41,7 +42,7 @@ export function SubscribeFormMilestoneSelect({
 								First kiss
 							</SelectItem>
 
-							<SelectItem value="dating">Dating</SelectItem>
+							<SelectItem value="relationship">Dating</SelectItem>
 
 							<SelectItem value="engagement">
 								Engagement

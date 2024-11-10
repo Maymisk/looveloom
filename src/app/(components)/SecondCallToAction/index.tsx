@@ -37,9 +37,9 @@ export function LandingPageSecondCallToAction() {
 					minutes - it’s really that quick!
 				</p>
 
-				<LandingPageCreateCheckoutButton plan="loveful">
+				<LandingPageCreateCheckoutButton className="gap-3">
 					<HeartIcon className="fill-white" />
-					Get my nome
+					Get my Loveloom
 				</LandingPageCreateCheckoutButton>
 			</BlurFade>
 		</section>

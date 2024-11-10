@@ -1,10 +1,7 @@
 import { S3 } from 'aws-sdk';
-import mime from 'mime';
-import fs from 'fs';
-import { resolve } from 'path';
 import { randomBytes } from 'crypto';
 
-import { IStorageProvider } from './@types';
+import { ISaveFileProps, IStorageProvider } from './@types';
 
 class S3StorageProvider implements IStorageProvider {
 	private client: S3;
@@ -19,15 +16,18 @@ class S3StorageProvider implements IStorageProvider {
 		});
 	}
 
-	async save(file: File, folder: string): Promise<string | { error: any }> {
+	async save({
+		file,
+		folder,
+	}: ISaveFileProps): Promise<string | { error: any }> {
 		try {
 			const fileKey = `${file.name}_${randomBytes(16).toString('hex')}`;
 
 			const { Location } = await this.client
 				.upload({
-					Bucket: `${process.env.AWS_BUCKET}/${folder}`,
+					Bucket: `${process.env.AWS_BUCKET_NAME}/${folder}`,
 					Key: fileKey,
-					Body: file,
+					Body: file.content,
 					ContentType: file.type,
 				})
 				.promise();

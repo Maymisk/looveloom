@@ -31,20 +31,25 @@ export function TimelineItem({
 	return (
 		<TooltipProvider>
 			<Tooltip open={isOpen} onOpenChange={setIsOpen}>
-				<TooltipTrigger
-					className="relative w-[80%] flex justify-start items-center z-50 focus:outline-none"
-					onClick={handleClick}
-				>
-					<div className="w-10 h-10 flex items-center justify-center bg-gray-800 shadow-md shadow-gray-800 rounded-full">
+				<div className="relative z-50 focus:outline-none">
+					<TooltipTrigger
+						className="w-10 h-10 flex items-center justify-center bg-gray-800 shadow-md shadow-gray-800 rounded-full focus:outline-none"
+						onClick={handleClick}
+					>
 						{Icon}
-					</div>
+					</TooltipTrigger>
 
-					<div className={cn('absolute left-14 w-full', className)}>
+					<div
+						className={cn(
+							'absolute left-14 w-[90%] max-xl:w-[80%]',
+							className
+						)}
+					>
 						{children}
 					</div>
-				</TooltipTrigger>
+				</div>
 
-				<TooltipContent className="relative -left-16 bg-gray-800 rounded-md">
+				<TooltipContent className="bg-gray-800 rounded-md">
 					{tooltipContent}
 				</TooltipContent>
 			</Tooltip>

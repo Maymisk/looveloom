@@ -17,7 +17,8 @@ export function LandingPageFrequentlyAskedQuestions() {
 				Still have questions? Contact us via{' '}
 				<Link
 					className="inline underline"
-					href="mailto:corporateemail@gmail.com"
+					href="mailto:support@looveloom.com"
+					target="_blank"
 				>
 					our email
 				</Link>

@@ -8,24 +8,23 @@ import { redirect } from 'next/navigation';
 import Stripe from 'stripe';
 
 interface IThankYouProps {
-	searchParams: Promise<{ sessionId: string | undefined }>;
+	searchParams: Promise<{ session_id: string | undefined }>;
 }
 
 export default async function ThankYou({ searchParams }: IThankYouProps) {
-	const { sessionId } = await searchParams;
+	const { session_id } = await searchParams;
 
-	if (!sessionId) redirect('/');
+	if (!session_id) redirect('/');
 
 	let customer;
 
 	try {
-		const session = await stripe.checkout.sessions.retrieve(sessionId);
+		const session = await stripe.checkout.sessions.retrieve(session_id);
 
 		customer = (await stripe.customers.retrieve(
 			session.customer as string
 		)) as Stripe.Customer;
 
-		console.log(customer, 'customer aqui dentro na thank you page');
 		if (!customer?.name) redirect('/');
 	} catch {
 		redirect('/');
@@ -36,7 +35,7 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 			<main className="w-full flex flex-col items-center justify-center gap-10 pt-8 px-2">
 				<h1 className="font-bold text-3xl text-center">
 					<span className="text-red-300">Thank you</span> for your
-					purchase, {customer.name}!
+					purchase, Khalil!
 				</h1>
 
 				<div className="text-center font-light">
