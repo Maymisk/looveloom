@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { ComponentType, ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import {
 	Tooltip,
 	TooltipContent,

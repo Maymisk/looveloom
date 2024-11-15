@@ -10,7 +10,7 @@ import {
 	LucideProps,
 } from 'lucide-react';
 import moment from 'moment';
-import { ComponentPropsWithoutRef, ComponentType } from 'react';
+import { ComponentType } from 'react';
 
 type ICoupleTimelineItemProps = Milestone;
 

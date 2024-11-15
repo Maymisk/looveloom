@@ -1,8 +1,7 @@
-import { redirect } from 'next/navigation';
-import { SubscribeForm } from './(components)/form';
 import jwt from 'jsonwebtoken';
+import { redirect } from 'next/navigation';
 import { Token } from '../api/schemas/token';
-import dbConnect from '../api/mongo';
+import { SubscribeForm } from './(components)/form';
 
 interface ISubscribeProps {
 	searchParams: Promise<{ [key: string]: string }>;

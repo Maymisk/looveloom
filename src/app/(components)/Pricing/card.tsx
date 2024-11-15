@@ -1,7 +1,6 @@
 import { cn } from '@/lib/utils';
 import { currencyFormatter } from '@/utils/currencyFormatter';
 import { ReactNode } from 'react';
-import { EmailDialog } from '../EmailDialog';
 import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
 
 interface IPricingCardProps {

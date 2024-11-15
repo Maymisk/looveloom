@@ -125,10 +125,10 @@ export default function TermsOfService() {
 					</h2>
 					<p className="mt-2 text-white font-light">
 						We may update these Terms of Service periodically. When
-						updates are made, we will revise the "last updated" date
-						at the top of this page. It is your responsibility to
-						review these Terms of Service periodically to stay
-						informed of any changes.
+						updates are made, we will revise the &quot;last
+						updated&quot; date at the top of this page. It is your
+						responsibility to review these Terms of Service
+						periodically to stay informed of any changes.
 					</p>
 				</section>
 

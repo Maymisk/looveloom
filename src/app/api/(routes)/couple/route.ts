@@ -19,6 +19,12 @@ interface IPayload {
 	token: string;
 }
 
+interface ITokenPayload {
+	plan: string;
+	user: string;
+	email: string;
+}
+
 export async function POST(req: NextRequest) {
 	try {
 		await dbConnect();
@@ -29,7 +35,7 @@ export async function POST(req: NextRequest) {
 		const { plan, user, email } = verify(
 			data.token,
 			process.env.JWT_SECRET as string
-		) as any;
+		) as ITokenPayload;
 
 		const tokenExists = await Token.findOne({ value: data.token });
 		if (!tokenExists) {

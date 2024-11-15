@@ -12,7 +12,7 @@ export function CoupleTimer({ startDate }: ICoupleTimerProps) {
 
 	useEffect(() => {
 		setDifference(moment(new Date()).diff(startDate, 'seconds'));
-	}, []);
+	}, [startDate]);
 
 	useEffect(() => {
 		const interval = setInterval(() => {

@@ -1,7 +1,6 @@
-import { MailIcon, MessageCircleIcon } from 'lucide-react';
-import { LandingPageLink } from '../Link';
-import { LandingPageAccordion } from './Accordion';
 import Link from 'next/link';
+import { LandingPageAccordion } from './Accordion';
+
 export function LandingPageFrequentlyAskedQuestions() {
 	return (
 		<section className="flex flex-col items-center gap-12 max-xl:gap-4 mt-24 max-xl:px-2">

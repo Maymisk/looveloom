@@ -59,7 +59,7 @@ export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 		}
 
 		if (planIsLoveful && data.milestones) {
-			data.milestones.forEach((milestone, index) => {
+			data.milestones.forEach(milestone => {
 				formData.append(`milestones`, JSON.stringify(milestone));
 			});
 		}

@@ -9,7 +9,7 @@ interface ICoupleTimelineProps {
 export function CoupleTimeline({ milestones }: ICoupleTimelineProps) {
 	return (
 		<Timeline>
-			{milestones.map((milestone, i) => {
+			{milestones.map(milestone => {
 				return (
 					<CoupleTimelineItem
 						key={milestone.name}

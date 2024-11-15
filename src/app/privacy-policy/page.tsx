@@ -127,10 +127,10 @@ export default function TermsOfPrivacy() {
 					</h2>
 					<p className="mt-2 text-white font-light">
 						We may update this Privacy Policy periodically. When
-						updates are made, we will revise the "last updated" date
-						at the top of this page. It is your responsibility to
-						review this policy periodically to stay informed of any
-						changes.
+						updates are made, we will revise the &quot;last
+						updated&quot; date at the top of this page. It is your
+						responsibility to review this policy periodically to
+						stay informed of any changes.
 					</p>
 				</section>
 

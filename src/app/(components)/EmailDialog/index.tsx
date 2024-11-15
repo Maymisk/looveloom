@@ -24,12 +24,8 @@ interface IEmailDialogFormProps {
 	children: ReactNode;
 }
 
-export function EmailDialog({
-	children,
-	className,
-	plan,
-}: IEmailDialogFormProps) {
-	const { register, handleSubmit } = useForm<IFormData>();
+export function EmailDialog({ children, className }: IEmailDialogFormProps) {
+	const { register } = useForm<IFormData>();
 
 	return (
 		<Dialog>

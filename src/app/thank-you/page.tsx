@@ -1,11 +1,10 @@
+import stripe from '@/lib/stripe';
 import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ThankYouConfetti } from './components/confetti';
-import stripe from '@/lib/stripe';
 import { redirect } from 'next/navigation';
-import Stripe from 'stripe';
+import { ThankYouConfetti } from './components/confetti';
 
 interface IThankYouProps {
 	searchParams: Promise<{ session_id: string | undefined }>;
