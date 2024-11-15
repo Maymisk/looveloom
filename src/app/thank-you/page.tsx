@@ -16,16 +16,8 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 
 	if (!session_id) redirect('/');
 
-	let customer;
-
 	try {
-		const session = await stripe.checkout.sessions.retrieve(session_id);
-
-		customer = (await stripe.customers.retrieve(
-			session.customer as string
-		)) as Stripe.Customer;
-
-		if (!customer?.name) redirect('/');
+		await stripe.checkout.sessions.retrieve(session_id);
 	} catch {
 		redirect('/');
 	}
@@ -35,7 +27,7 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 			<main className="w-full flex flex-col items-center justify-center gap-10 pt-8 px-2">
 				<h1 className="font-bold text-3xl text-center">
 					<span className="text-red-300">Thank you</span> for your
-					purchase, Khalil!
+					purchase!
 				</h1>
 
 				<div className="text-center font-light">

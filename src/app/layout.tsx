@@ -1,11 +1,12 @@
 import { Navbar } from '@/shared/components/navbar';
 
 import { cn } from '@/lib/utils';
+import { Toaster } from '@/shared/components/sonner';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import './globals.css';
-import { Toaster } from '@/shared/components/sonner';
 import dbConnect from './api/mongo';
+import './globals.css';
+import { Footer } from '@/shared/components/footer';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -35,6 +36,8 @@ export default async function RootLayout({
 				</header>
 
 				{children}
+
+				<Footer />
 
 				<Toaster
 					toastOptions={{

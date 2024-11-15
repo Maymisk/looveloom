@@ -2,16 +2,32 @@ import { BlurFade } from '@/shared/components/blur-fade';
 import NumberTicker from '@/shared/components/number-ticker';
 import { Stars } from '@/shared/components/stars';
 import { GiftIcon } from 'lucide-react';
-import { EmailDialog } from '../EmailDialog';
 import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
+import { unstable_cache } from 'next/cache';
+import { Couple } from '@/app/api/schemas/couple';
 
-export function LandingPageBanner() {
+const getTotalCustomers = unstable_cache(
+	async () => {
+		return await Couple.countDocuments();
+	},
+	['getTotalCustomers'],
+	{ revalidate: 60 * 60 * 4 }
+);
+
+function getNearestDivisibleBy10(number: number) {
+	return Math.ceil((number + 15) / 10) * 10;
+}
+
+export async function LandingPageBanner() {
+	const totalCustomers = await getTotalCustomers();
+	const customersGoal = getNearestDivisibleBy10(totalCustomers);
+
 	return (
-		<section className="flex max-md:flex-col items-center justify-center gap-9 text-gray700 p-8 max-xl:p-2">
-			<div className="flex flex-col gap-8">
+		<section className="flex flex-col items-center justify-center gap-9 text-gray700 p-8 max-xl:p-2">
+			<div className="flex flex-col items-center mx-auto gap-8 xl:gap-16">
 				<BlurFade delay={0.3}>
-					<h2 className="w-full text-7xl max-xl:text-5xl leading-5 text-center drop-shadow-md">
-						<span className="block font-bold text-red-300 mb-1">
+					<h2 className="w-full text-8xl max-xl:text-5xl leading-5 text-center xl:text-start drop-shadow-md xl:mb-12">
+						<span className="max-xl:block font-bold text-red-300 mb-1 xl:mb-14">
 							Eternalize
 						</span>{' '}
 						your love with{' '}
@@ -25,7 +41,7 @@ export function LandingPageBanner() {
 					className="flex flex-col items-center gap-8"
 					delay={0.5}
 				>
-					<p className="w-full text-gray700 text-center font-light italic text-lg max-xl:text-base">
+					<p className="w-full xl:max-w-[75%] text-center font-light italic text-2xl max-xl:text-base">
 						Create a timeless digital memory to capture your
 						relationship and surprise your love with your own custom
 						page and QR Code!
@@ -42,7 +58,8 @@ export function LandingPageBanner() {
 								<span className="font-medium text-green-500">
 									50% off
 								</span>{' '}
-								for the first 20 customers (6 left)
+								for the first {customersGoal} customers (
+								{customersGoal - totalCustomers} left)
 							</span>
 						</div>
 					</div>
@@ -55,7 +72,7 @@ export function LandingPageBanner() {
 				<span className="text-base font-light">
 					More than{' '}
 					<NumberTicker
-						value={10000}
+						value={totalCustomers}
 						className="text-white font-bold"
 					/>{' '}
 					happy couples

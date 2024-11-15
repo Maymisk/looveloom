@@ -7,8 +7,8 @@ export async function POST(req: NextRequest) {
 
 	const price =
 		plan === 'standard'
-			? process.env.STRIPE_TEST_STANDARD_PRICE_ID
-			: process.env.STRIPE_TEST_LOVEFUL_PRICE_ID;
+			? process.env.STRIPE_STANDARD_PRICE_ID
+			: process.env.STRIPE_LOVEFUL_PRICE_ID;
 
 	try {
 		const session = await stripe.checkout.sessions.create({

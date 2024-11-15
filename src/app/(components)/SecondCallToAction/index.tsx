@@ -8,7 +8,7 @@ export function LandingPageSecondCallToAction() {
 	return (
 		<section className="mx-auto p-8 mt-24 ">
 			<BlurFade
-				className="relative w-full max-w-5xl flex max-xl:flex-col items-center justify-between gap-9"
+				className="relative w-full max-w-5xl flex flex-col items-center justify-between gap-9"
 				delay={0.4}
 				inView
 			>

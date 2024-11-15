@@ -39,7 +39,7 @@ export function LandingPageCreateCheckoutButton({
 			}
 
 			const stripeClient = await loadStripe(
-				process.env.NEXT_PUBLIC_STRIPE_TEST_PUB_KEY as string
+				process.env.NEXT_PUBLIC_STRIPE_PUB_KEY as string
 			);
 
 			if (!stripeClient) throw new Error('Stripe failed to initialize.');
@@ -55,7 +55,7 @@ export function LandingPageCreateCheckoutButton({
 	return (
 		<Button
 			className={cn(
-				'w-full max-w-[65%] text-center rounded-md font-bold border-none px-4 py-2 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400',
+				'w-full xl:min-h-14 text-center xl:text-xl rounded-md font-bold border-none px-4 py-2 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400',
 				className
 			)}
 			onClick={handleOnClick}

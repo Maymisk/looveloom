@@ -5,10 +5,10 @@ import { SubscribeFormMainInfo } from './main-info';
 import { SubscribeFormMilestones } from './milestones';
 
 import { Milestone } from '@/shared/@types/milestone';
+import { Loading } from '@/shared/components/loading';
+import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
-import { redirect } from 'next/navigation';
-import { Loading } from '@/shared/components/loading';
 
 interface ISubscribeFormData {
 	name: string;
@@ -25,6 +25,7 @@ interface ISubscribeFormProps {
 }
 
 export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
+	const router = useRouter();
 	const useFormReturn = useForm<ISubscribeFormData>({
 		defaultValues: {
 			name: '',
@@ -80,7 +81,7 @@ export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 		});
 
 		setTimeout(() => {
-			redirect(url);
+			router.push(url);
 		}, 5000);
 	}
 
@@ -92,17 +93,19 @@ export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 			>
 				<SubscribeFormMainInfo plan={plan} />
 
-				<h3 className="w-full text-xl text-center font-bold my-6">
-					Pick your{' '}
-					<span className="inline-block mx-[2px] text-red-300">
-						most
-					</span>{' '}
-					memorable{' '}
-					<span className="inline-block mx-[2px] text-red-300">
-						milestones
-					</span>
-					!
-				</h3>
+				{planIsLoveful && (
+					<h3 className="w-full text-xl text-center font-bold my-6">
+						Pick your{' '}
+						<span className="inline-block mx-[2px] text-red-300">
+							most
+						</span>{' '}
+						memorable{' '}
+						<span className="inline-block mx-[2px] text-red-300">
+							milestones
+						</span>
+						!
+					</h3>
+				)}
 
 				{planIsLoveful && <SubscribeFormMilestones />}
 

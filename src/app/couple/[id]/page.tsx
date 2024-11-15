@@ -35,8 +35,8 @@ export default async function CouplePage({ params: { id } }: ICoupleProps) {
 	const { name, story, startDate, pictures, milestones, song } = couple;
 
 	return (
-		<main className="w-full h-fit pt-4">
-			<h1 className="mb-10 text-center font-bold text-red-300 text-4xl">
+		<main className="w-full h-fit pt-8">
+			<h1 className="mb-10 text-center font-bold text-red-300 text-4xl xl:text-6xl">
 				{name}
 			</h1>
 
@@ -51,7 +51,7 @@ export default async function CouplePage({ params: { id } }: ICoupleProps) {
 					{story}
 				</p>
 
-				{milestones?.length && (
+				{!!milestones?.length && (
 					<div className="relative w-full">
 						<Image
 							className="absolute -top-16 left-8 -rotate-45"
