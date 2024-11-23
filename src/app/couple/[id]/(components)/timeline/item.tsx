@@ -43,15 +43,7 @@ export function CoupleTimelineItem({
 				{formattedMilestoneName}
 			</h3>
 
-			<p className="text-sm text-start">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				Voluptas corporis excepturi atque officia iure consequatur
-				quisquam nesciunt soluta in minus natus reiciendis est
-				accusantium ut maxime amet assumenda at ex, quam quidem sequi!
-				Reiciendis labore eum et ipsum, corrupti saepe exercitationem,
-				consectetur suscipit voluptatum ex error tenetur nisi eius
-				veritatis.
-			</p>
+			<p className="text-sm text-start">{description}</p>
 		</TimelineItem>
 	);
 }

@@ -1,13 +1,6 @@
 'use client';
 
-import {
-	Children,
-	CSSProperties,
-	isValidElement,
-	ReactNode,
-	useEffect,
-	useState,
-} from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface ITimelineStructureProps {
 	children: ReactNode;
