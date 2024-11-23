@@ -14,9 +14,9 @@ export function Song({ link }: ISongProps) {
 			setTapped(true);
 		};
 
-		document.addEventListener('click', callback);
+		document.addEventListener('pointerdown', callback);
 
-		return () => document.removeEventListener('click', callback);
+		return () => document.removeEventListener('pointerdown', callback);
 	}, []);
 
 	const [, halvedLink] = link?.split('v=') || [];
