@@ -91,6 +91,20 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
+		if (
+			data.song &&
+			!data.song.match(
+				/^(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})$/
+			)
+		) {
+			return NextResponse.json(
+				{
+					error: 'Your song URL must be in the format watch?v=videoId',
+				},
+				{ status: 400 }
+			);
+		}
+
 		if (!planIsLoveful && milestones?.length)
 			return NextResponse.json(
 				{
@@ -179,7 +193,7 @@ export async function POST(req: NextRequest) {
 
 		const mailProvider = new SESMailProvider();
 
-		mailProvider.sendMail({
+		await mailProvider.sendMail({
 			templateGetter: PageCreatedEmailGetter,
 			subject: 'Your Loveloom was successfully created!',
 			to: email,

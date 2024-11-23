@@ -26,12 +26,12 @@ export async function LandingPageBanner() {
 		<section className="flex flex-col items-center justify-center gap-9 text-gray700 p-8 max-xl:p-2">
 			<div className="flex flex-col items-center mx-auto gap-8 xl:gap-16">
 				<BlurFade delay={0.3}>
-					<h2 className="w-full text-8xl max-xl:text-5xl leading-5 text-center xl:text-start drop-shadow-md xl:mb-12">
-						<span className="max-xl:block font-bold text-red-300 mb-1 xl:mb-14">
+					<h2 className="w-full text-8xl max-xl:text-5xl max-2xl:text-7xl leading-5 text-center 2xl:text-start drop-shadow-md 2xl:mb-12">
+						<span className="max-2xl:block font-bold text-red-300 mb-1 2xl:mb-14">
 							Eternalize
 						</span>{' '}
 						your love with{' '}
-						<span className="font-bold text-red-300">
+						<span className="2xl:block 2xl:text-center 2xl:mt-20 font-bold text-red-300">
 							few clicks
 						</span>
 					</h2>

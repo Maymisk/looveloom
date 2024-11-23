@@ -52,17 +52,19 @@ export default async function CouplePage({ params: { id } }: ICoupleProps) {
 				</p>
 
 				{!!milestones?.length && (
-					<div className="relative w-full">
-						<Image
-							className="absolute -top-16 left-8 -rotate-45"
-							src="/cupid.png"
-							alt="Cupid image"
-							width={75}
-							height={75}
-						/>
+					<BlurFade delay={0.5} inView>
+						<div className="relative w-full">
+							<Image
+								className="absolute -top-16 left-8 -rotate-45"
+								src="/cupid.png"
+								alt="Cupid image"
+								width={75}
+								height={75}
+							/>
 
-						<CoupleTimeline milestones={milestones} />
-					</div>
+							<CoupleTimeline milestones={milestones} />
+						</div>
+					</BlurFade>
 				)}
 			</div>
 

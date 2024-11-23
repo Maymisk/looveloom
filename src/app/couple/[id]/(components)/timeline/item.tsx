@@ -30,7 +30,7 @@ export function CoupleTimelineItem({
 }: ICoupleTimelineItemProps) {
 	const formattedMilestoneName = name.split('-').join(' ');
 	const formattedMilestoneDate = moment(date).format('YYYY/MM/DD');
-	const tooltipContent = `Our ${formattedMilestoneName} started on ${formattedMilestoneDate}`;
+	const tooltipContent = `Our ${formattedMilestoneName} happened on ${formattedMilestoneDate}`;
 	const Icon = milestoneToIcon[name];
 
 	return (
@@ -39,11 +39,19 @@ export function CoupleTimelineItem({
 			tooltipContent={tooltipContent}
 			Icon={<Icon className="w-5 h-5 text-red-300" />}
 		>
-			<h3 className="text-start text-3xl text-red-300 font-bold capitalize">
+			<h3 className="w-fit text-start text-3xl text-red-300 font-bold capitalize">
 				{formattedMilestoneName}
 			</h3>
 
-			<p className="text-sm text-start">{description}</p>
+			<p className="text-sm text-start">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				Voluptas corporis excepturi atque officia iure consequatur
+				quisquam nesciunt soluta in minus natus reiciendis est
+				accusantium ut maxime amet assumenda at ex, quam quidem sequi!
+				Reiciendis labore eum et ipsum, corrupti saepe exercitationem,
+				consectetur suscipit voluptatum ex error tenetur nisi eius
+				veritatis.
+			</p>
 		</TimelineItem>
 	);
 }

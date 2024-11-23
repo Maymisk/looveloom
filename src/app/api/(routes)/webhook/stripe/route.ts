@@ -62,7 +62,7 @@ export async function POST(req: Request) {
 					const mailProvider = new SESMailProvider();
 
 					// todo - send them some additional bonus upon purchase
-					mailProvider.sendMail({
+					await mailProvider.sendMail({
 						templateGetter: SubscriptionCompletedGetter,
 						subject: 'Your Loveloom purchase has been processed!',
 						to: email,
