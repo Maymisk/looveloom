@@ -15,8 +15,12 @@ export function Song({ link }: ISongProps) {
 		};
 
 		document.addEventListener('pointerdown', callback);
+		document.addEventListener('touchstart', callback);
 
-		return () => document.removeEventListener('pointerdown', callback);
+		return () => {
+			document.removeEventListener('pointerdown', callback);
+			document.removeEventListener('touchstart', callback);
+		};
 	}, []);
 
 	const [, halvedLink] = link?.split('v=') || [];
