@@ -15,7 +15,7 @@ export function LandingPageSocialMedia() {
 
 			<div className="w-1/2 flex items-center justify-center gap-12 max-xl:gap-4">
 				<Link
-					href={'https://www.instagram.com/lavedot.joias/'}
+					href={'https://www.instagram.com/'}
 					target="_blank"
 					className="flex items-center gap-4 max-xl:gap-2 text-xl max-xl:text-base uppercase"
 				>
@@ -27,7 +27,7 @@ export function LandingPageSocialMedia() {
 				</Link>
 
 				<Link
-					href={'https://wa.me/554998398042'}
+					href={'https://www.youtube.com/@Looveloom'}
 					target="_blank"
 					className="flex items-center gap-4 max-xl:gap-2 text-xl max-xl:text-base uppercase"
 				>
@@ -39,7 +39,7 @@ export function LandingPageSocialMedia() {
 				</Link>
 
 				<Link
-					href={'https://www.tiktok.com/@lavedot.joias'}
+					href={'https://www.tiktok.com/@looveloom'}
 					target="_blank"
 					className="flex items-center gap-4 max-xl:gap-2 text-xl max-xl:text-base uppercase"
 				>
