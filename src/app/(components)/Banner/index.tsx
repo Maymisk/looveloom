@@ -6,9 +6,12 @@ import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
 import { unstable_cache } from 'next/cache';
 import { Couple } from '@/app/api/schemas/couple';
 
+const FAKE_CUSTOMER_AMOUNT = 1202;
+
 const getTotalCustomers = unstable_cache(
 	async () => {
-		return await Couple.countDocuments();
+		const totalCouples = await Couple.countDocuments();
+		return totalCouples + FAKE_CUSTOMER_AMOUNT;
 	},
 	['getTotalCustomers'],
 	{ revalidate: 60 * 60 * 4 }
@@ -28,7 +31,7 @@ export async function LandingPageBanner() {
 				<BlurFade delay={0.3}>
 					<h2 className="w-full text-8xl max-xl:text-5xl max-2xl:text-7xl leading-5 text-center 2xl:text-start drop-shadow-md 2xl:mb-12">
 						<span className="max-2xl:block font-bold text-red-300 mb-1 2xl:mb-14">
-							Eternalize
+							Surprise
 						</span>{' '}
 						your love with{' '}
 						<span className="2xl:block 2xl:text-center 2xl:mt-20 font-bold text-red-300">
@@ -48,7 +51,7 @@ export async function LandingPageBanner() {
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">
-						<LandingPageCreateCheckoutButton>
+						<LandingPageCreateCheckoutButton className="lg:max-w-[33%]">
 							Get Loveloom
 						</LandingPageCreateCheckoutButton>
 
@@ -58,7 +61,7 @@ export async function LandingPageBanner() {
 								<span className="font-medium text-green-500">
 									50% off
 								</span>{' '}
-								for the first {customersGoal} customers (
+								for the next 30 customers (
 								{customersGoal - totalCustomers} left)
 							</span>
 						</div>

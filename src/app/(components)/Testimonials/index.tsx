@@ -1,5 +1,6 @@
 import { Marquee } from '@/shared/components/marquee';
 import { LandingPageTestimonialsMarqueeItem } from './marquee/item';
+import Image from 'next/image';
 
 const reviews = [
 	{
@@ -28,6 +29,12 @@ const reviews = [
 	},
 ];
 
+const couplePages = [
+	'/looveloom1.jpeg',
+	'/looveloom2.jpeg',
+	'/looveloom3.jpeg',
+];
+
 export function LandingPageTestimonials() {
 	return (
 		<section className="relative flex flex-col items-center gap-12 mt-24">
@@ -41,7 +48,7 @@ export function LandingPageTestimonials() {
 				</h2>
 			</div>
 
-			<div className="w-full flex flex-col items-center justify-center gap-4 overflow-hidden">
+			<div className="w-full flex flex-col items-center justify-center gap-12 overflow-hidden">
 				<Marquee className="w-full" pauseOnHover>
 					{reviews.map(review => {
 						return (
@@ -52,12 +59,16 @@ export function LandingPageTestimonials() {
 						);
 					})}
 				</Marquee>
-				<Marquee className="w-full" pauseOnHover reverse>
-					{reviews.map(review => {
+				<Marquee className="w-full gap-4" pauseOnHover reverse>
+					{couplePages.map(couplePage => {
 						return (
-							<LandingPageTestimonialsMarqueeItem
-								key={review.username}
-								{...review}
+							<Image
+								key={couplePage}
+								src={couplePage}
+								className="rounded-md"
+								alt="Couple page"
+								width={400}
+								height={400}
 							/>
 						);
 					})}

@@ -4,7 +4,7 @@ import { FrequentlyPostedOn } from '@/app/(components)/FeaturedOn';
 import { LandingPageSecondCallToAction } from '@/app/(components)/SecondCallToAction';
 import { LandingPageSocialMedia } from '@/app/(components)/SocialMedia';
 import { LandingPageTestimonials } from '@/app/(components)/Testimonials';
-import { LandingPageDemo } from './(components)/Demo';
+import { LandingPageHowItWorks } from './(components)/HowItWorks';
 import { LandingPagePricing } from './(components)/Pricing';
 
 export default function LandingPage() {
@@ -12,7 +12,7 @@ export default function LandingPage() {
 		<main className="w-full pt-24 max-xl:pt-12 px-8 max-xl:px-2 flex flex-col gap-36 max-xl:gap-12">
 			<LandingPageBanner />
 
-			<LandingPageDemo />
+			<LandingPageHowItWorks />
 
 			<FrequentlyPostedOn />
 

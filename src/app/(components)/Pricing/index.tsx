@@ -3,8 +3,28 @@ import { ShinyBorder } from '@/shared/components/shine-border';
 import { Check, GiftIcon, X } from 'lucide-react';
 import { PricingCard } from './card';
 import { BlurFade } from '@/shared/components/blur-fade';
+import { unstable_cache } from 'next/cache';
+import { Couple } from '@/app/api/schemas/couple';
 
-export function LandingPagePricing() {
+const FAKE_CUSTOMER_AMOUNT = 1202;
+
+const getTotalCustomers = unstable_cache(
+	async () => {
+		const totalCouples = await Couple.countDocuments();
+		return totalCouples + FAKE_CUSTOMER_AMOUNT;
+	},
+	['getTotalCustomers'],
+	{ revalidate: 60 * 60 * 4 }
+);
+
+function getNearestDivisibleBy10(number: number) {
+	return Math.ceil((number + 15) / 10) * 10;
+}
+
+export async function LandingPagePricing() {
+	const totalCustomers = await getTotalCustomers();
+	const customersGoal = getNearestDivisibleBy10(totalCustomers);
+
 	return (
 		<section className="flex flex-col items-center justify-center gap-6 max-xl:gap-12 mt-24">
 			<BlurFade delay={0.3}>
@@ -23,7 +43,8 @@ export function LandingPagePricing() {
 							<span className="font-medium text-green-500">
 								50% off
 							</span>{' '}
-							for the first 20 customers (6 left)
+							for the first 30 customers (
+							{customersGoal - totalCustomers} left)
 						</span>
 					</div>
 				</div>
