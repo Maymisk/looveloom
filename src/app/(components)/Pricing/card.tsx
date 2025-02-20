@@ -47,7 +47,7 @@ export function PricingCard({
 				plan={plan}
 				className="w-full h-fit max-w-none px-8 py-4 bg-red-200 uppercase mt-auto transition-all hover:opacity-70"
 			>
-				Buy
+				Get instant access
 			</LandingPageCreateCheckoutButton>
 		</div>
 	);

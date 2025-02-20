@@ -38,7 +38,7 @@ export function LandingPageSecondCallToAction() {
 
 				<LandingPageCreateCheckoutButton className="gap-3">
 					<HeartIcon className="fill-white" />
-					Get my Loveloom
+					Design your love page
 				</LandingPageCreateCheckoutButton>
 			</BlurFade>
 		</section>

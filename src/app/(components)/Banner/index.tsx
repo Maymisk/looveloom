@@ -45,14 +45,16 @@ export async function LandingPageBanner() {
 					delay={0.5}
 				>
 					<p className="w-full xl:max-w-[75%] text-center font-light italic text-2xl max-xl:text-base">
-						Create a timeless digital memory to capture your
-						relationship and surprise your love with your own custom
-						page and QR Code!
+						Create an exclusive website with a counter of your time
+						together, your favorite pictures, cute texts and your
+						favorite song. Press the button below, fill out the form
+						and get your own page + QR code to share your love
+						story!
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">
 						<LandingPageCreateCheckoutButton className="lg:max-w-[33%]">
-							Get Loveloom
+							Surprise your love
 						</LandingPageCreateCheckoutButton>
 
 						<div className="flex items-center gap-3 text-sm font-poppins font-light">

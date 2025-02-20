@@ -54,8 +54,8 @@ export async function LandingPagePricing() {
 				<BlurFade className="w-full max-w-[400px]" inView delay={0.4}>
 					<PricingCard
 						title="Starter"
-						price={7}
-						oldPrice={14}
+						price={5}
+						oldPrice={10}
 						plan="standard"
 						className="shadow-xl shadow-gray-800"
 					>
@@ -103,8 +103,8 @@ export async function LandingPagePricing() {
 
 						<PricingCard
 							title="Loveful"
-							oldPrice={20}
-							price={10}
+							oldPrice={14}
+							price={7}
 							plan="loveful"
 						>
 							<ul className="flex flex-col gap-3">
