@@ -9,6 +9,8 @@ import { Loading } from '@/shared/components/loading';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
+import { SubscribePageCouplePreview } from '../preview';
+import { loadStripe } from '@stripe/stripe-js';
 
 interface ISubscribeFormData {
 	name: string;
@@ -21,10 +23,9 @@ interface ISubscribeFormData {
 
 interface ISubscribeFormProps {
 	plan: 'standard' | 'loveful';
-	token: string;
 }
 
-export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
+export function SubscribeForm({ plan }: ISubscribeFormProps) {
 	const router = useRouter();
 	const useFormReturn = useForm<ISubscribeFormData>({
 		defaultValues: {
@@ -32,7 +33,7 @@ export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 			story: '',
 			song: '',
 			startDate: '',
-			milestones: [{ name: 'first-sight', description: '', date: '' }],
+			milestones: [],
 			pictures: undefined,
 		},
 	});
@@ -42,13 +43,15 @@ export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 	} = useFormReturn;
 	const planIsLoveful = plan === 'loveful';
 
+	useFormReturn.watch();
+
 	async function handleOnSubmit(data: ISubscribeFormData) {
 		const formData = new FormData();
 
 		formData.append('name', data.name);
 		formData.append('story', data.story);
 		formData.append('startDate', data.startDate);
-		formData.append('token', token);
+		formData.append('plan', plan);
 
 		if (planIsLoveful && data.song) formData.append('song', data.song);
 
@@ -64,26 +67,28 @@ export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 			});
 		}
 
-		const response = await fetch('/api/couple', {
+		const response = await fetch('/api/subscribe', {
 			method: 'POST',
 			body: formData,
 		});
 
-		const { url, error } = await response.json();
+		const { sessionId, error } = await response.json();
 
 		if (error) {
 			toast.error(error);
 			return;
 		}
 
-		toast.success('Your Loveloom has been created! Check your email 😊', {
-			duration: 5000,
-		});
+		const stripeClient = await loadStripe(
+			process.env.NEXT_PUBLIC_STRIPE_PUB_KEY as string
+		);
 
-		setTimeout(() => {
-			router.push(url);
-		}, 5000);
+		if (!stripeClient) throw new Error('Stripe failed to initialize.');
+
+		await stripeClient.redirectToCheckout({ sessionId });
 	}
+
+	const data = useFormReturn.getValues();
 
 	return (
 		<FormProvider {...useFormReturn}>
@@ -124,6 +129,8 @@ export function SubscribeForm({ plan, token }: ISubscribeFormProps) {
 					)}
 				</Button>
 			</form>
+
+			<SubscribePageCouplePreview plan={plan} {...data} />
 		</FormProvider>
 	);
 }

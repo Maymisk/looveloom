@@ -19,7 +19,7 @@ export function LandingPageAccordion() {
 				value="item-2"
 				question="How do i receive my Loveloom after payment?"
 				answer={
-					"After completing the payment, you'll receive an email with a link to create your Loveloom. After configuring it as you want, you'll receive both a QR code and a link to access your Loveloom, making it easy to share with the world."
+					"After completing the payment, you'll receive an email with both a QR code and a link to access your Loveloom, making it easy to share with the world."
 				}
 			/>
 			<LandingPageFAQItem

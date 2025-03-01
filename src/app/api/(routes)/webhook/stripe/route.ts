@@ -2,11 +2,16 @@ import stripe from '@/lib/stripe';
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 
-import SubscriptionCompletedGetter from '@/app/api/(routes)/webhook/stripe/emails/subscription-completed.hbs';
 import dbConnect from '@/app/api/mongo';
-import { Token } from '@/app/api/schemas/token';
 import { SESMailProvider } from '@/app/api/shared/providers/mail/SES';
-import jwt from 'jsonwebtoken';
+import { S3StorageProvider } from '@/app/api/shared/providers/storage/s3';
+import crypto from 'crypto';
+import QRCode from 'qrcode';
+
+import { Couple } from '@/app/api/schemas/couple';
+import moment from 'moment';
+import PageCreatedEmailGetter from '../../couple/emails/page-created.hbs';
+import { deflattenObject } from '@/app/api/shared/utils/flatten-object';
 
 export async function POST(req: Request) {
 	await dbConnect();
@@ -34,45 +39,88 @@ export async function POST(req: Request) {
 			);
 		}
 
+		const storageProvider = new S3StorageProvider();
+
 		switch (event.type) {
 			case 'checkout.session.completed':
 				if (event.data.object.payment_status === 'paid') {
 					// card payment was successful
 
-					const { plan } = event.data.object.metadata || {};
-					const email = event.data.object.customer_details?.email;
-					const user = event.data.object.customer_details?.name;
+					try {
+						const pageData = deflattenObject(
+							event.data.object.metadata || {}
+						);
 
-					if (!plan || !email) {
-						throw new Error('Missing plan or email');
+						const { plan, milestones, pictures, ...data } =
+							pageData;
+
+						const email = event.data.object.customer_details?.email;
+						const user = event.data.object.customer_details?.name;
+
+						if (!plan || !email) {
+							throw new Error('Missing plan or email');
+						}
+
+						const planIsLoveful = plan === 'loveful';
+
+						milestones?.forEach((milestone: any) => {
+							milestone.date = new Date(milestone.date);
+						});
+
+						const expiresAt = planIsLoveful
+							? undefined
+							: moment().add(1, 'year').toDate();
+
+						const couple = await Couple.create({
+							name: data.name,
+							story: data.story,
+							song: data.song,
+							pictures,
+							startDate: new Date(data.startDate),
+							email,
+							milestones,
+							expiresAt,
+						});
+
+						const coupleUrl = `https://${
+							process.env.NEXT_PUBLIC_DOMAIN
+						}/couple/${String(couple._id)}`;
+
+						const qrCodeBuffer = await QRCode.toBuffer(coupleUrl);
+
+						const qrcode = await storageProvider.save({
+							file: {
+								name: crypto.randomBytes(16).toString('hex'),
+								type: 'image/png',
+								content: qrCodeBuffer,
+							},
+							folder: 'qr-codes',
+						});
+
+						const mailProvider = new SESMailProvider();
+
+						await mailProvider.sendMail({
+							templateGetter: PageCreatedEmailGetter,
+							subject: 'Your Loveloom was successfully created!',
+							to: email,
+							variables: {
+								qrcode:
+									typeof qrcode === 'string' ? qrcode : '',
+								user,
+								url: coupleUrl,
+							},
+						});
+
+						return NextResponse.json(
+							{ url: coupleUrl },
+							{ status: 200 }
+						);
+					} catch (err: any) {
+						return NextResponse.json(
+							{ error: `Webhook error: ${err?.message}` },
+							{ status: 400 }
+						);
 					}
-
-					const options =
-						plan === 'standard' ? { expiresIn: '1y' } : {};
-					const subscriptionJWT = jwt.sign(
-						{ plan, user, email },
-						process.env.JWT_SECRET as string,
-						options
-					);
-
-					await Token.create({ value: subscriptionJWT });
-
-					const url = `https://${process.env.NEXT_PUBLIC_DOMAIN}/subscribe?token=${subscriptionJWT}`;
-
-					const mailProvider = new SESMailProvider();
-
-					// todo - send them some additional bonus upon purchase
-					await mailProvider.sendMail({
-						templateGetter: SubscriptionCompletedGetter,
-						subject: 'Your Loveloom purchase has been processed!',
-						to: email,
-						variables: {
-							user,
-							url,
-						},
-					});
-
-					return NextResponse.json({}, { status: 200 });
 				}
 
 				// if (
@@ -101,6 +149,26 @@ export async function POST(req: Request) {
 				if (event.data.object.payment_status === 'unpaid') {
 					// customer left checkout
 					// create some page to try to convince the customer to continue their purchase
+
+					try {
+						const pageData = deflattenObject(
+							event.data.object.metadata || {}
+						);
+						const { pictures } = pageData;
+
+						const fileNames = pictures.map(
+							(picture: string) => picture.split('couples/')[1]
+						);
+
+						for (const file of fileNames) {
+							storageProvider.delete(file, 'couples');
+						}
+					} catch (err: any) {
+						return NextResponse.json(
+							{ error: `Webhook error: ${err?.message}` },
+							{ status: 400 }
+						);
+					}
 				}
 				break;
 

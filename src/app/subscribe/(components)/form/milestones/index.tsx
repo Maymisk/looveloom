@@ -8,7 +8,12 @@ export function SubscribeFormMilestones() {
 	});
 
 	function handleAddMilestone() {
-		append({ name: '', description: '', date: '' });
+		append({
+			key: new Date().toISOString(),
+			name: 'first-sight',
+			description: '',
+			date: '',
+		});
 	}
 
 	function handleRemoveMilestone(index: number) {

@@ -2,6 +2,7 @@ import { BlurFade } from '@/shared/components/blur-fade';
 import { HeartIcon } from 'lucide-react';
 import Image from 'next/image';
 import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
+import Link from 'next/link';
 
 export function LandingPageSecondCallToAction() {
 	return (
@@ -36,10 +37,13 @@ export function LandingPageSecondCallToAction() {
 					minutes - it’s really that quick!
 				</p>
 
-				<LandingPageCreateCheckoutButton className="gap-3">
+				<Link
+					href="/subscribe"
+					className="w-full flex justify-center items-center gap-3 xl:min-h-14 text-center xl:text-xl rounded-md font-bold border-none px-4 py-2 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400"
+				>
 					<HeartIcon className="fill-white" />
 					Design your love page
-				</LandingPageCreateCheckoutButton>
+				</Link>
 			</BlurFade>
 		</section>
 	);

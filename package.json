@@ -23,6 +23,7 @@
     "@stripe/stripe-js": "^4.9.0",
     "@types/canvas-confetti": "^1.6.4",
     "aws-sdk": "^2.1691.0",
+    "babel-plugin-react-compiler": "^19.0.0-beta-e1e972c-20250221",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

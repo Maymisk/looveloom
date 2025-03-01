@@ -35,7 +35,7 @@ export function CoupleTimelineItem({
 
 	return (
 		<TimelineItem
-			className="flex flex-col gap-2 top-1"
+			className="w-[calc(100%-72px)] flex flex-col gap-2 top-1"
 			tooltipContent={tooltipContent}
 			Icon={<Icon className="w-5 h-5 text-red-300" />}
 		>
@@ -43,7 +43,9 @@ export function CoupleTimelineItem({
 				{formattedMilestoneName}
 			</h3>
 
-			<p className="text-sm text-start">{description}</p>
+			<p className="w-full text-sm text-start break-words">
+				{description}
+			</p>
 		</TimelineItem>
 	);
 }

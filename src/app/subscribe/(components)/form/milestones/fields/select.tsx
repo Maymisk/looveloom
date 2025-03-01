@@ -42,7 +42,9 @@ export function SubscribeFormMilestoneSelect({
 								First kiss
 							</SelectItem>
 
-							<SelectItem value="relationship">Dating</SelectItem>
+							<SelectItem value="relationship">
+								Relationship
+							</SelectItem>
 
 							<SelectItem value="engagement">
 								Engagement

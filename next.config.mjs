@@ -5,6 +5,7 @@ const nextConfig = {
 			test: /\.hbs$/,
 			loader: 'handlebars-loader',
 		});
+
 		return config;
 	},
 	images: {

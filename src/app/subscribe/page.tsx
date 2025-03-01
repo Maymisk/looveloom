@@ -1,32 +1,16 @@
-import jwt from 'jsonwebtoken';
-import { redirect } from 'next/navigation';
-import { Token } from '../api/schemas/token';
+'use client';
+
 import { SubscribeForm } from './(components)/form';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
-interface ISubscribeProps {
-	searchParams: Promise<{ [key: string]: string }>;
-}
+export default function Subscribe() {
+	const [plan, setPlan] = useState<'standard' | 'loveful'>('loveful');
 
-export default async function Subscribe({ searchParams }: ISubscribeProps) {
-	const { token } = await searchParams;
-
-	if (!token) return redirect('/');
-
-	let plan: 'standard' | 'loveful';
-
-	try {
-		const payload = jwt.verify(
-			token,
-			process.env.JWT_SECRET as string
-		) as any;
-		plan = payload.plan;
-	} catch {
-		redirect('/');
+	function handlePlanChange(plan: 'standard' | 'loveful') {
+		setPlan(plan);
 	}
-
-	const tokenExists = await Token.findOne({ value: token });
-
-	if (!tokenExists) redirect('/');
 
 	return (
 		<main className="w-full flex flex-col items-center gap-36 max-xl:gap-12 pt-24 max-xl:pt-12 px-8 max-xl:px-2">
@@ -35,9 +19,31 @@ export default async function Subscribe({ searchParams }: ISubscribeProps) {
 				<span className="text-sm font-light">
 					Fill out the form and get your own Loveloom!
 				</span>
+
+				<div className="flex justify-center gap-4 mt-4">
+					<button
+						className={cn(
+							'p-2 border border-red-300 rounded-md text-xs text-center',
+							{ 'bg-red-300': plan === 'standard' }
+						)}
+						onClick={() => handlePlanChange('standard')}
+					>
+						One year, 3 pictures and no music - $5
+					</button>
+
+					<button
+						className={cn(
+							'p-2 border border-red-300 rounded-md text-xs text-center',
+							{ 'bg-red-300': plan === 'loveful' }
+						)}
+						onClick={() => handlePlanChange('loveful')}
+					>
+						Eternal, 7 pictures and music - $7
+					</button>
+				</div>
 			</div>
 
-			<SubscribeForm plan={plan} token={token} />
+			<SubscribeForm plan={plan} />
 		</main>
 	);
 }

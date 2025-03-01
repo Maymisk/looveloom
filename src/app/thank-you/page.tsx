@@ -30,8 +30,8 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 				</h1>
 
 				<div className="text-center font-light">
-					Set up your Looveloom page through the link sent to your
-					email and{' '}
+					Get the QRCode for your Looveloom page through your email
+					and{' '}
 					<span className="text-red-300 font-semibold">
 						share your love story
 					</span>{' '}

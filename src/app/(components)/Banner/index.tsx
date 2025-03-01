@@ -1,10 +1,10 @@
+import { Couple } from '@/app/api/schemas/couple';
 import { BlurFade } from '@/shared/components/blur-fade';
 import NumberTicker from '@/shared/components/number-ticker';
 import { Stars } from '@/shared/components/stars';
 import { GiftIcon } from 'lucide-react';
-import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
 import { unstable_cache } from 'next/cache';
-import { Couple } from '@/app/api/schemas/couple';
+import Link from 'next/link';
 
 const FAKE_CUSTOMER_AMOUNT = 1202;
 
@@ -53,9 +53,12 @@ export async function LandingPageBanner() {
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">
-						<LandingPageCreateCheckoutButton className="lg:max-w-[33%]">
+						<Link
+							href="/subscribe"
+							className="'w-full xl:min-h-14 text-center xl:text-xl rounded-md font-bold border-none px-6 py-3 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400' lg:max-w-[33%]"
+						>
 							Surprise your love
-						</LandingPageCreateCheckoutButton>
+						</Link>
 
 						<div className="flex items-center gap-3 text-sm font-poppins font-light">
 							<GiftIcon className="animate-pulse text-green-500 " />

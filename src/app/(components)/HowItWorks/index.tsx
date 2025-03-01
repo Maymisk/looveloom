@@ -21,16 +21,16 @@ export function LandingPageHowItWorks() {
 							className="w-full h-full text-white rounded-lg shadow-lg shadow-gray-800"
 							color={['#A07CFE', '#FE8FB5', '#FFBE7B']}
 						>
-							<div className="w-full h-full flex flex-col items-center gap-4 p-4 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
+							<div className="w-full h-full flex flex-col items-center gap-4 p-4 pb-0 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
 								<h3 className="text-white text-center text-3xl font-bold capitalize">
-									Make the payment
+									Customize your page
 								</h3>
 
 								<Image
-									src="/coin.webp"
-									alt="Coin image"
-									width={100}
-									height={100}
+									src="/form.png"
+									alt="Form image"
+									width={300}
+									height={300}
 								/>
 							</div>
 						</ShinyBorder>
@@ -45,16 +45,16 @@ export function LandingPageHowItWorks() {
 							className="w-full h-full text-white rounded-lg shadow-lg shadow-gray-800"
 							color={['#A07CFE', '#FE8FB5', '#FFBE7B']}
 						>
-							<div className="w-full h-full flex flex-col items-center gap-4 p-4 pb-0 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
+							<div className="w-full h-full flex flex-col items-center gap-4 p-4 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
 								<h3 className="text-white text-center text-3xl font-bold capitalize">
-									Customize your page
+									Make the payment
 								</h3>
 
 								<Image
-									src="/form.png"
-									alt="Form image"
-									width={300}
-									height={300}
+									src="/coin.webp"
+									alt="Coin image"
+									width={100}
+									height={100}
 								/>
 							</div>
 						</ShinyBorder>

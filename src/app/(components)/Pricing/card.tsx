@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import { currencyFormatter } from '@/utils/currencyFormatter';
 import { ReactNode } from 'react';
 import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
+import Link from 'next/link';
 
 interface IPricingCardProps {
 	children: ReactNode;
@@ -43,12 +44,12 @@ export function PricingCard({
 
 			{children}
 
-			<LandingPageCreateCheckoutButton
-				plan={plan}
-				className="w-full h-fit max-w-none px-8 py-4 bg-red-200 uppercase mt-auto transition-all hover:opacity-70"
+			<Link
+				href="/subscribe"
+				className="w-full h-fit max-w-none xl:min-h-14 text-center xl:text-xl rounded-md font-bold border-none  px-8 py-4 text-white bg-red-200 shadow-md shadow-gray-800 uppercase mt-auto transition-all hover:opacity-70"
 			>
 				Get instant access
-			</LandingPageCreateCheckoutButton>
+			</Link>
 		</div>
 	);
 }

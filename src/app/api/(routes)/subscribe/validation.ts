@@ -4,13 +4,10 @@ export const validationSchema = z.object({
 	name: z
 		.string()
 		.min(1, { message: 'Please write the name of the couple!' }),
-	email: z
-		.string({ message: 'Invalid email' })
-		.email({ message: 'Invalid email!' })
-		.min(1, { message: 'Invalid email!' }),
 	story: z
 		.string({ message: 'Please write your story!' })
-		.min(1, { message: 'Please write your story!' }),
+		.min(1, { message: 'Please write your story!' })
+		.max(450, { message: 'Please limit your story to 450 chars!' }),
 	song: z.string({ message: 'Invalid song!' }).optional(),
 	startDate: z
 		.string({ message: 'Please tell us the start of your relationship!' })
@@ -39,6 +36,10 @@ export const validationSchema = z.object({
 					.min(1, {
 						message:
 							'Please provide a description for your milestone!',
+					})
+					.max(400, {
+						message:
+							'Please provide a description with a maximum of 400 characters!',
 					}),
 				date: z
 					.string({

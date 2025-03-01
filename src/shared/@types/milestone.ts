@@ -7,6 +7,8 @@ type MilestoneNameType =
 	| 'marriage';
 
 type Milestone = {
+	_id?: string;
+	key: string;
 	name: MilestoneNameType;
 	description: string;
 	date: string | Date;

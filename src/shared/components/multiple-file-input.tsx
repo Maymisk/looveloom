@@ -20,6 +20,7 @@ interface IFileInputProps
 	children: ReactNode;
 	label?: string;
 	defaultFiles?: FileList;
+	onClearFiles?: () => void;
 }
 
 function MultipleFileInputComponent(
@@ -28,6 +29,7 @@ function MultipleFileInputComponent(
 		label,
 		className,
 		onChange,
+		onClearFiles,
 		defaultFiles,
 		...rest
 	}: IFileInputProps,
@@ -51,6 +53,7 @@ function MultipleFileInputComponent(
 	function handleRemoveFiles(event: MouseEvent<SVGSVGElement>) {
 		event?.stopPropagation();
 		setFiles(null);
+		if (onClearFiles) onClearFiles();
 	}
 
 	const fileNames = [];
@@ -83,7 +86,7 @@ function MultipleFileInputComponent(
 					{fileNameString ? fileNameString : children}
 				</span>
 
-				{files && (
+				{files?.length && (
 					<TrashIcon
 						width={16}
 						height={16}

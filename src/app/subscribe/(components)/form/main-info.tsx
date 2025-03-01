@@ -12,7 +12,7 @@ interface ISubscribeFormMainInfoProps {
 }
 
 export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
-	const { register } = useFormContext();
+	const { register, setValue } = useFormContext();
 
 	const planIsLoveful = plan === 'loveful';
 
@@ -44,7 +44,11 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 				placeholder="When we first met in 2013, I never thought.."
 			/>
 
-			<MultipleFileInput {...register('pictures')} accept="image/*">
+			<MultipleFileInput
+				{...register('pictures')}
+				onClearFiles={() => setValue('pictures', undefined)}
+				accept="image/*"
+			>
 				<CameraIcon
 					className="text-red-300"
 					width={18}
