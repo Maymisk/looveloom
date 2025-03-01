@@ -8,7 +8,6 @@ interface IPricingCardProps {
 	className?: string;
 	title: string;
 	price: number;
-	plan: 'standard' | 'loveful';
 	oldPrice?: number;
 }
 
@@ -18,7 +17,6 @@ export function PricingCard({
 	title,
 	oldPrice,
 	price,
-	plan,
 }: IPricingCardProps) {
 	return (
 		<div

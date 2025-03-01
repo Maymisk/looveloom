@@ -56,7 +56,6 @@ export async function LandingPagePricing() {
 						title="Starter"
 						price={5}
 						oldPrice={10}
-						plan="standard"
 						className="shadow-xl shadow-gray-800"
 					>
 						<ul className="flex flex-col gap-3">
@@ -101,12 +100,7 @@ export async function LandingPagePricing() {
 							</ShinyBorder>
 						</ShinyText>
 
-						<PricingCard
-							title="Loveful"
-							oldPrice={14}
-							price={7}
-							plan="loveful"
-						>
+						<PricingCard title="Loveful" oldPrice={14} price={7}>
 							<ul className="flex flex-col gap-3">
 								<li className="flex gap-2 items-center">
 									<Check className="text-green-700 w-5 h-5 mb-1" />
