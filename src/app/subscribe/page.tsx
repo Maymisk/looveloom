@@ -1,9 +1,8 @@
 'use client';
 
-import { SubscribeForm } from './(components)/form';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
+import { SubscribeForm } from './(components)/form';
 
 export default function Subscribe() {
 	const [plan, setPlan] = useState<'standard' | 'loveful'>('loveful');

@@ -21,6 +21,7 @@ const MemoizedCoupleTimer = memo(
 	},
 	(prev, next) => prev.startDate.getTime() === next.startDate.getTime()
 );
+MemoizedCoupleTimer.displayName = 'MemoizedCoupleTimer';
 
 const MemoizedCouplePictureMarquee = memo(
 	({ pictures }: { pictures: string[] }) => {
@@ -36,6 +37,7 @@ const MemoizedCouplePictureMarquee = memo(
 			next.pictures.some(nextPicture => picture === nextPicture)
 		)
 );
+MemoizedCouplePictureMarquee.displayName = 'MemoizedCouplePictureMarquee';
 
 export function SubscribePageCouplePreview({
 	plan,

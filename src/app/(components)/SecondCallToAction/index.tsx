@@ -1,7 +1,6 @@
 import { BlurFade } from '@/shared/components/blur-fade';
 import { HeartIcon } from 'lucide-react';
 import Image from 'next/image';
-import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
 import Link from 'next/link';
 
 export function LandingPageSecondCallToAction() {

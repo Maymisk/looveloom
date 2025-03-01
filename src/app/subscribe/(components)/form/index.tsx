@@ -6,11 +6,10 @@ import { SubscribeFormMilestones } from './milestones';
 
 import { Milestone } from '@/shared/@types/milestone';
 import { Loading } from '@/shared/components/loading';
-import { useRouter } from 'next/navigation';
+import { loadStripe } from '@stripe/stripe-js';
 import { FormProvider, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { SubscribePageCouplePreview } from '../preview';
-import { loadStripe } from '@stripe/stripe-js';
 
 interface ISubscribeFormData {
 	name: string;
@@ -26,7 +25,6 @@ interface ISubscribeFormProps {
 }
 
 export function SubscribeForm({ plan }: ISubscribeFormProps) {
-	const router = useRouter();
 	const useFormReturn = useForm<ISubscribeFormData>({
 		defaultValues: {
 			name: '',

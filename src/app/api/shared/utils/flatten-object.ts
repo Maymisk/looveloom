@@ -1,4 +1,4 @@
-export function flattenObject(data: Object) {
+export function flattenObject(data: object) {
 	const result: Record<string, any> = {};
 
 	function processValue(key: string, value: any) {
@@ -24,7 +24,7 @@ export function flattenObject(data: Object) {
 	return result;
 }
 
-export function deflattenObject(data: Object) {
+export function deflattenObject(data: object) {
 	const result: Record<string, any> = {};
 
 	Object.entries(data).forEach(([key, value]) => {

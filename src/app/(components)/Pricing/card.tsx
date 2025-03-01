@@ -1,8 +1,7 @@
 import { cn } from '@/lib/utils';
 import { currencyFormatter } from '@/utils/currencyFormatter';
-import { ReactNode } from 'react';
-import { LandingPageCreateCheckoutButton } from '../CreateCheckoutButton';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 interface IPricingCardProps {
 	children: ReactNode;

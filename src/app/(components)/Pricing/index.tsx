@@ -1,10 +1,10 @@
-import { ShinyText } from '@/shared/components/shiny-text';
-import { ShinyBorder } from '@/shared/components/shine-border';
-import { Check, GiftIcon, X } from 'lucide-react';
-import { PricingCard } from './card';
-import { BlurFade } from '@/shared/components/blur-fade';
-import { unstable_cache } from 'next/cache';
 import { Couple } from '@/app/api/schemas/couple';
+import { BlurFade } from '@/shared/components/blur-fade';
+import { ShinyBorder } from '@/shared/components/shine-border';
+import { ShinyText } from '@/shared/components/shiny-text';
+import { Check, GiftIcon, X } from 'lucide-react';
+import { unstable_cache } from 'next/cache';
+import { PricingCard } from './card';
 
 const FAKE_CUSTOMER_AMOUNT = 1202;
 
