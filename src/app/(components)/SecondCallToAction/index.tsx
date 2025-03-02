@@ -41,7 +41,7 @@ export function LandingPageSecondCallToAction() {
 					className="w-full flex justify-center items-center gap-3 xl:min-h-14 text-center text-xl rounded-md font-bold border-none px-4 py-5 transition-all text-white bg-red-200 shadow-glow shadow-red-200/80 hover:bg-red-400"
 				>
 					<HeartIcon className="fill-white" />
-					Design your love page
+					Design your page, free
 				</Link>
 			</BlurFade>
 		</section>

@@ -30,9 +30,9 @@ export async function LandingPageBanner() {
 			<div className="flex flex-col items-center mx-auto gap-8 xl:gap-16">
 				<BlurFade delay={0.3}>
 					<h2 className="w-full text-8xl max-xl:text-6xl max-2xl:text-7xl leading-5 text-center 2xl:text-start drop-shadow-md 2xl:mb-12">
-						<span className="max-2xl:block bg-clip-text text-transparent font-bold bg-gradient-to-b from-red-400 to-red-300 mb-1 2xl:mb-14">
-							Surprise your love
-						</span>{' '}
+						<span className="max-2xl:block bg-clip-text text-transparent font-bold bg-gradient-to-b from-red-400 to-red-300 2xl:mb-14 pb-3">
+							Few clicks, eternal gift
+						</span>
 					</h2>
 				</BlurFade>
 
@@ -54,7 +54,7 @@ export async function LandingPageBanner() {
 							href="/subscribe"
 							className="w-full xl:min-h-14 text-center text-xl rounded-md font-bold border-none px-6 py-5 transition-all text-white bg-red-200 shadow-glow shadow-red-200/80 hover:bg-red-400' lg:max-w-[33%]"
 						>
-							I want to build my website
+							Design your page for free
 						</Link>
 
 						<div className="flex items-center gap-3 text-sm font-poppins font-light">
