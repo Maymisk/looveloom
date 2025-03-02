@@ -29,14 +29,10 @@ export async function LandingPageBanner() {
 		<section className="flex flex-col items-center justify-center gap-9 text-gray700 p-8 max-xl:p-2">
 			<div className="flex flex-col items-center mx-auto gap-8 xl:gap-16">
 				<BlurFade delay={0.3}>
-					<h2 className="w-full text-8xl max-xl:text-5xl max-2xl:text-7xl leading-5 text-center 2xl:text-start drop-shadow-md 2xl:mb-12">
-						<span className="max-2xl:block font-bold text-red-300 mb-1 2xl:mb-14">
-							Surprise
+					<h2 className="w-full text-8xl max-xl:text-6xl max-2xl:text-7xl leading-5 text-center 2xl:text-start drop-shadow-md 2xl:mb-12">
+						<span className="max-2xl:block bg-clip-text text-transparent font-bold bg-gradient-to-b from-red-400 to-red-300 mb-1 2xl:mb-14">
+							Surprise your love
 						</span>{' '}
-						your love with{' '}
-						<span className="2xl:block 2xl:text-center 2xl:mt-20 font-bold text-red-300">
-							few clicks
-						</span>
 					</h2>
 				</BlurFade>
 
@@ -46,18 +42,19 @@ export async function LandingPageBanner() {
 				>
 					<p className="w-full xl:max-w-[75%] text-center font-light italic text-2xl max-xl:text-base">
 						Create an exclusive website with a counter of your time
-						together, your favorite pictures, cute texts and your
-						favorite song. Press the button below, fill out the form
-						and get your own page + QR code to share your love
-						story!
+						together. Share it with your love and create{' '}
+						<span className="text-red-300 font-medium">
+							an unforgettable surprise gift.
+						</span>{' '}
+						Just point to the QRCode 💖
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">
 						<Link
 							href="/subscribe"
-							className="'w-full xl:min-h-14 text-center xl:text-xl rounded-md font-bold border-none px-6 py-3 transition-all text-white bg-red-200 shadow-md shadow-gray-800 hover:bg-red-400' lg:max-w-[33%]"
+							className="w-full xl:min-h-14 text-center text-xl rounded-md font-bold border-none px-6 py-5 transition-all text-white bg-red-200 shadow-glow shadow-red-200/80 hover:bg-red-400' lg:max-w-[33%]"
 						>
-							Surprise your love
+							I want to build my website
 						</Link>
 
 						<div className="flex items-center gap-3 text-sm font-poppins font-light">

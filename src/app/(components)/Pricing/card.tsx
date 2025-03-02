@@ -43,7 +43,7 @@ export function PricingCard({
 
 			<Link
 				href="/subscribe"
-				className="w-full h-fit max-w-none xl:min-h-14 text-center xl:text-xl rounded-md font-bold border-none  px-8 py-4 text-white bg-red-200 shadow-md shadow-gray-800 uppercase mt-auto transition-all hover:opacity-70"
+				className="w-full h-fit max-w-none xl:min-h-14 text-center xl:text-xl rounded-md font-bold border-none  px-8 py-4 text-white bg-red-200 shadow-glow shadow-red-200/80 uppercase mt-auto transition-all hover:opacity-70"
 			>
 				Get instant access
 			</Link>

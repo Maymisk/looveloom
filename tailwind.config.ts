@@ -66,6 +66,9 @@ const config = {
 					'800': '#1F2423',
 				},
 			},
+			boxShadow: {
+				glow: '0px 0px 40px 0px var(--tw-shadow-color)',
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
