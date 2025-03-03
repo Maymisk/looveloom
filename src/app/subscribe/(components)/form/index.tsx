@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/shared/components/button';
 import { SubscribeFormMainInfo } from './main-info';
 import { SubscribeFormMilestones } from './milestones';
 
