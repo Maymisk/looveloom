@@ -85,7 +85,7 @@ export async function LandingPagePricing() {
 				<BlurFade className="w-full max-w-[400px]" delay={0.5} inView>
 					<ShinyBorder
 						className="w-full	 text-white rounded-lg shadow-lg shadow-gray-800"
-						color={['#A07CFE', '#FE8FB5', '#FFBE7B']}
+						color={['#F48FB1', '#F06292', '#E682AB']}
 					>
 						<ShinyText
 							className="w-max absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full text-white font-bold uppercase bg-gray-500 shadow-md shadow-gray-800"
@@ -94,7 +94,7 @@ export async function LandingPagePricing() {
 							<ShinyBorder
 								className="text-sm text-white bg-transparent px-4 py-3"
 								borderRadius={9999}
-								color={['#A07CFE', '#FE8FB5', '#FFBE7B']}
+								color={['#F48FB1', '#F06292', '#E682AB']}
 							>
 								Popular
 							</ShinyBorder>
@@ -104,7 +104,7 @@ export async function LandingPagePricing() {
 							<ul className="flex flex-col gap-3">
 								<li className="flex gap-2 items-center">
 									<Check className="text-green-700 w-5 h-5 mb-1" />
-									<span>Lifetime access</span>
+									<span>Lasts forever</span>
 								</li>
 
 								<li className="flex gap-2 items-center">

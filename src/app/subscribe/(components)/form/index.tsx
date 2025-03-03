@@ -91,7 +91,7 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 	return (
 		<FormProvider {...useFormReturn}>
 			<form
-				className="w-full flex flex-col gap-10 pb-4"
+				className="w-full flex flex-col gap-10 max-xl:gap-4 pb-4 -mt-4"
 				onSubmit={handleSubmit(handleOnSubmit)}
 			>
 				<SubscribeFormMainInfo plan={plan} />
@@ -112,23 +112,23 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 
 				{planIsLoveful && <SubscribeFormMilestones />}
 
-				<Button
+				<SubscribePageCouplePreview plan={plan} {...data} />
+
+				<button
 					type="submit"
-					className="mt-4 border-none bg-red-300 hover:bg-red-400 transition-all"
+					className="w-full xl:min-h-14 text-center text-lg rounded-md font-bold border-none p-4 transition-all capitalize text-white bg-red-200 shadow-glow shadow-red-200/80 hover:bg-red-400 disabled:opacity-50 disabled:shadow-none' lg:max-w-[33%]"
 					disabled={isSubmitting}
 				>
 					{isSubmitting ? (
-						<span className="flex items-center gap-4">
-							<Loading />
-							Creating your Loveloom...
+						<span className="w-full flex items-center justify-center text-lg gap-4">
+							<Loading className="w-fit" />
+							Creating your love page...
 						</span>
 					) : (
-						'Create your Loveloom'
+						'Create your love page'
 					)}
-				</Button>
+				</button>
 			</form>
-
-			<SubscribePageCouplePreview plan={plan} {...data} />
 		</FormProvider>
 	);
 }

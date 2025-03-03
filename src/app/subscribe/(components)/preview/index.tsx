@@ -65,7 +65,7 @@ export function SubscribePageCouplePreview({
 	);
 
 	return (
-		<main className="w-full max-w-[450px] h-fit py-8 mx-4 bg-gray-800 rounded-md">
+		<main className="w-full max-w-[450px] h-fit py-8 bg-gray-800 rounded-md">
 			<span className="w-full block mx-auto mb-12 text-white font-bold text-sm text-center">
 				What your page will look like 👇
 			</span>

@@ -29,11 +29,7 @@ const reviews = [
 	},
 ];
 
-const couplePages = [
-	'/looveloom1.jpeg',
-	'/looveloom2.jpeg',
-	'/looveloom3.jpeg',
-];
+const couplePages = ['/looveloom1.png', '/looveloom2.png', '/looveloom3.png'];
 
 export function LandingPageTestimonials() {
 	return (
@@ -67,8 +63,8 @@ export function LandingPageTestimonials() {
 								src={couplePage}
 								className="rounded-md"
 								alt="Couple page"
-								width={400}
-								height={400}
+								width={300}
+								height={300}
 							/>
 						);
 					})}
