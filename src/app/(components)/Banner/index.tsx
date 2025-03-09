@@ -29,9 +29,9 @@ export async function LandingPageBanner() {
 		<section className="flex flex-col items-center justify-center gap-9 text-gray700 p-8 max-xl:p-2">
 			<div className="flex flex-col items-center mx-auto gap-8 xl:gap-16">
 				<BlurFade delay={0.3}>
-					<h2 className="w-full text-8xl max-xl:text-6xl max-2xl:text-7xl leading-5 text-center 2xl:text-start drop-shadow-md 2xl:mb-12">
+					<h2 className="w-full text-8xl max-xl:text-5xl max-2xl:text-7xl leading-5 text-center 2xl:text-start drop-shadow-md 2xl:mb-12">
 						<span className="max-2xl:block bg-clip-text text-transparent font-bold bg-gradient-to-b from-[#E682AB] to-[#FF7696] 2xl:mb-14 pb-3">
-							Few clicks, eternal gift
+							Surpreenda seu amor
 						</span>
 					</h2>
 				</BlurFade>
@@ -41,12 +41,12 @@ export async function LandingPageBanner() {
 					delay={0.5}
 				>
 					<p className="w-full xl:max-w-[75%] text-center font-light italic text-2xl max-xl:text-base">
-						Create an exclusive website with a counter of your time
-						together. Share it with your love and create{' '}
+						Crie um site exclusivo com um contador do seu tempo
+						juntos. Compartilhe com seu amor e crie{' '}
 						<span className="text-red-300 font-medium">
-							an unforgettable surprise gift.
+							um presente surpresa inesquecível.
 						</span>{' '}
-						Just point to the QRCode 💖
+						É só apontar para o QRCode 💖
 					</p>
 
 					<div className="w-full flex flex-col items-center gap-5">
@@ -54,17 +54,17 @@ export async function LandingPageBanner() {
 							href="/subscribe"
 							className="w-full xl:min-h-14 text-center text-xl rounded-md font-bold border-none px-6 py-5 transition-all capitalize text-white bg-red-200 shadow-glow shadow-red-200/80 hover:bg-red-400' lg:max-w-[33%]"
 						>
-							Design your page for free
+							Quero criar meu site
 						</Link>
 
 						<div className="flex items-center gap-3 text-sm font-poppins font-light">
 							<GiftIcon className="animate-pulse text-green-500 " />
-							<span>
+							<span className="text-xs">
 								<span className="font-medium text-green-500">
 									50% off
 								</span>{' '}
-								for the next 30 customers (
-								{customersGoal - totalCustomers} left)
+								para os próximos 30 clientes (faltam{' '}
+								{customersGoal - totalCustomers})
 							</span>
 						</div>
 					</div>
@@ -75,12 +75,12 @@ export async function LandingPageBanner() {
 				<Stars className="gap-0" />
 
 				<span className="text-base font-light">
-					More than{' '}
+					Mais de{' '}
 					<NumberTicker
 						value={totalCustomers}
 						className="text-white font-bold"
 					/>{' '}
-					happy couples
+					casais felizes
 				</span>
 			</BlurFade>
 		</section>

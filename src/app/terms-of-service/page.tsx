@@ -2,143 +2,147 @@ export default function TermsOfService() {
 	return (
 		<main className="max-w-4xl mx-auto px-6 py-12">
 			<h1 className="text-3xl font-semibold text-red-200 text-center mb-8">
-				Terms of Service
+				Termos de Serviço
 			</h1>
 			<p className="text-sm text-gray-600 mb-4">
-				Last updated: November 11, 2024
+				Última atualização: 11 de novembro de 2024
 			</p>
 
 			<div className="space-y-8">
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						1. Acceptance of Terms
+						1. Aceitação dos Termos
 					</h2>
 					<p className="mt-2 text-white font-light">
-						By accessing and using our platform, you agree to comply
-						with and be bound by the following Terms of Service. If
-						you do not agree to any part of these terms, you must
-						not use the platform.
+						Ao acessar e usar nossa plataforma, você concorda em
+						cumprir e estar vinculado a estes Termos de Serviço. Se
+						você não concordar com qualquer parte destes termos, não
+						deve utilizar a plataforma.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						2. Description of Service
+						2. Descrição do Serviço
 					</h2>
 					<p className="mt-2 text-white font-light">
-						Our platform allows couples to create a personalized
-						page by filling out a form with their names,
-						relationship start date, a custom message, and up to 7
-						photos. After checkout and upon successful payment, they
-						receive a special link directing them to a screen to
-						configuring their Loveloom. After doing so, they receive
-						the QRCode to their page in their email.
+						Nossa plataforma permite que casais criem uma página
+						personalizada preenchendo um formulário com seus nomes,
+						data de início do relacionamento, uma mensagem
+						personalizada e até 7 fotos. Após a finalização da
+						compra e confirmação do pagamento, eles recebem um link
+						especial para configurar seu Loveloom. Depois de fazer
+						isso, recebem o QR Code de sua página por e-mail.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						3. Registration and Security
+						3. Registro e Segurança
 					</h2>
 					<p className="mt-2 text-white font-light">
-						To use the service, you must provide a valid email
-						address. Your email will not be shared with third
-						parties.
+						Para usar o serviço, você deve fornecer um endereço de
+						e-mail válido. Seu e-mail não será compartilhado com
+						terceiros.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						4. Privacy
+						4. Privacidade
 					</h2>
 					<p className="mt-2 text-white font-light">
-						We respect your privacy and do not use your data for any
-						processing or sale to third parties.
+						Respeitamos sua privacidade e não utilizamos seus dados
+						para qualquer tipo de processamento ou venda para
+						terceiros.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						5. User Content
+						5. Conteúdo do Usuário
 					</h2>
 					<p className="mt-2 text-white font-light">
-						You are solely responsible for the content you upload to
-						the platform, including photos, messages, and
-						relationship information. We assume no responsibility
-						for any inappropriate, illegal, or unauthorized content
-						uploaded by users. By submitting content, you grant us a
-						limited, non-exclusive license to use it solely for the
-						purpose of providing the service.
+						Você é o único responsável pelo conteúdo que faz upload
+						na plataforma, incluindo fotos, mensagens e informações
+						do relacionamento. Não nos responsabilizamos por
+						qualquer conteúdo inadequado, ilegal ou não autorizado
+						enviado pelos usuários. Ao enviar conteúdo, você nos
+						concede uma licença limitada e não exclusiva para usá-lo
+						exclusivamente com o propósito de fornecer o serviço.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						6. Payments and Refunds
+						6. Pagamentos e Reembolsos
 					</h2>
 					<p className="mt-2 text-white font-light">
-						All payments are processed through Stripe. Once payment
-						is complete, the couple will receive a link to configure
-						their page via email. Refunds are generally not provided
-						except under exceptional circumstances, at our sole
-						discretion. Please review all details carefully before
-						confirming your purchase.
+						Todos os pagamentos são processados através do Stripe.
+						Após a confirmação do pagamento, o casal receberá um
+						link para configurar sua página via e-mail. Reembolsos
+						geralmente não são fornecidos, exceto em circunstâncias
+						excepcionais, a nosso critério exclusivo. Certifique-se
+						de revisar todos os detalhes cuidadosamente antes de
+						confirmar sua compra.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						7. Service Modifications and Availability
+						7. Modificações e Disponibilidade do Serviço
 					</h2>
 					<p className="mt-2 text-white font-light">
-						We strive to keep the service operational and accessible
-						according to the selected plan (1-year for the Starter
-						Plan or lifetime for the Loveful Plan). However, under
-						exceptional circumstances beyond our control, such as
-						legal, technical, or financial issues, we reserve the
-						right to modify or discontinue the service. If
-						discontinuation is necessary, we will make all
-						reasonable efforts to notify users in advance, ensure
-						the preservation of pages, or offer alternative
-						solutions wherever feasible. Loveloom is not liable for
-						losses arising from service modifications or
-						discontinuation under extraordinary circumstances,
-						though we will do our utmost to minimize any impact.
+						Nos esforçamos para manter o serviço operacional e
+						acessível de acordo com o plano escolhido (1 ano para o
+						Plano Starter ou vitalício para o Plano Loveful). No
+						entanto, sob circunstâncias excepcionais além do nosso
+						controle, como questões legais, técnicas ou financeiras,
+						reservamo-nos o direito de modificar ou descontinuar o
+						serviço. Caso a descontinuação seja necessária, faremos
+						todos os esforços razoáveis para notificar os usuários
+						com antecedência, garantir a preservação das páginas ou
+						oferecer soluções alternativas sempre que viável. A
+						Loveloom não se responsabiliza por perdas decorrentes de
+						modificações ou descontinuação do serviço em
+						circunstâncias extraordinárias, embora nos esforcemos
+						para minimizar qualquer impacto.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						8. Limitation of Liability
+						8. Limitação de Responsabilidade
 					</h2>
 					<p className="mt-2 text-white font-light">
-						To the fullest extent permitted by law, we shall not be
-						liable for any indirect, incidental, special, or
-						consequential damages arising from or related to your
-						use of or inability to use the platform.
+						Na máxima extensão permitida por lei, não seremos
+						responsáveis por quaisquer danos indiretos, incidentais,
+						especiais ou consequenciais decorrentes do uso ou
+						incapacidade de uso da plataforma.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						9. Changes to Terms
+						9. Alterações nos Termos
 					</h2>
 					<p className="mt-2 text-white font-light">
-						We may update these Terms of Service periodically. When
-						updates are made, we will revise the &quot;last
-						updated&quot; date at the top of this page. It is your
-						responsibility to review these Terms of Service
-						periodically to stay informed of any changes.
+						Podemos atualizar estes Termos de Serviço
+						periodicamente. Quando houver atualizações, revisaremos
+						a data da &quot;última atualização&quot; no topo desta
+						página. É sua responsabilidade revisar estes Termos de
+						Serviço periodicamente para se manter informado sobre
+						quaisquer alterações.
 					</p>
 				</section>
 
 				<section>
 					<h2 className="text-xl font-semibold text-white">
-						10. Contact
+						10. Contato
 					</h2>
 					<p className="mt-2 text-white font-light">
-						If you have any questions about these Terms of Service,
-						please contact us at:{' '}
+						Se você tiver qualquer dúvida sobre estes Termos de
+						Serviço, entre em contato conosco pelo e-mail:{' '}
 						<a
 							href="mailto:support@looveloom.com"
 							className="text-blue-500 hover:text-blue-600"

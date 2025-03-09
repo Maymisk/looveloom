@@ -21,8 +21,8 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 			<div className="w-full flex gap-1">
 				<Input
 					{...register('name')}
-					label="Name of the couple"
-					placeholder="Romeo and Juliet"
+					label="Nome do casal"
+					placeholder="Romeu e Julieta"
 				/>
 
 				<Controller
@@ -31,7 +31,7 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 						return (
 							<SingleDatePicker
 								onDateChange={field.onChange}
-								label="Start of the relationship"
+								label="Início da relação"
 							/>
 						);
 					}}
@@ -40,8 +40,8 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 
 			<Textarea
 				{...register('story')}
-				label="Tell us your story"
-				placeholder="When we first met in 2013, I never thought.."
+				label="Conte-nos sua história"
+				placeholder="Quando nos conhecemos em 2013, eu nunca imaginaria que..."
 			/>
 
 			<MultipleFileInput
@@ -55,13 +55,13 @@ export function SubscribeFormMainInfo({ plan }: ISubscribeFormMainInfoProps) {
 					height={18}
 					strokeWidth={1.25}
 				/>
-				Select your favorite pictures
+				Selecione suas fotos favoritas
 			</MultipleFileInput>
 
 			{planIsLoveful && (
 				<Input
 					{...register('song')}
-					label="The link to your favorite song"
+					label="Link para sua música preferida"
 					placeholder="https://www.youtube.com/watch?v=kPa7bsKwL-c"
 				/>
 			)}

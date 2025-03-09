@@ -44,25 +44,25 @@ export function CoupleTimer({ startDate }: ICoupleTimerProps) {
 			<h3 className="flex justify-center flex-wrap gap-2 text-4xl font-bold text-center">
 				{days ? (
 					<span>
-						{days} <span className="text-red-300">days</span>,
+						{days} <span className="text-red-300">dias</span>,
 					</span>
 				) : null}
 
 				<span>
-					{hours} <span className="text-red-300">hours</span>,
+					{hours} <span className="text-red-300">horas</span>,
 				</span>
 
 				<span>
-					{minutes} <span className="text-red-300">minutes</span> and
+					{minutes} <span className="text-red-300">minutos</span> e
 				</span>
 
 				<span>
-					{seconds} <span className="text-red-300">seconds</span>
+					{seconds} <span className="text-red-300">segundos</span>
 				</span>
 			</h3>
 
 			<span className="inline-block ml-2 font-bold text-lg">
-				of <span className="text-red-300">us 💓</span>
+				de <span className="text-red-300">nós 💓</span>
 			</span>
 		</div>
 	);

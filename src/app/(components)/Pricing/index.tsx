@@ -30,21 +30,21 @@ export async function LandingPagePricing() {
 			<BlurFade delay={0.3}>
 				<div className="flex flex-col items-center gap-6">
 					<h5 className="font-poppins text-sm text-red-400 font-semibold uppercase">
-						Pricing
+						Preços
 					</h5>
 
 					<p className="max-w-[90%] font-semibold text-3xl text-center mb-4">
-						Surprise your love with your custom page!
+						Surpreenda seu amor com sua própria página!
 					</p>
 
-					<div className="flex items-center gap-3 text-sm font-poppins font-light">
+					<div className="flex items-center gap-3 text-xs font-poppins font-light">
 						<GiftIcon className="animate-pulse text-green-500 " />
 						<span>
 							<span className="font-medium text-green-500">
 								50% off
 							</span>{' '}
-							for the first 30 customers (
-							{customersGoal - totalCustomers} left)
+							para os próximos 30 clientes (faltam{' '}
+							{customersGoal - totalCustomers})
 						</span>
 					</div>
 				</div>
@@ -53,30 +53,30 @@ export async function LandingPagePricing() {
 			<div className="w-full flex max-xl:flex-col items-center justify-center gap-12">
 				<BlurFade className="w-full max-w-[400px]" inView delay={0.4}>
 					<PricingCard
-						title="Starter"
-						price={5}
-						oldPrice={10}
+						title="Padrão"
+						price={35}
+						oldPrice={70}
 						className="shadow-xl shadow-gray-800"
 					>
 						<ul className="flex flex-col gap-3">
 							<li className="flex gap-2 items-center">
 								<Check className="text-green-700 w-5 h-5 mb-1" />
-								<span>1 year acess</span>
+								<span>1 ano de acesso</span>
 							</li>
 
 							<li className="flex gap-2 items-center">
 								<Check className="text-green-700 w-5 h-5 mb-1" />
-								<span>3 pictures</span>
+								<span>3 fotos</span>
 							</li>
 
 							<li className="flex gap-2 items-center">
 								<X className="text-red-700 w-5 h-5 mb-1" />
-								<span>With music</span>
+								<span>Com música</span>
 							</li>
 
 							<li className="flex gap-2 items-center">
 								<X className="text-red-700 w-5 h-5 mb-1" />
-								<span>Relationship milestones</span>
+								<span>Marcos de relacionamento</span>
 							</li>
 						</ul>
 					</PricingCard>
@@ -100,26 +100,30 @@ export async function LandingPagePricing() {
 							</ShinyBorder>
 						</ShinyText>
 
-						<PricingCard title="Loveful" oldPrice={14} price={7}>
+						<PricingCard
+							title="Cheio de Amor"
+							oldPrice={90}
+							price={45}
+						>
 							<ul className="flex flex-col gap-3">
 								<li className="flex gap-2 items-center">
 									<Check className="text-green-700 w-5 h-5 mb-1" />
-									<span>Lasts forever</span>
+									<span>Dura pra sempre</span>
 								</li>
 
 								<li className="flex gap-2 items-center">
 									<Check className="text-green-700 w-5 h-5 mb-1" />
-									<span>7 pictures</span>
+									<span>7 fotos</span>
 								</li>
 
 								<li className="flex gap-2 items-center">
 									<Check className="text-green-700 w-5 h-5 mb-1" />
-									<span>With music</span>
+									<span>Com música</span>
 								</li>
 
 								<li className="flex gap-2 items-center">
 									<Check className="text-green-700 w-5 h-5 mb-1" />
-									<span>Relationship milestones</span>
+									<span>Marcos de relacionamento</span>
 								</li>
 							</ul>
 						</PricingCard>

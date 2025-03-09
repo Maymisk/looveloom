@@ -25,17 +25,16 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 		<>
 			<main className="w-full flex flex-col items-center justify-center gap-10 pt-8 px-2">
 				<h1 className="font-bold text-3xl text-center">
-					<span className="text-red-300">Thank you</span> for your
-					purchase!
+					<span className="text-red-300">Obrigado</span> por sua
+					compra!!
 				</h1>
 
 				<div className="text-center font-light">
-					Get the QRCode for your Looveloom page through your email
-					and{' '}
+					Pegue o QRCode para seu site enviado seu email e{' '}
 					<span className="text-red-300 font-semibold">
-						share your love story
+						compartilhe sua história de amor
 					</span>{' '}
-					with the world!
+					com o mundo!
 				</div>
 
 				<div className="relative flex flex-col items-center justify-center gap-4">
@@ -53,7 +52,7 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 						width={70}
 						height={70}
 					/>
-					<span className="font-bold">Share on your socials</span>
+					<span className="font-bold">Compartilhe em suas redes</span>
 					<div className="flex items-center gap-4 mx-auto">
 						<Link
 							href={'https://www.instagram.com/'}
@@ -80,7 +79,7 @@ export default async function ThankYou({ searchParams }: IThankYouProps) {
 				</div>
 
 				<span className="text-xs text-center">
-					Got any doubts? Contact us at{' '}
+					Tem dúvidas? Contate-nos em{' '}
 					<a
 						className="font-light underline"
 						href="mailto:support@looveloom.com"

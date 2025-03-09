@@ -31,26 +31,24 @@ export function SubscribeFormMilestoneSelect({
 
 						<SelectContent>
 							<SelectItem value="first-sight">
-								First sight
+								Primeira vista
 							</SelectItem>
 
 							<SelectItem value="first-date">
-								First date
+								Primeiro encontro
 							</SelectItem>
 
 							<SelectItem value="first-kiss">
-								First kiss
+								Primeiro beijo
 							</SelectItem>
 
 							<SelectItem value="relationship">
-								Relationship
+								Começo do namoro
 							</SelectItem>
 
-							<SelectItem value="engagement">
-								Engagement
-							</SelectItem>
+							<SelectItem value="engagement">Noivado</SelectItem>
 
-							<SelectItem value="marriage">Marriage</SelectItem>
+							<SelectItem value="marriage">Casamento</SelectItem>
 						</SelectContent>
 					</Select>
 				);

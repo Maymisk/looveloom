@@ -59,14 +59,19 @@ export function SingleDatePicker({
 							format(date, 'PPP')
 						) : (
 							<span className="font-light opacity-40">
-								Pick a date
+								Escolha uma data
 							</span>
 						)}
 					</Button>
 				</PopoverTrigger>
 			</div>
 
-			<PopoverContent className="w-auto p-0 bg-gray-800 border-none">
+			<PopoverContent
+				side="bottom"
+				align="end"
+				avoidCollisions={false}
+				className="w-auto p-0 bg-gray-800 border-none"
+			>
 				<Calendar
 					mode="single"
 					selected={value}

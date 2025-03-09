@@ -4,27 +4,27 @@ import Image from 'next/image';
 
 const reviews = [
 	{
-		name: 'David',
+		name: 'Davi',
 		username: '@dv_stella',
-		text: "Quick and simple. Definitely worth the 5 minutes for my girlfriend's happiness",
+		text: 'Fácil e rápido. Com certeza valeu os 5 minutos pra fazer minha namorada feliz!',
 		image: '/testimonials/david.jpg',
 	},
 	{
 		name: 'Clara',
 		username: '@clara_rachellib',
-		text: "My boyfriend showed up with a random QRCode, and I didn't think I'd appreciate it this much",
+		text: 'Meu namorado apareceu com um QRCode aleatório, e eu não achei que fosse gostar tanto',
 		image: '/testimonials/clara.jpg',
 	},
 	{
 		name: 'Gustavo',
 		username: '@guzta_c',
-		text: 'This was the perfect gift for our anniversary. I could tell every detail of how much I love my girlfriend.',
+		text: 'Esse foi o presente perfeito pro nosso aniversário de namoro. Eu pude dizer cada detalhe do quanto amo minha mulher',
 		image: '/testimonials/gustavo.jpg',
 	},
 	{
-		name: 'William',
+		name: 'Guilherme',
 		username: '@g.reche_774',
-		text: 'My girlfriend loved this so much!!! Very much worth the price for such a quick and emotional surprise',
+		text: 'Minha namorada adorou muito!!! Valeu o preço por essa surpresa emotiva',
 		image: '/testimonials/guilherme.jpg',
 	},
 ];
@@ -36,11 +36,11 @@ export function LandingPageTestimonials() {
 		<section className="relative flex flex-col items-center gap-12 mt-24">
 			<div className="flex flex-col items-center justify-center gap-4">
 				<h5 className="text-red-400 font-semibold uppercase">
-					Testimonials
+					Testemunhos
 				</h5>
 
 				<h2 className="text-5xl max-xl:text-3xl text-gray700 font-bold font-inria-serif text-center">
-					What the couples are saying
+					O que os casais estão falando
 				</h2>
 			</div>
 

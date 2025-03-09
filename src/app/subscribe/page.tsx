@@ -14,9 +14,9 @@ export default function Subscribe() {
 	return (
 		<main className="w-full flex flex-col items-center gap-36 max-xl:gap-12 pt-24 max-xl:pt-4 px-8 max-xl:px-2">
 			<div className="flex flex-col items-center gap-1 mx-auto">
-				<h1 className="text-2xl font-bold">Almost there!</h1>
+				<h1 className="text-2xl font-bold">Quase lá!</h1>
 				<span className="text-sm font-light">
-					Tell us your story to eternalize it!
+					Preencha os dados e pegue sua página!
 				</span>
 
 				<div className="flex justify-center gap-4 mt-4">
@@ -27,7 +27,7 @@ export default function Subscribe() {
 						)}
 						onClick={() => handlePlanChange('standard')}
 					>
-						One year, 3 pictures and no music - $5
+						Um ano, 3 fotos e sem música - $35
 					</button>
 
 					<button
@@ -37,7 +37,7 @@ export default function Subscribe() {
 						)}
 						onClick={() => handlePlanChange('loveful')}
 					>
-						Eternal, 7 pictures and music - $7
+						Eterno, 7 fotos e música - $45
 					</button>
 				</div>
 			</div>

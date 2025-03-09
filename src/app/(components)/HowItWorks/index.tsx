@@ -8,7 +8,7 @@ export function LandingPageHowItWorks() {
 		<BlurFade delay={0.2} inView>
 			<section className="flex flex-col items-center gap-8">
 				<h5 className="text-sm text-red-400 font-semibold uppercase tracking-widest">
-					How it works
+					Como funciona?
 				</h5>
 
 				<div className="w-1/2 max-lg:w-full grid grid-cols-2 max-xl:grid-cols-1 gap-4">
@@ -23,7 +23,7 @@ export function LandingPageHowItWorks() {
 						>
 							<div className="w-full h-full flex flex-col items-center gap-4 p-4 pb-0 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
 								<h3 className="text-white text-center text-3xl font-bold capitalize">
-									Customize your page
+									Crie sua página
 								</h3>
 
 								<Image
@@ -47,7 +47,7 @@ export function LandingPageHowItWorks() {
 						>
 							<div className="w-full h-full flex flex-col items-center gap-4 p-4 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
 								<h3 className="text-white text-center text-3xl font-bold capitalize">
-									Make the payment
+									Faça o pagamento
 								</h3>
 
 								<Image
@@ -71,7 +71,7 @@ export function LandingPageHowItWorks() {
 						>
 							<div className="w-full h-full flex flex-col items-center gap-4 p-4 pb-0 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
 								<h3 className="text-white text-center text-3xl font-bold capitalize">
-									Receive your QRCode on Email
+									Receba seu QRCode no email
 								</h3>
 
 								<Image
@@ -96,7 +96,7 @@ export function LandingPageHowItWorks() {
 						>
 							<div className="relative w-full h-full flex flex-col items-center gap-4 p-4 bg-gradient-to-b from-gray-500 to-gray-600 rounded-lg">
 								<h3 className="text-white text-center text-3xl font-bold capitalize">
-									Surprise your love
+									Surpreenda seu amor
 								</h3>
 
 								<div className="relative border border-red-300 rounded-lg">

@@ -7,16 +7,16 @@ export function Footer() {
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 					<div>
 						<h3 className="text-white font-bold text-lg">
-							About Us
+							Sobre nós
 						</h3>
 						<p className="mt-4 text-gray-300">
-							We’re committed to delivering the best service with
-							passion and integrity.
+							Estamos comprometidos com entregar o melhor serviço
+							com paixão e integridade.
 						</p>
 					</div>
 					<div>
 						<h3 className="text-white font-bold text-lg">
-							Quick Links
+							Links rápidos
 						</h3>
 						<ul className="mt-4 space-y-2">
 							<li>
@@ -33,7 +33,7 @@ export function Footer() {
 									target="_blank"
 									className="text-gray-400 hover:text-red-400 transition"
 								>
-									Contact Us
+									Contate-nos
 								</Link>
 							</li>
 						</ul>
@@ -47,7 +47,7 @@ export function Footer() {
 									href="/terms-of-service"
 									className="text-gray-400 hover:text-red-400 transition"
 								>
-									Terms of service
+									Termos de serviço
 								</Link>
 							</li>
 							<li>
@@ -55,7 +55,7 @@ export function Footer() {
 									href="/privacy-policy"
 									className="text-gray-400 hover:text-red-400 transition"
 								>
-									Privacy policy
+									Política de privacidade
 								</Link>
 							</li>
 						</ul>
@@ -63,7 +63,7 @@ export function Footer() {
 				</div>
 				<div className="mt-8 border-t border-gray-800 pt-4 text-center">
 					<p className="text-gray-100">
-						&copy; 2024 Loveloom. All rights reserved.
+						&copy; 2024 Loveloom. Todos os direitos reservados.
 					</p>
 				</div>
 			</div>

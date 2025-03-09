@@ -10,53 +10,53 @@ export function LandingPageAccordion() {
 		>
 			<LandingPageFAQItem
 				value="item-1"
-				question="What is Loveloom?"
+				question="O que é o Loveloom?"
 				answer={
-					'Loveloom is your own custom relationship page. You can include photos, a heartfelt message, and a timer that tracks how long you’ve been together, making it a unique way to celebrate your love.'
+					'Loveloom é a sua própria página personalizada de relacionamento. Você pode incluir fotos, uma mensagem sincera e um cronômetro que acompanha há quanto tempo vocês estão juntos, tornando-se uma maneira única de celebrar seu amor.'
 				}
 			/>
 			<LandingPageFAQItem
 				value="item-2"
-				question="How do i receive my Loveloom after payment?"
+				question="Como recebo meu site após o pagamento?"
 				answer={
-					"After completing the payment, you'll receive an email with both a QR code and a link to access your Loveloom, making it easy to share with the world."
+					'Após concluir o pagamento, você receberá um e-mail com um código QR e um link para acessar seu site, facilitando o compartilhamento com o mundo.'
 				}
 			/>
 			<LandingPageFAQItem
 				value="item-3"
-				question="Does my Loveloom have an expiration date?"
+				question="Meu site tem data de expiração?"
 				answer={
-					'If you choose the Starter plan, your Loveloom will last for one year. However, with the Loveful plan, your Loveloom will be available for life!'
+					'Se você escolher o plano Padrão, seu Loveloom durará um ano. No entanto, com o plano Cheio de Amor, sua página estará disponível para sempre!'
 				}
 			/>
 			<LandingPageFAQItem
 				value="item-4"
-				question="Does my QRCode have an expiration date?"
+				question="Meu código QR tem data de expiração?"
 				answer={
-					'Yes! The QRCode sent to your email will disappear after one week. However, if you saved it, you can stil use it normally!'
+					'Sim! O código QR enviado para o seu e-mail desaparecerá após uma semana. No entanto, se você o salvou, ainda poderá usá-lo normalmente!'
 				}
 			/>
 
 			{/* <LandingPageFAQItem
-				value="item-4"
-				question="Can I edit my page after it is created?"
-				answer={
-					'Yes, once you receive the link to your page, it will include an edit section where you can make any necessary changes.'
-				}
-			/> */}
+    value="item-4"
+    question="Posso editar minha página depois de criada?"
+    answer={
+        "Sim, assim que você receber o link para sua página, ele incluirá uma seção de edição onde você poderá fazer as alterações necessárias."
+    }
+/> */}
 
 			<LandingPageFAQItem
 				value="item-5"
-				question="How long does it take to receive the QR code via email?"
+				question="Quanto tempo leva para receber o código QR por e-mail?"
 				answer={
-					'After creating your Loveloom, you will receive the QR code in at most a few minutes!'
+					'Após criar sua página, você receberá o código QR em, no máximo, alguns minutos!'
 				}
 			/>
 			<LandingPageFAQItem
 				value="item-6"
-				question="How can I contact customer support?"
+				question="Como posso entrar em contato com o suporte ao cliente?"
 				answer={
-					'You can contact our customer support via email at support@looveloom.com'
+					'Você pode entrar em contato com nosso suporte ao cliente por e-mail em support@looveloom.com'
 				}
 			/>
 		</Accordion>

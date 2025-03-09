@@ -37,7 +37,7 @@ export function SubscribeFormMilestones() {
 				className="bg-gray-800 border-none font-bold hover:opacity-75 transition-all"
 				onClick={handleAddMilestone}
 			>
-				Add milestone
+				Adicionar marco
 			</Button>
 		</div>
 	);

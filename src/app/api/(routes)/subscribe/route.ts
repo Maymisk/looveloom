@@ -47,7 +47,8 @@ export async function POST(req: NextRequest) {
 		if (planIsLoveful && !data.song)
 			return NextResponse.json(
 				{
-					error: 'Please tell us the youtube link to your song of choice!',
+					// error: 'Please tell us the youtube link to your song of choice!',
+					error: 'Escreva o link da sua música favorita!',
 				},
 				{ status: 400 }
 			);
@@ -63,7 +64,8 @@ export async function POST(req: NextRequest) {
 		if (!planIsLoveful && data.song?.length) {
 			return NextResponse.json(
 				{
-					error: 'You cannot specify a song with your current plan!',
+					// error: 'You cannot specify a song with your current plan!',
+					error: 'Você não pode especificar uma música com seu plano atual!',
 				},
 				{
 					status: 400,
@@ -79,7 +81,7 @@ export async function POST(req: NextRequest) {
 		) {
 			return NextResponse.json(
 				{
-					error: 'Your song URL must be in the format watch?v=videoId',
+					error: 'A URL da sua música deve estar no formato watch?v=videoId',
 				},
 				{ status: 400 }
 			);
@@ -88,7 +90,8 @@ export async function POST(req: NextRequest) {
 		if (!planIsLoveful && milestones?.length)
 			return NextResponse.json(
 				{
-					error: 'You cannot specify milestones with your current plan!',
+					// error: 'You cannot specify milestones with your current plan!',
+					error: 'Você não pode especificar marcos de relacionamento com seu plano atual!',
 				},
 				{ status: 400 }
 			);
@@ -96,7 +99,8 @@ export async function POST(req: NextRequest) {
 		if (!planIsLoveful && pictures.length > 3)
 			return NextResponse.json(
 				{
-					error: "You can't specify more than 3 pictures with your current plan!",
+					// error: "You can't specify more than 3 pictures with your current plan!",
+					error: 'Você não pode especificar mais de 3 fotos com seu plano atual!',
 				},
 				{ status: 400 }
 			);

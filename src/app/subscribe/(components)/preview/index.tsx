@@ -67,11 +67,11 @@ export function SubscribePageCouplePreview({
 	return (
 		<main className="w-full max-w-[450px] h-fit py-8 bg-gray-800 rounded-md">
 			<span className="w-full block mx-auto mb-12 text-white font-bold text-sm text-center">
-				What your page will look like 👇
+				Como seu site vai ficar 👇
 			</span>
 
 			<h1 className="mb-10 text-center font-bold text-red-300 text-4xl xl:text-6xl">
-				{name || 'Couple'}
+				{name || 'Casal'}
 			</h1>
 
 			<MemoizedCoupleTimer startDate={date} />
@@ -84,7 +84,7 @@ export function SubscribePageCouplePreview({
 
 			<div className="flex flex-col gap-32 w-full px-2 mt-16">
 				<p className="text-lg text-center font-semibold text-white break-words xl:mx-auto">
-					{story || 'Your story here'}
+					{story || 'Sua história aqui'}
 				</p>
 
 				{!!milestones?.length && planIsLoveful && (

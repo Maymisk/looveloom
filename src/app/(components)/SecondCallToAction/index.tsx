@@ -28,12 +28,12 @@ export function LandingPageSecondCallToAction() {
 				/>
 
 				<h2 className="text-2xl font-bold text-center">
-					Tell your story, get your QR code, share
+					Conte-nos sua história, pegue seu QR Code, compartilhe
 				</h2>
 
 				<p className="text-center font-light">
-					Create a timeless surprise for your partner in under 5
-					minutes - it’s really that quick!
+					Crie uma surpresa de amor atemporal em menos de 5 minutos -
+					é realmente rápido assim!
 				</p>
 
 				<Link
@@ -41,7 +41,7 @@ export function LandingPageSecondCallToAction() {
 					className="w-full flex justify-center items-center gap-3 xl:min-h-14 text-center text-lg rounded-md font-bold border-none px-4 py-5 transition-all text-white bg-red-200 shadow-glow shadow-red-200/80 hover:bg-red-400"
 				>
 					<HeartIcon className="fill-white" />
-					Design your page, free
+					Quero criar meu site
 				</Link>
 			</BlurFade>
 		</section>

@@ -97,13 +97,13 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 
 				{planIsLoveful && (
 					<h3 className="w-full text-xl text-center font-bold my-6">
-						Pick your{' '}
+						Escolha seus{' '}
 						<span className="inline-block mx-[2px] text-red-300">
-							most
+							marcos
 						</span>{' '}
-						memorable{' '}
+						mais{' '}
 						<span className="inline-block mx-[2px] text-red-300">
-							milestones
+							memoráveis
 						</span>
 						!
 					</h3>
@@ -121,10 +121,10 @@ export function SubscribeForm({ plan }: ISubscribeFormProps) {
 					{isSubmitting ? (
 						<span className="w-full flex items-center justify-center text-lg gap-4">
 							<Loading className="w-fit" />
-							Creating your love page...
+							Criando seu site...
 						</span>
 					) : (
-						'Create your love page'
+						'Criar meu site'
 					)}
 				</button>
 			</form>

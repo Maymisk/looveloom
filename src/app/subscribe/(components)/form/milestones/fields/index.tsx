@@ -18,14 +18,14 @@ export function SubscribeFormMilestoneFields({
 	return (
 		<div className="flex flex-col gap-2">
 			<div className="flex justify-between items-center">
-				<h3 className="font-bold">Milestone {index + 1}</h3>
+				<h3 className="font-bold">Marco {index + 1}</h3>
 
 				<Button
 					type="button"
 					className="h-8 font-bold text-sm bg-gray-800 border-none hover:opacity-75 transition-all"
 					onClick={() => handleRemoveMilestone(index)}
 				>
-					Remove
+					Remover
 				</Button>
 			</div>
 
@@ -34,8 +34,8 @@ export function SubscribeFormMilestoneFields({
 
 				<Textarea
 					{...register(`milestones.${index}.description`)}
-					label="Tell the story on this special event"
-					placeholder="The day we married was the happiest day of my life.."
+					label="Conte a história deste marco especial"
+					placeholder="O dia que nos casamos foi o dia mais feliz da minha vida..."
 				/>
 
 				<Controller
@@ -43,7 +43,7 @@ export function SubscribeFormMilestoneFields({
 					render={({ field }) => {
 						return (
 							<SingleDatePicker
-								label="The date when this happened"
+								label="A data em que isso aconteceu"
 								onDateChange={field.onChange}
 							/>
 						);

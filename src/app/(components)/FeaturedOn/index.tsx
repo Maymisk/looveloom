@@ -15,7 +15,7 @@ export function FrequentlyPostedOn() {
 		<BlurFade delay={0.2} inView>
 			<section className="flex flex-col items-center gap-4">
 				<h5 className="text-sm text-red-400 font-semibold uppercase">
-					Featured on
+					Aparece em
 				</h5>
 
 				<div className="flex items-center gap-4">

@@ -23,14 +23,24 @@ const milestoneToIcon: Record<MilestoneNameType, ComponentType<LucideProps>> = {
 	marriage: InfinityIcon,
 };
 
+const milestoneNameMapper = {
+	'first-sight': 'Primeira vista',
+	'first-kiss': 'Primeiro beijo',
+	'first-date': 'Primeiro encontro',
+	relationship: 'Namoro',
+	engagement: 'Noivado',
+	marriage: 'Casamento',
+};
+
 export function CoupleTimelineItem({
 	name,
 	description,
 	date,
 }: ICoupleTimelineItemProps) {
-	const formattedMilestoneName = name.split('-').join(' ');
+	const formattedMilestoneName =
+		milestoneNameMapper[name] || name.split('-').join(' ');
 	const formattedMilestoneDate = moment(date).format('YYYY/MM/DD');
-	const tooltipContent = `Our ${formattedMilestoneName} happened on ${formattedMilestoneDate}`;
+	const tooltipContent = `Nosso ${formattedMilestoneName} aconteceu dia ${formattedMilestoneDate}`;
 	const Icon = milestoneToIcon[name];
 
 	return (

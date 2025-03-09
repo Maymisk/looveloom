@@ -1,18 +1,21 @@
 import z from 'zod';
 
 export const validationSchema = z.object({
-	name: z
-		.string()
-		.min(1, { message: 'Please write the name of the couple!' }),
+	name: z.string().min(1, { message: 'Por favor, escreva o nome do casal!' }),
 	story: z
-		.string({ message: 'Please write your story!' })
-		.min(1, { message: 'Please write your story!' })
-		.max(450, { message: 'Please limit your story to 450 chars!' }),
-	song: z.string({ message: 'Invalid song!' }).optional(),
+		.string({ message: 'Por favor, escreva sua história!' })
+		.min(1, { message: 'Por favor, escreva sua história!' })
+		.max(450, {
+			message: 'Por favor, limite sua história a 450 caracteres!',
+		}),
+	song: z.string({ message: 'Música inválida!' }).optional(),
 	startDate: z
-		.string({ message: 'Please tell us the start of your relationship!' })
+		.string({
+			message: 'Por favor, informe o início do seu relacionamento!',
+		})
 		.refine(value => !isNaN(Date.parse(value)), {
-			message: 'Please tell us the start of your relationship!',
+			message:
+				'Por favor, informe uma data válida para o início do seu relacionamento!',
 		}),
 	milestones: z.array(
 		z
@@ -26,29 +29,28 @@ export const validationSchema = z.object({
 						'engagement',
 						'marriage',
 					],
-					{ message: 'Invalid milestone type!' }
+					{ message: 'Tipo de marco inválido!' }
 				),
 				description: z
 					.string({
 						message:
-							'Please provide a description for your milestone!',
+							'Por favor, forneça uma descrição para seu marco!',
 					})
 					.min(1, {
 						message:
-							'Please provide a description for your milestone!',
+							'Por favor, forneça uma descrição para seu marco!',
 					})
 					.max(400, {
 						message:
-							'Please provide a description with a maximum of 400 characters!',
+							'Por favor, limite a descrição a 400 caracteres!',
 					}),
 				date: z
 					.string({
-						message:
-							'Please tell us the date your milestone happened!',
+						message: 'Por favor, informe a data do seu marco!',
 					})
 					.refine(value => !isNaN(Date.parse(value)), {
 						message:
-							'Please tell us the date your milestone happened!',
+							'Por favor, informe uma data válida para seu marco!',
 					}),
 			})
 			.optional()
@@ -56,6 +58,6 @@ export const validationSchema = z.object({
 
 	pictures: z
 		.array(z.any())
-		.min(3, { message: 'Please select at least 3 pictures!' })
-		.max(7, { message: 'You can only send at most 7 pictures!' }),
+		.min(3, { message: 'Por favor, selecione pelo menos 3 fotos!' })
+		.max(7, { message: 'Você pode enviar no máximo 7 fotos!' }),
 });
