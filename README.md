@@ -1,3 +1,7 @@
+<div align="center">
+  <img style="width: 300px;" src='https://media.tenor.com/VoWtWqqhkvAAAAAj/beating-heart-gif-sticker.gif' />
+</div>
+
 # 💌 Loveloom
 
 **Live Demo:** [looveloom.com](https://looveloom.com)
